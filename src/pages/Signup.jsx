@@ -54,7 +54,7 @@ const SignupForm = () => {
         name: res.data.userData.name,
       };
 
-      login(userData); // Pass navigate to login()
+      login(userData, res.data.token); // Pass navigate to login()
     } catch (err) {
       setError(
         err.response?.data?.message || "Registration failed. Please try again."

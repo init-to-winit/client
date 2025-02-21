@@ -15,7 +15,7 @@ const axiosInstance = axios.create({
 // Request Interceptor
 axiosInstance.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem("authToken");
+    const token = localStorage.getItem("token");
     if (token) {
       config.headers["Authorization"] = `Bearer ${token}`;
     }
@@ -50,11 +50,9 @@ const api = {
   },
 
   athletes: {
-    getAll: () => axiosInstance.get("/athletes"),
-    getById: (id) => axiosInstance.get(`/athletes/${id}`),
-    create: (data) => axiosInstance.post("/athletes", data),
-    update: (id, data) => axiosInstance.put(`/athletes/${id}`, data),
-    delete: (id) => axiosInstance.delete(`/athletes/${id}`),
+    createPerformance: (athleteId, data) => axiosInstance.post(`/athlete/addPerformance/${athleteId}`, data),
+    editPerformance: (athleteId, data) => axiosInstance.put(`/athlete/editPerformance/${athleteId}`, data),
+    getPerformances: (athleteId) => axiosInstance.get(`/athlete/getPerformance/${athleteId}`),
   },
 
   metrics: {

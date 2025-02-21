@@ -33,12 +33,13 @@ const VismohLoginPage = () => {
 
       const userData = {
         token: res.data.token,
+        id : res.data.userData.id,
         role: res.data.userData.role,
         name: res.data.userData.name,
       };
       console.log("User Data:", userData);
 
-      login(userData); // Pass navigate to login()
+      login(userData, res.data.token); // Pass navigate to login()
     } catch (err) {
       console.error("Login Error:", err);
       setError(err.response?.data?.message || "Invalid email or password.");
