@@ -32,7 +32,7 @@ const VismohLoginPage = () => {
       // Save token (if applicable)
       localStorage.setItem("authToken", res.data.token);
 
-      navigate("/");
+      navigate("/dashboard");
     } catch (err) {
       setError(err.response?.data?.message || "Login failed. Please try again.");
     } finally {

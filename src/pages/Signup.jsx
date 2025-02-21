@@ -47,7 +47,8 @@ const SignupForm = () => {
     try {
       const res = await api.auth.register(formData);
       console.log(res.data);
-      navigate("/login");
+      localStorage.setItem("authToken", res.data.token);
+      navigate("/dashboard");
     } catch (err) {
       setError(
         err.response?.data?.message || "Registration failed. Please try again."
