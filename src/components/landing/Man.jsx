@@ -12,6 +12,7 @@ export default function Man() {
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
+        id="about"
       >
         <motion.div
           className="my-[2rem]"
