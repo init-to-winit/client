@@ -11,6 +11,7 @@ import Healthcare from "./pages/Healthcare";
 import Coaches from "./pages/Coaches";
 import RunnerStatsTable from "./components/LeaderBoard";
 import Players from "./pages/Players";
+import AthleteProfile from "./pages/AthleteProfile";
 
 const App = () => {
   return (
@@ -31,6 +32,10 @@ const App = () => {
               <Route path="coaches" element={<Coaches person="coaches" />} />
               <Route path="leaderboard" element={<RunnerStatsTable />} />
               <Route path="players" element={<Players />} />
+              <Route
+                path="/athleteProfile/:athleteId"
+                element={<AthleteProfile />}
+              />
             </Route>
           </Route>
         </Routes>

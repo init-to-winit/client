@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import api from "../api/config";
+import { useNavigate } from "react-router-dom";
 
 const NameAvatar = ({ firstName, lastName }) => {
   const firstInitial = firstName ? firstName.charAt(0) : "";
@@ -24,8 +25,10 @@ const PlayerCard = ({
   user,
 }) => {
   const [status, setStatus] = useState(connectionStatus);
+  const navigate = useNavigate();
 
   const handleConnect = async () => {
+    e.stopPropagation();
     if (!user) return;
 
     const requestData = {
@@ -42,9 +45,17 @@ const PlayerCard = ({
       console.error("Error sending connection request:", error);
     }
   };
+  const athleteId = receiverId;
+
+  const handleNavigate = () => {
+    navigate(`/athleteProfile/${athleteId}`);
+  };
 
   return (
-    <div className="flex items-center bg-gray-100 p-6 rounded-lg mb-8">
+    <div
+      className="flex items-center bg-gray-100 p-6 rounded-lg mb-8 cursor-pointer hover:bg-gray-200 transition"
+      onClick={handleNavigate} // Navigate when card is clicked
+    >
       <div className="mr-6">
         <NameAvatar firstName={firstName} lastName={lastName} />
       </div>
