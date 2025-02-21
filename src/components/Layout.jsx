@@ -17,7 +17,7 @@ export default function Layout() {
         <Hello />
 
         {/* Main Content */}
-        <div className="flex-1 p-6 overflow-auto bg-gray-100">
+        <div className="flex-1 p-6 pl-10 pt-3 overflow-auto bg-gray-100">
           <Outlet /> {/* This will render the current route's content */}
         </div>
       </div>
