@@ -46,7 +46,7 @@ export default function Dashboard() {
     try {
       const res = await api.athletes.getPerformances(athleteId);
       setPerformanceData(res.data.performanceDetails);
-      console.log("Performance data fetched successfully.",performanceData);
+      console.log("Performance data fetched successfully.", performanceData);
     } catch (error) {
       console.error("Failed to fetch performance data:", error);
     }
@@ -87,7 +87,10 @@ export default function Dashboard() {
       value: performanceData.wins || 0,
       subText: "Matches Won",
       percentage: performanceData.total_matches
-        ? `${((performanceData.wins / performanceData.total_matches) * 100).toFixed(2)}%`
+        ? `${(
+            (performanceData.wins / performanceData.total_matches) *
+            100
+          ).toFixed(2)}%`
         : "0%",
       up: true,
     },
@@ -96,18 +99,27 @@ export default function Dashboard() {
       value: performanceData.losses || 0,
       subText: "Matches Lost",
       percentage: performanceData.total_matches
-        ? `${((performanceData.losses / performanceData.total_matches) * 100).toFixed(2)}%`
+        ? `${(
+            (performanceData.losses / performanceData.total_matches) *
+            100
+          ).toFixed(2)}%`
         : "0%",
       up: false,
     },
     {
       icon: Winrate,
       value: performanceData.total_matches
-        ? `${((performanceData.wins / performanceData.total_matches) * 100).toFixed(2)}%`
+        ? `${(
+            (performanceData.wins / performanceData.total_matches) *
+            100
+          ).toFixed(2)}%`
         : "0%",
       subText: "Win Rate",
       percentage: performanceData.total_matches
-        ? `${((performanceData.wins / performanceData.total_matches) * 100).toFixed(2)}%`
+        ? `${(
+            (performanceData.wins / performanceData.total_matches) *
+            100
+          ).toFixed(2)}%`
         : "0%",
       up: performanceData.wins >= performanceData.losses,
     },
@@ -129,16 +141,20 @@ export default function Dashboard() {
       </div>
       <div className="w-full flex gap-6 flex-col">
         <div className="flex gap-4 w-full">
-          <PracticeSessionsChart practiceSession={performanceData.practice_sessions_per_week}/>
+          <PracticeSessionsChart
+            practiceSession={performanceData.practice_sessions_per_week}
+          />
           <PerformanceChart />
         </div>
         <PerformanceSuggestions />
-        <button
-          onClick={() => setIsFormOpen(true)}
-          className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
-        >
-          Open Form
-        </button>
+        <div className="flex justify-end">
+          <button
+            onClick={() => setIsFormOpen(true)}
+            className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+          >
+            Add Data +
+          </button>
+        </div>
 
         <Forms
           isOpen={isFormOpen}
