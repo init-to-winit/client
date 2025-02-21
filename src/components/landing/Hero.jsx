@@ -12,7 +12,7 @@ export default function Hero() {
       <h2 className="text-5xl tracking-tighter font-medium mt-2 text-center">
         driven by metrics and powered by health.
       </h2>
-      <p className="font-['Poppins'] text-xl my-[3rem] text-center">
+      <p className="font-['Poppins'] text-xl my-[3rem] text-center font-light">
         <span className="font-bold">Vismoh</span> empowers athletes by unlocking
         opportunities, creating a space <br />
         where performance meets possibility and potential turns into success.
