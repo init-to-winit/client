@@ -59,7 +59,7 @@ export default function Dashboard() {
   // Handle Form Submit - Create or Update Performance
   const formSubmit = async (formData) => {
     try {
-      if (performanceData && performanceData._id) {
+      if (performanceData && performanceData.id) {
         await api.athletes.editPerformance(athleteId, formData);
         console.log("Performance data updated successfully.");
       } else {
@@ -129,7 +129,7 @@ export default function Dashboard() {
       </div>
       <div className="w-full flex gap-6 flex-col">
         <div className="flex gap-4 w-full">
-          <PracticeSessionsChart />
+          <PracticeSessionsChart practiceSession={performanceData.practice_sessions_per_week}/>
           <PerformanceChart />
         </div>
         <PerformanceSuggestions />

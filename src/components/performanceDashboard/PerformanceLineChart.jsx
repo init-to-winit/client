@@ -8,7 +8,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const PracticeSessionsChart = () => {
+const PracticeSessionsChart = ({practiceSessions}) => {
   // Sample data for the chart
   const data = [
     { name: "Sunday", sessions: 80 },
