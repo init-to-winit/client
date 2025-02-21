@@ -50,15 +50,27 @@ const api = {
   },
 
   athletes: {
-    createPerformance: (athleteId, data) => axiosInstance.post(`/athlete/addPerformance/${athleteId}`, data),
-    editPerformance: (athleteId, data) => axiosInstance.put(`/athlete/editPerformance/${athleteId}`, data),
-    getPerformances: (athleteId) => axiosInstance.get(`/athlete/getPerformance/${athleteId}`),
-    addHealthcare: (athleteId, data) => axiosInstance.post(`/healthcare/addHealthcare/${athleteId}`, data),
-    editHealthcare: (athleteId, data) => axiosInstance.put(`/healthcare/editHealthcare/${athleteId}`, data),
-    getHealthcareDetails: (athleteId) => axiosInstance.get(`/healthcare/getHealthcareDetails/${athleteId}`),
-    addDietary: (athleteId, data) => axiosInstance.post(`/dietary/addDietary/${athleteId}`, data),
-    editDietary : (athleteId, data) => axiosInstance.put(`/dietary/editDietary/${athleteId}`, data),
-    getDietary: (athleteId) => axiosInstance.get(`/dietary/getDietary/${athleteId}`),
+    createPerformance: (athleteId, data) =>
+      axiosInstance.post(`/athlete/addPerformance/${athleteId}`, data),
+    editPerformance: (athleteId, data) =>
+      axiosInstance.put(`/athlete/editPerformance/${athleteId}`, data),
+    getPerformances: (athleteId) =>
+      axiosInstance.get(`/athlete/getPerformance/${athleteId}`),
+    addHealthcare: (athleteId, data) =>
+      axiosInstance.post(`/healthcare/addHealthcare/${athleteId}`, data),
+    editHealthcare: (athleteId, data) =>
+      axiosInstance.put(`/healthcare/editHealthcare/${athleteId}`, data),
+    getHealthcareDetails: (athleteId) =>
+      axiosInstance.get(`/healthcare/getHealthcareDetails/${athleteId}`),
+    addDietary: (athleteId, data) =>
+      axiosInstance.post(`/dietary/addDietary/${athleteId}`, data),
+    editDietary: (athleteId, data) =>
+      axiosInstance.put(`/dietary/editDietary/${athleteId}`, data),
+    getDietary: (athleteId) =>
+      axiosInstance.get(`/dietary/getDietary/${athleteId}`),
+    getAllAthletes: (data) => axiosInstance.post(`all/getAllAthletes`, data),
+    getAthlete: (athleteId) =>
+      axiosInstance.get(`/all/getAthlete/${athleteId}`),
   },
 
   metrics: {
@@ -75,6 +87,8 @@ const api = {
   },
   coaches: {
     getAllCoaches: (data) => axiosInstance.post(`/all/getAllCoaches`, data),
+    getLeaderboardStats: (data) =>
+      axiosInstance.post(`/all/getLeaderboardStats`, data),
   },
   sponsors: {
     getAllSponsors: (data) => axiosInstance.post(`/all/getAllSponsors`, data),
