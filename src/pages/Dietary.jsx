@@ -19,6 +19,9 @@ export default function Dietary() {
     { icon: Carbs, value: "380g", subText: "Carbs" },
     { icon: Fats, value: "50g", subText: "Fats" },
   ];
+  const breakfast = ["Eggs", "Milk"];
+  const lunch = ["Eggs", "Milk"];
+  const dinner = ["Eggs", "Milk"];
   return (
     <div>
       <div>
@@ -50,7 +53,9 @@ export default function Dietary() {
       <div className="my-8">
         <p className="text-ptext">Meal Plan</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-4">
-          <MealCard />
+          <MealCard time="Breakfast" list={breakfast} />
+          <MealCard time="Lunch" list={lunch} />
+          <MealCard time="Dinner" list={dinner} />
         </div>
       </div>
     </div>
