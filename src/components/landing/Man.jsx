@@ -19,12 +19,12 @@ export default function Man() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-4xl my-3 font-medium bg-secondary px-4 rounded-md py-2 text-primary inline-block">
+          <span className="text-5xl my-3 font-medium bg-secondary px-4 rounded-md py-2 text-primary inline-block">
             Empowering Athletes
-          </h1>
-          <h1 className="text-4xl font-medium px-4 rounded-sm text-primary">
+          </span><br />
+          <span className="text-5xl font-medium px-4 rounded-sm text-primary">
             through every connection.
-          </h1>
+          </span>
         </motion.div>
 
         <motion.p

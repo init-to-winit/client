@@ -20,7 +20,7 @@ export default function Hero() {
         transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
       >
         Bringing{" "}
-        <span className="px-3 bg-secondary rounded-lg">
+        <span className="px-2 py-1 bg-secondary rounded-lg">
           Vitality to sports
         </span>
       </motion.h1>

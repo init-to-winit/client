@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import tennisPlayer from "../assets/images/TennisPlayer.png";
 import logo from "../assets/images/signuplogo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import api from "../api/config";
 
 const SignupForm = () => {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -11,6 +15,7 @@ const SignupForm = () => {
     password: "",
     dob: "",
     role: "",
+    phone: "",
     position: "",
     sport: "",
   });
@@ -22,9 +27,34 @@ const SignupForm = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const validatePhoneNumber = (phone) => {
+    const phoneRegex = /^\+\d{10,15}$/; // E.164 format
+    return phoneRegex.test(phone);
+  };
+
+  
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
+    setLoading(true);
+    setError("");
+
+    if (!validatePhoneNumber(formData.phone)) {
+      setError("Phone number must be in E.164 format (e.g., +1234567890).");
+      setLoading(false);
+      return;
+    }
+
+    try {
+      const res = await api.auth.register(formData);
+      console.log(res.data);
+      navigate("/login");
+    } catch (err) {
+      setError(
+        err.response?.data?.message || "Registration failed. Please try again."
+      );
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -33,7 +63,8 @@ const SignupForm = () => {
       <div className="w-full md:w-1/2 p-20 md:p-12 flex flex-col justify-center ">
         <div className=" text-sm mb-1 text-gray-600">Sign Up</div>
         <span className="text-4xl font-bold mb-10 text-gray-900">
-          Welcome to <span className="bg-secondary px-2 py-1 rounded-lg">Vismoh!</span>
+          Welcome to{" "}
+          <span className="bg-secondary px-2 py-1 rounded-lg">Vismoh!</span>
         </span>
 
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -91,6 +122,16 @@ const SignupForm = () => {
               className="w-full p-4 bg-gray-100 rounded-lg focus:outline-none"
             />
           </div>
+          <div>
+            <input
+              type="text"
+              name="phone"
+              placeholder="Phone (e.g., +1234567890)"
+              value={formData.phone}
+              onChange={handleChange}
+              className="w-full p-4 bg-gray-100 rounded-lg focus:outline-none"
+            />
+          </div>
 
           <div className="relative">
             <select
@@ -99,7 +140,7 @@ const SignupForm = () => {
               onChange={handleChange}
               className="w-full p-4 bg-gray-100 rounded-lg appearance-none focus:outline-none"
             >
-              <option value="" disabled selected>
+              <option value="" disabled>
                 Role
               </option>
               <option value="Athlete">Athlete</option>
@@ -150,9 +191,10 @@ const SignupForm = () => {
 
           <button
             type="submit"
+            disabled={loading}
             className="w-full p-4 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-colors focus:outline-none"
           >
-            Sign Up
+            {loading ? "Signing Up..." : "Sign Up"}
           </button>
         </form>
 
