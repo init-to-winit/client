@@ -19,14 +19,8 @@ export default function Sidebar() {
       icon: "ri-heart-pulse-line",
       path: "/healthcare",
     },
-    {
-      id: 4,
-      label: "Performance",
-      icon: "ri-bar-chart-line",
-      path: "/performance",
-    },
-    { id: 5, label: "Sponsors", icon: "ri-file-list-line", path: "/sponsors" },
-    { id: 6, label: "Coaches", icon: "ri-user-star-line", path: "/coaches" },
+    { id: 4, label: "Sponsors", icon: "ri-file-list-line", path: "/sponsors" },
+    { id: 5, label: "Coaches", icon: "ri-user-star-line", path: "/coaches" },
   ];
 
   return (
