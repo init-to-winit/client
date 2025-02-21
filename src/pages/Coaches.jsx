@@ -1,65 +1,186 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
+import api from "../api/config";
 
-const SponsorCard = ({ branch, address, city, pincode, phone }) => {
+const NameAvatar = ({ firstName, lastName }) => {
+  const firstInitial = firstName ? firstName.charAt(0) : "";
+  const lastInitial = lastName ? lastName.charAt(0) : "";
+  const initials = (firstInitial + lastInitial).toUpperCase();
+
   return (
-    <div className="flex bg-gray-100 mb-6">
-      <div className="w-1/3 p-8 flex items-center justify-center">
-        <h3 className="text-gray-700 font-medium text-lg">{branch}</h3>
+    <div className="w-16 h-16 rounded-full flex items-center justify-center bg-primary text-secondary font-medium text-lg">
+      {initials}
+    </div>
+  );
+};
+
+const PersonCard = ({
+  id: receiverId,
+  firstName,
+  lastName,
+  email,
+  phone,
+  sport,
+  connectionStatus,
+  user,
+  person, // 'coaches' or 'sponsors'
+}) => {
+  const [status, setStatus] = useState(connectionStatus);
+  const receiverRole = person === "coaches" ? "Coach" : "Sponsor"; // Dynamic role
+
+  const handleConnect = async () => {
+    if (!user) return;
+
+    const requestData = {
+      senderId: user.id,
+      receiverId,
+      senderRole: user.role,
+      receiverRole,
+    };
+
+    try {
+      await api.connect.sendConnection(requestData);
+      setStatus("pending"); // Update UI optimistically
+    } catch (error) {
+      console.error("Error sending connection request:", error);
+    }
+  };
+
+  return (
+    <div className="flex items-center bg-gray-100 p-6 rounded-lg mb-8">
+      <div className="mr-6">
+        <NameAvatar firstName={firstName} lastName={lastName} />
       </div>
-      <div className="w-2/3 py-6 px-4">
-        <h3 className="text-gray-800 text-lg mb-2">Lisy Store</h3>
-        <p className="text-gray-600 mb-1">{address}</p>
-        <p className="text-gray-600 mb-1">{city} - {pincode}</p>
-        <p className="text-gray-600 mb-1">{phone}</p>
+      <div className="flex-grow">
+        <h3 className="text-primary bg-secondary inline-block px-1 text-xl font-semibold mb-2">
+          {firstName} {lastName}
+        </h3>
+        <p className="text-ptext text-base mb-1">{email}</p>
+        <p className="text-ptext text-base mb-1">{phone}</p>
+        {sport && (
+          <p className="px-1 inline-block rounded-md font-medium text-lg">
+            {sport}
+          </p>
+        )}
       </div>
-      <div className="flex items-center pr-4">
-        <button className="border border-gray-800 rounded py-2 px-6 text-gray-800 hover:bg-gray-50">
-          Connect
-        </button>
+      <div className="flex items-center">
+        {status === "accepted" ? (
+          <span className="text-green-600 font-semibold">Connected</span>
+        ) : status === "pending" ? (
+          <span className="text-yellow-500 font-semibold">Pending</span>
+        ) : status === "rejected" ? (
+          <span className="text-red-500 font-semibold">Rejected</span>
+        ) : (
+          <button
+            onClick={handleConnect}
+            className="border border-gray-800 rounded-lg py-2 px-5 text-gray-800 hover:bg-gray-50 transition"
+          >
+            Connect
+          </button>
+        )}
       </div>
     </div>
   );
 };
 
-const SponsorsListing = ({person}) => {
-  const sponsors = [
-    {
-      branch: "Singanallur Branch",
-      address: "1A/Krihnarajapuram, 3 rd street sulur",
-      city: "Coimbatore",
-      pincode: "6313403",
-      phone: "044- 653578"
-    },
-    {
-      branch: "Slur Branch",
-      address: "54 Ramani colony, 3 rd street sulur",
-      city: "Coimbatore",
-      pincode: "63133452",
-      phone: "044- 653763"
-    },
-    {
-      branch: "Gaandipuram Branch",
-      address: "32/ Venkatasamy layout, 3 rd street sulur",
-      city: "Coimbatore",
-      pincode: "6313403",
-      phone: "044- 653578"
-    },
-    {
-      branch: "Gaandipuram Branch",
-      address: "32/ Venkatasamy layout, 3 rd street sulur",
-      city: "Coimbatore",
-      pincode: "6313403",
-      phone: "044- 653578"
+const SponsorsListing = ({ person }) => {
+  const [data, setData] = useState([]);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [filter, setFilter] = useState("all"); // Filter state (all, connected, pending)
+  const user = JSON.parse(localStorage.getItem("user")) || null;
+  const role = user?.role || "";
+  const id = user?.id || "";
+
+  const fetchData = async () => {
+    try {
+      let res;
+      const requestData = { id, role };
+
+      if (person === "coaches") {
+        res = await api.coaches.getAllCoaches(requestData);
+        setData(res.data.coaches);
+      } else {
+        res = await api.sponsors.getAllSponsors(requestData);
+        setData(res.data.sponsors);
+      }
+
+      console.log(`${person} data fetched:`, res.data);
+    } catch (err) {
+      console.error(`Error fetching ${person}:`, err);
+      setError(err.response?.data?.message || `Failed to fetch ${person}`);
+    } finally {
+      setLoading(false);
     }
-  ];
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, [person]);
+
+  // Filtered data based on selected filter
+  const filteredData =
+    filter === "connected"
+      ? data.filter((item) => item.connectionStatus === "accepted")
+      : filter === "pending"
+      ? data.filter((item) => item.connectionStatus === "pending")
+      : data;
+
+  if (loading) {
+    return <div className="p-6 text-lg text-gray-700">Loading...</div>;
+  }
+
+  if (error) {
+    return <div className="p-6 text-red-500 text-lg">{error}</div>;
+  }
 
   return (
-    <div className="p-6 bg-white rounded-lg ">
-      <h1 className="text-2xl font-bold text-gray-800 mb-6">{person==="coaches"?"Coaches":"Sponsors"}</h1>
+    <div className="p-8 bg-white rounded-lg shadow-lg">
+      <div className="flex justify-between items-center mb-8">
+        <h1 className="text-3xl font-bold text-gray-800">
+          {person === "coaches" ? "Coaches" : "Sponsors"}
+        </h1>
+
+        {/* Filter Toggle Switch */}
+        <div className="flex space-x-4 bg-gray-200 p-2 rounded-lg">
+          <button
+            className={`px-4 py-2 rounded-lg ${
+              filter === "all" ? "bg-gray-800 text-white" : "text-gray-800"
+            }`}
+            onClick={() => setFilter("all")}
+          >
+            All
+          </button>
+          <button
+            className={`px-4 py-2 rounded-lg ${
+              filter === "connected"
+                ? "bg-green-600 text-white"
+                : "text-gray-800"
+            }`}
+            onClick={() => setFilter("connected")}
+          >
+            Connected
+          </button>
+          <button
+            className={`px-4 py-2 rounded-lg ${
+              filter === "pending"
+                ? "bg-yellow-500 text-white"
+                : "text-gray-800"
+            }`}
+            onClick={() => setFilter("pending")}
+          >
+            Pending
+          </button>
+        </div>
+      </div>
+
       <div>
-        {sponsors.map((sponsor, index) => (
-          <SponsorCard key={index} {...sponsor} />
-        ))}
+        {filteredData.length > 0 ? (
+          filteredData.map((item) => (
+            <PersonCard key={item.id} {...item} user={user} person={person} />
+          ))
+        ) : (
+          <p className="text-gray-600 text-lg">No {person} found.</p>
+        )}
       </div>
     </div>
   );
