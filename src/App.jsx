@@ -8,8 +8,6 @@ import Layout from "./components/Layout";
 import Dashboard from "./pages/Dashboard";
 import Dietary from "./pages/Dietary";
 import Healthcare from "./pages/Healthcare";
-import Performance from "./pages/Performance";
-import Sponsors from "./pages/Sponsors";
 import Coaches from "./pages/Coaches";
 
 const App = () => {
@@ -27,9 +25,8 @@ const App = () => {
               <Route path="dashboard" element={<Dashboard />} />
               <Route path="dietary" element={<Dietary />} />
               <Route path="healthcare" element={<Healthcare />} />
-              <Route path="performance" element={<Performance />} />
-              <Route path="sponsors" element={<Sponsors />} />
-              <Route path="coaches" element={<Coaches />} />
+              <Route path="sponsors" element={<Coaches person = "sponsors" />} />
+              <Route path="coaches" element={<Coaches person="coaches" />} />
             </Route>
           </Route>
         </Routes>
