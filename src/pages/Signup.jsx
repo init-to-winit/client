@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import tennisPlayer from "../assets/images/TennisPlayer.png";
 import logo from "../assets/images/signuplogo.png";
+import { Link } from "react-router-dom";
 
 const SignupForm = () => {
   const [formData, setFormData] = useState({
@@ -32,7 +33,7 @@ const SignupForm = () => {
       <div className="w-full md:w-1/2 p-20 md:p-12 flex flex-col justify-center ">
         <div className=" text-sm mb-1 text-gray-600">Sign Up</div>
         <span className="text-4xl font-bold mb-10 text-gray-900">
-          Welcome to Vismoh!
+          Welcome to <span className="bg-secondary px-2 py-1 rounded-lg">Vismoh!</span>
         </span>
 
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -157,9 +158,9 @@ const SignupForm = () => {
 
         <div className="mt-6 text-center">
           Already have an account?{" "}
-          <a href="#" className="text-blue-600 hover:underline">
+          <Link to="/login" className="text-teal-600 hover:underline">
             Login
-          </a>
+          </Link>
         </div>
       </div>
 
