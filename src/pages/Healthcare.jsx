@@ -106,7 +106,7 @@ export default function Healthcare() {
     try {
       const res = await api.athletes.getHealthcareDetails(athleteId);
       setHealthData(res.data.healthcareDetails);
-      console.log("Performance data fetched successfully.", performanceData);
+      console.log("Health data fetched successfully.");
     } catch (error) {
       console.error("Failed to fetch performance data:", error);
     }
@@ -171,12 +171,14 @@ export default function Healthcare() {
           })) || []
         }
       />
-      <button
-        onClick={() => setIsFormOpen(true)}
-        className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
-      >
-        Open Form
-      </button>
+      <div className="flex mt-9 justify-end">
+        <button
+          onClick={() => setIsFormOpen(true)}
+          className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+        >
+          Add Data +
+        </button>
+      </div>
 
       <Forms
         isOpen={isFormOpen}
