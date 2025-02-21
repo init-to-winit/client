@@ -7,6 +7,9 @@ export default {
         primary: "#002E25", // Dark Green
         secondary: "#CDFA89", // Light Green
       },
+      fontFamily: {
+        poppins: ["Poppins", "sans-serif"],
+      },
     },
   },
   plugins: [],
