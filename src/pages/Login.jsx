@@ -3,9 +3,11 @@ import runningLogo from "../assets/images/man-running.png";
 import logo from "../assets/images/signuplogo.png";
 import { Link, useNavigate } from "react-router-dom";
 import api from "../api/config";
+import { useAuth } from "../components/auth/AuthProvider"; // Import useAuth
 
 const VismohLoginPage = () => {
   const navigate = useNavigate();
+  const { login } = useAuth(); // Get login function from AuthProvider
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [formData, setFormData] = useState({
@@ -29,12 +31,15 @@ const VismohLoginPage = () => {
       const res = await api.auth.login(formData);
       console.log("Login Successful:", res.data);
 
-      // Save token (if applicable)
-      localStorage.setItem("authToken", res.data.token);
+      const userData = {
+        token: res.data.token,
+        role: res.data.role,
+      };
 
-      navigate("/");
+      login(userData); // Pass navigate to login()
     } catch (err) {
-      setError(err.response?.data?.message || "Login failed. Please try again.");
+      console.error("Login Error:", err);
+      setError(err.response?.data?.message || "Invalid email or password.");
     } finally {
       setLoading(false);
     }
@@ -47,7 +52,8 @@ const VismohLoginPage = () => {
         <div className="mb-16">
           <p className="text-sm text-gray-500 mb-1">Login</p>
           <span className="text-4xl font-bold">
-            Welcome to <span className="bg-secondary px-2 py-1 rounded-lg">Vismoh!</span>
+            Welcome to{" "}
+            <span className="bg-secondary px-2 py-1 rounded-lg">Vismoh!</span>
           </span>
         </div>
 
@@ -96,9 +102,9 @@ const VismohLoginPage = () => {
       </div>
 
       {/* Right section - Marketing content */}
-      <div className=" md:flex flex-col hidden md:w-1/2 mt-4">
+      <div className="md:flex flex-col hidden md:w-1/2 mt-4">
         {/* Logo */}
-        <div className=" py-3 rounded-full">
+        <div className="py-3 rounded-full">
           <div className="w-12 h-12 text-green-600">
             <img src={logo} alt="logo" className="max-h-full object-cover" />
           </div>
@@ -108,7 +114,8 @@ const VismohLoginPage = () => {
         <div className="w-full">
           <h2 className="text-xl font-bold">Log In:</h2>
           <p className="mt-2 font-light text-sm">
-            Your success is our top priority. Our dedicated support team is here to assist you every step of the way.
+            Your success is our top priority. Our dedicated support team is here
+            to assist you every step of the way.
           </p>
         </div>
 

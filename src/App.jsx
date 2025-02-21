@@ -1,4 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { AuthProvider } from "./components/auth/AuthProvider";
+import ProtectedRoute from "./components/auth/ProtectedRoute";
 import Landing from "./pages/Landing";
 import SignupForm from "./pages/Signup";
 import VismohLoginPage from "./pages/Login";
@@ -13,21 +15,25 @@ import Coaches from "./pages/Coaches";
 const App = () => {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<Landing />} />
-        <Route path="/signup" element={<SignupForm />} />
-        <Route path="/login" element={<VismohLoginPage />} />
+      <AuthProvider>
+        <Routes>
+          <Route path="/" element={<Landing />} />
+          <Route path="/signup" element={<SignupForm />} />
+          <Route path="/login" element={<VismohLoginPage />} />
 
-        {/* Routes wrapped with Layout to include Sidebar */}
-        <Route path="/" element={<Layout />}>
-          <Route path="dashboard" element={<Dashboard />} />
-          <Route path="dietary" element={<Dietary />} />
-          <Route path="healthcare" element={<Healthcare />} />
-          <Route path="performance" element={<Performance />} />
-          <Route path="sponsors" element={<Sponsors />} />
-          <Route path="coaches" element={<Coaches />} />
-        </Route>
-      </Routes>
+          {/* Protected Routes for Logged-in Users */}
+          <Route element={<ProtectedRoute />}>
+            <Route path="/" element={<Layout />}>
+              <Route path="dashboard" element={<Dashboard />} />
+              <Route path="dietary" element={<Dietary />} />
+              <Route path="healthcare" element={<Healthcare />} />
+              <Route path="performance" element={<Performance />} />
+              <Route path="sponsors" element={<Sponsors />} />
+              <Route path="coaches" element={<Coaches />} />
+            </Route>
+          </Route>
+        </Routes>
+      </AuthProvider>
     </Router>
   );
 };
