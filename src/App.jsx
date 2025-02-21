@@ -10,6 +10,8 @@ import Dietary from "./pages/Dietary";
 import Healthcare from "./pages/Healthcare";
 import Coaches from "./pages/Coaches";
 import RunnerStatsTable from "./components/LeaderBoard";
+import Players from "./pages/Players";
+import AthleteProfile from "./pages/AthleteProfile";
 
 const App = () => {
   return (
@@ -26,9 +28,14 @@ const App = () => {
               <Route path="dashboard" element={<Dashboard />} />
               <Route path="dietary" element={<Dietary />} />
               <Route path="healthcare" element={<Healthcare />} />
-              <Route path="sponsors" element={<Coaches person = "sponsors" />} />
+              <Route path="sponsors" element={<Coaches person="sponsors" />} />
               <Route path="coaches" element={<Coaches person="coaches" />} />
               <Route path="leaderboard" element={<RunnerStatsTable />} />
+              <Route path="players" element={<Players />} />
+              <Route
+                path="/athleteProfile/:athleteId"
+                element={<AthleteProfile />}
+              />
             </Route>
           </Route>
         </Routes>
