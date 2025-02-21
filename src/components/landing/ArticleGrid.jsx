@@ -1,7 +1,23 @@
 import React from "react";
+import { motion } from "framer-motion";
 import Chess from "../../assets/images/Chess.jpg";
 import Football from "../../assets/images/Football.jpg";
 import Rugby from "../../assets/images/Rugby.jpg";
+
+// Animation variants for reusability
+const cardVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
+};
+
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
 
 const articles = [
   {
@@ -36,9 +52,16 @@ const articles = [
   },
 ];
 
+// Article Card Component with animation
 const ArticleCard = ({ article, large = false }) => {
   return (
-    <div className={`bg-white rounded-lg shadow-md overflow-hidden h-full`}>
+    <motion.div
+      variants={cardVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+      className="bg-white rounded-lg shadow-md overflow-hidden h-full"
+    >
       <img
         src={article.image}
         alt={article.title}
@@ -52,25 +75,30 @@ const ArticleCard = ({ article, large = false }) => {
           <span className="font-semibold">{article.author}</span>
           <span className="mx-2">•</span>
           <span>{article.date}</span>
-          {/* <span className="mx-2">•</span>
-          <span>{article.readTime}</span> */}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
+// Main Grid Component with staggered animations
 const ArticleGrid = () => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 p-6 max-w-6xl mx-auto">
-      <div className="md:col-span-2">
+    <motion.div
+      className="grid grid-cols-1 md:grid-cols-3 gap-6 p-6 max-w-6xl mx-auto"
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+    >
+      <motion.div className="md:col-span-2">
         <ArticleCard article={articles[0]} large={true} />
-      </div>
-      <div className="flex flex-col gap-6">
+      </motion.div>
+      <motion.div className="flex flex-col gap-6">
         <ArticleCard article={articles[1]} />
         <ArticleCard article={articles[2]} />
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 
