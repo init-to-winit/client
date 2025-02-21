@@ -71,10 +71,14 @@ const api = {
       axiosInstance.put(`/health/${athleteId}`, data),
   },
   coaches: {
-    getAllCoaches: () => axiosInstance.get(`/all/getAllCoaches`),
+    getAllCoaches: (data) => axiosInstance.post(`/all/getAllCoaches`, data),
   },
   sponsors: {
-    getAllSponsors: () => axiosInstance.get(`/all/getAllSponsors`),
+    getAllSponsors: (data) => axiosInstance.post(`/all/getAllSponsors`, data),
+  },
+  connect: {
+    sendConnection: (data) =>
+      axiosInstance.post(`/connect/send-connection`, data),
   },
 };
 
