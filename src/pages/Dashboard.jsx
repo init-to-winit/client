@@ -127,6 +127,14 @@ export default function Dashboard() {
 
   return (
     <>
+      <div className="flex justify-end">
+        <button
+          onClick={() => setIsFormOpen(true)}
+          className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+        >
+          Add Data +
+        </button>
+      </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 my-4">
         {performanceCards.map((item, index) => (
           <Cards
@@ -147,14 +155,6 @@ export default function Dashboard() {
           <PerformanceChart />
         </div>
         <PerformanceSuggestions />
-        <div className="flex justify-end">
-          <button
-            onClick={() => setIsFormOpen(true)}
-            className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
-          >
-            Add Data +
-          </button>
-        </div>
 
         <Forms
           isOpen={isFormOpen}

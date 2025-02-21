@@ -26,7 +26,13 @@ export const AuthProvider = ({ children }) => {
     localStorage.setItem("user", JSON.stringify(userData));
     localStorage.setItem("token", token); // ✅ Storing token
     setUser(userData);
-    navigate("/dashboard");
+    if (userData.role === "Coache") {
+      navigate("/players");
+    } else if (userData.role === "Sponsor") {
+      navigate("/players");
+    } else {
+      navigate("/dashboard");
+    }
   };
 
   const logout = () => {
