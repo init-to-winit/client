@@ -1,20 +1,28 @@
 {
     "faqItems": [
       {
-        "question": "Can I upgrade my subscription?",
-        "answer": "Absolutely! Upgrading your subscription plan with Slate is a breeze. Simply log into your account and navigate to the billing section."
+        "question": "How can Vismoh help me improve my performance?",
+        "answer": " Vismoh offers personalized performance analytics, health insights, and dietary recommendations, helping you track progress and achieve peak performance."
       },
       {
-        "question": "Can I cancel my subscription?",
-        "answer": "Of course! We believe in offering flexibility to our valued customers. If you decide to cancel your subscription with Slate, you can do so anytime from your account settings."
+        "question": " Can I find coaches suited to my needs?",
+        "answer": "Yes! Vismoh’s smart matchmaking feature suggests nearby coaches based on your sport and performance requirements."
       },
       {
-        "question": "Does Slate offer a free trial period?",
-        "answer": "Yes, indeed! We understand that getting started with a new SaaS platform can be overwhelming. That's why Slate offers a free trial period for you to explore its features before committing."
+        "question": "How does Vismoh ensure my health and fitness are optimized?",
+        "answer": "Our platform tracks key health metrics and provides personalized fitness and dietary content to support your well-being and performance."
       },
       {
-        "question": "Add your question title here?",
-        "answer": "Absolutely! Upgrading your subscription plan with Slate is a breeze. Simply log into your account and navigate to the billing section."
+        "question": "How can sponsors find suitable athletes?",
+        "answer": "Vismoh recommends top-performing athletes aligned with your sponsorship goals, based on detailed performance analytics."
+      },
+      {
+        "question": "Is Vismoh suitable for all sports?",
+        "answer": "Yes, Vismoh supports a wide range of sports, offering tailored solutions for athletes, coaches, and sponsors across disciplines."
+      },
+      {
+        "question": "What if I face issues using Vismoh?",
+        "answer": "Our support team is available 24/7 to assist you. Simply reach out, and we’ll help you resolve any issues promptly."
       }
     ]
   }
