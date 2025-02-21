@@ -9,6 +9,7 @@ import Dashboard from "./pages/Dashboard";
 import Dietary from "./pages/Dietary";
 import Healthcare from "./pages/Healthcare";
 import Coaches from "./pages/Coaches";
+import RunnerStatsTable from "./components/LeaderBoard";
 
 const App = () => {
   return (
@@ -27,6 +28,7 @@ const App = () => {
               <Route path="healthcare" element={<Healthcare />} />
               <Route path="sponsors" element={<Coaches person = "sponsors" />} />
               <Route path="coaches" element={<Coaches person="coaches" />} />
+              <Route path="leaderboard" element={<RunnerStatsTable />} />
             </Route>
           </Route>
         </Routes>
