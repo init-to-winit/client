@@ -58,13 +58,19 @@ const api = {
   },
 
   metrics: {
-    getMetricsByAthlete: (athleteId) => axiosInstance.get(`/metrics/${athleteId}`),
-    addMetrics: (athleteId, data) => axiosInstance.post(`/metrics/${athleteId}`, data),
+    getMetricsByAthlete: (athleteId) =>
+      axiosInstance.get(`/metrics/${athleteId}`),
+    addMetrics: (athleteId, data) =>
+      axiosInstance.post(`/metrics/${athleteId}`, data),
   },
 
   health: {
     getHealthData: (athleteId) => axiosInstance.get(`/health/${athleteId}`),
-    updateHealthData: (athleteId, data) => axiosInstance.put(`/health/${athleteId}`, data),
+    updateHealthData: (athleteId, data) =>
+      axiosInstance.put(`/health/${athleteId}`, data),
+  },
+  coaches: {
+    getAllCoaches: () => axiosInstance.get(`/all/getAllCoaches`),
   },
 };
 
