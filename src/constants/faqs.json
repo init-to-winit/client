@@ -1,0 +1,21 @@
+{
+    "faqItems": [
+      {
+        "question": "Can I upgrade my subscription?",
+        "answer": "Absolutely! Upgrading your subscription plan with Slate is a breeze. Simply log into your account and navigate to the billing section."
+      },
+      {
+        "question": "Can I cancel my subscription?",
+        "answer": "Of course! We believe in offering flexibility to our valued customers. If you decide to cancel your subscription with Slate, you can do so anytime from your account settings."
+      },
+      {
+        "question": "Does Slate offer a free trial period?",
+        "answer": "Yes, indeed! We understand that getting started with a new SaaS platform can be overwhelming. That's why Slate offers a free trial period for you to explore its features before committing."
+      },
+      {
+        "question": "Add your question title here?",
+        "answer": "Absolutely! Upgrading your subscription plan with Slate is a breeze. Simply log into your account and navigate to the billing section."
+      }
+    ]
+  }
+  
