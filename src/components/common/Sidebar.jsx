@@ -5,13 +5,22 @@ import Logo from "../../assets/images/Logo.png";
 export default function Sidebar() {
   const location = useLocation(); // Get current route
 
-  const menuItems = [
+  // Fetch user data
+  const user = JSON.parse(localStorage.getItem("user")) || null;
+  const role = user?.role || "";
+  const id = user?.id || "";
+
+  // Define menu items for different roles
+  const baseMenuItems = [
     {
       id: 1,
       label: "Dashboard",
       icon: "ri-dashboard-line",
       path: "/dashboard",
     },
+  ];
+
+  const athleteMenuItems = [
     { id: 2, label: "Dietary", icon: "ri-leaf-line", path: "/dietary" },
     {
       id: 3,
@@ -23,10 +32,35 @@ export default function Sidebar() {
     { id: 5, label: "Coaches", icon: "ri-user-star-line", path: "/coaches" },
   ];
 
+  const coachMenuItems = [
+    { id: 6, label: "Athletes", icon: "ri-run-line", path: "/athletes" },
+    { id: 7, label: "Training", icon: "ri-calendar-line", path: "/training" },
+  ];
+
+  const sponsorMenuItems = [
+    { id: 8, label: "Players", icon: "ri-team-line", path: "/players" },
+    { id: 9, label: "Coaches", icon: "ri-user-star-line", path: "/coaches" },
+    {
+      id: 10,
+      label: "Leaderboard",
+      icon: "ri-bar-chart-box-line",
+      path: "/leaderboard",
+    },
+  ];
+
+  // Determine the menu based on role
+  let menuItems = [...baseMenuItems];
+
+  if (role === "Athlete") {
+    menuItems = [...menuItems, ...athleteMenuItems];
+  } else if (role === "Coach") {
+    menuItems = [...menuItems, ...coachMenuItems];
+  } else if (role === "Sponsor") {
+    menuItems = [...sponsorMenuItems];
+  }
+
   return (
     <div className="h-full w-72 bg-white shadow-md flex flex-col">
-      {" "}
-      {/* Increased width to w-72 (18rem) */}
       <div className="flex items-center gap-4 my-8 px-8">
         <img src={Logo} alt="Vismoh" className="h-12 w-12" />
         <h1 className="uppercase text-2xl font-semibold font-primary text-primary">

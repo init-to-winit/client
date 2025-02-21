@@ -56,6 +56,7 @@ const api = {
       axiosInstance.put(`/athlete/editPerformance/${athleteId}`, data),
     getPerformances: (athleteId) =>
       axiosInstance.get(`/athlete/getPerformance/${athleteId}`),
+    getAllAthletes: (data) => axiosInstance.post(`all/getAllAthletes`, data),
   },
 
   metrics: {
@@ -72,6 +73,8 @@ const api = {
   },
   coaches: {
     getAllCoaches: (data) => axiosInstance.post(`/all/getAllCoaches`, data),
+    getLeaderboardStats: (data) =>
+      axiosInstance.post(`/all/getLeaderboardStats`, data),
   },
   sponsors: {
     getAllSponsors: (data) => axiosInstance.post(`/all/getAllSponsors`, data),
