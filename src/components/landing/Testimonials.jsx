@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Testimonial from "../../assets/images/Testimonial.jpg";
 
 export default function Testimonials() {
@@ -36,7 +37,12 @@ export default function Testimonials() {
   ];
 
   return (
-    <section className="relative py-20 lg:py-32 overflow-hidden">
+    <motion.section
+      className="relative py-20 lg:py-32 overflow-hidden"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 0.8 }}
+    >
       <img
         className="absolute top-0 left-0"
         src="saturn-assets/images/testimonials/blue-light.png"
@@ -49,7 +55,12 @@ export default function Testimonials() {
       />
       <div className="relative container px-4 mx-auto">
         <div className="max-w-lg lg:max-w-7xl mx-auto">
-          <div className="flex flex-wrap -mx-4 mb-18 items-center">
+          <motion.div
+            className="flex flex-wrap -mx-4 mb-18 items-center"
+            initial={{ y: 50, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8 }}
+          >
             <div className="w-full lg:w-1/2 px-4 mb-8 lg:mb-0">
               <div className="max-w-md xl:max-w-xl">
                 <h1 className="font-heading text-4xl xs:text-6xl font-bold text-primary">
@@ -69,14 +80,25 @@ export default function Testimonials() {
                 </p>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           <div className="flex flex-wrap -mx-4 items-center">
-            <div class="w-full lg:w-1/2 px-4 mb-8 lg:mb-0">
-              <div class="lg:max-w-md xl:max-w-lg">
-                <img class="block w-full rounded-xl" src={Testimonial} alt="" />
-              </div>
-            </div>
+            <motion.div
+              className="w-full lg:w-1/2 px-4 mb-8 lg:mb-0"
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 200 }}
+            >
+              <motion.div
+                className="lg:max-w-md xl:max-w-lg"
+                key={current}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6 }}
+              >
+                <img className="block w-full rounded-xl" src={Testimonial} alt="" />
+              </motion.div>
+            </motion.div>
+
             <div className="w-full lg:w-1/2 px-4">
               <div className="max-w-lg">
                 <img
@@ -85,27 +107,37 @@ export default function Testimonials() {
                   alt=""
                 />
 
-                <div>
-                  <p className="text-2xl font-semibold text-gray-900 mb-5">
-                    “{testimonials[current].quote}”
-                  </p>
-                  <span className="block text-gray-900 font-semibold mb-1">
-                    — {testimonials[current].name}
-                  </span>
-                  <span className="block text-gray-500 mb-10">
-                    {testimonials[current].position}
-                  </span>
-                </div>
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={current}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <p className="text-2xl font-semibold text-gray-900 mb-5">
+                      “{testimonials[current].quote}”
+                    </p>
+                    <span className="block text-gray-900 font-semibold mb-1">
+                      — {testimonials[current].name}
+                    </span>
+                    <span className="block text-gray-500 mb-10">
+                      {testimonials[current].position}
+                    </span>
+                  </motion.div>
+                </AnimatePresence>
 
                 <div className="flex gap-3">
                   {testimonials.map((_, index) => (
-                    <div
+                    <motion.div
+                      whileHover={{ scale: 1.2 }}
+                      whileTap={{ scale: 0.9 }}
                       key={index}
                       onClick={() => setCurrent(index)}
                       className={`w-3 h-3 rounded-full cursor-pointer ${
                         current === index ? "bg-orange-900" : "bg-gray-200"
                       }`}
-                    ></div>
+                    ></motion.div>
                   ))}
                 </div>
               </div>
@@ -113,6 +145,6 @@ export default function Testimonials() {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
