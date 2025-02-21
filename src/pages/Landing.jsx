@@ -3,6 +3,7 @@ import Man from "@/components/landing/Man";
 import Navbar from "@/components/landing/Navbar";
 import Options from "@/components/landing/Options";
 import Track from "@/components/landing/Track";
+import WhyUs from "@/components/landing/WhyUs";
 import React from "react";
 
 export default function Landing() {
@@ -13,6 +14,7 @@ export default function Landing() {
       <Options />
       <Track />
       <Man />
+      <WhyUs />
     </>
   );
 }
