@@ -33,8 +33,10 @@ const VismohLoginPage = () => {
 
       const userData = {
         token: res.data.token,
-        role: res.data.role,
+        role: res.data.userData.role,
+        name: res.data.userData.name,
       };
+      console.log("User Data:", userData);
 
       login(userData); // Pass navigate to login()
     } catch (err) {

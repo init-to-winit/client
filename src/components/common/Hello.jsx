@@ -1,18 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
 export default function Hello() {
   const location = useLocation(); // Get current route
+  const [name, setName] = useState("Athlete"); // Default name
+  useEffect(() => {
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    if (storedUser?.name) {
+      setName(storedUser.name);
+    }
+  }, []);  
+  
 
-  // Define dynamic content for each route
+  // Dynamic content for each route
   const pageData = {
     "/dashboard": {
       title: "Dashboard",
-      message: "Hi, Harikesh. Welcome back to your Dashboard!",
+      message: `Hi, ${name}. Welcome back to your Dashboard!`,
     },
     "/dietary": {
       title: "Athlete Dietary",
-      message: "Hi, Harikesh. Welcome back to Your Healthcare Plan!",
+      message: `Hi, ${name}. Welcome back to Your Healthcare Plan!`,
     },
     "/healthcare": {
       title: "Healthcare Overview",
@@ -32,10 +40,10 @@ export default function Hello() {
     },
   };
 
-  // Get current page data or fallback to a default
+  // Get current page data or default
   const { title, message } = pageData[location.pathname] || {
     title: "Welcome",
-    message: "Hi, Harikesh! Explore your sports journey.",
+    message: `Hi, ${name}! Explore your sports journey.`,
   };
 
   return (

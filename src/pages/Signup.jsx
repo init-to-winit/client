@@ -3,11 +3,11 @@ import tennisPlayer from "../assets/images/TennisPlayer.png";
 import logo from "../assets/images/signuplogo.png";
 import { Link, useNavigate } from "react-router-dom";
 import api from "../api/config";
-import { useAuth } from "../components/auth/AuthProvider"; 
+import { useAuth } from "../components/auth/AuthProvider";
 
 const SignupForm = () => {
   const [loading, setLoading] = useState(false);
-   const { login } = useAuth();
+  const { login } = useAuth();
   const [error, setError] = useState("");
   const [formData, setFormData] = useState({
     firstName: "",
@@ -33,7 +33,6 @@ const SignupForm = () => {
     return phoneRegex.test(phone);
   };
 
-  
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -51,7 +50,8 @@ const SignupForm = () => {
 
       const userData = {
         token: res.data.token,
-        role: res.data.role,
+        role: res.data.userData.role,
+        name: res.data.userData.name,
       };
 
       login(userData); // Pass navigate to login()
