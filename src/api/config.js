@@ -53,6 +53,9 @@ const api = {
     createPerformance: (athleteId, data) => axiosInstance.post(`/athlete/addPerformance/${athleteId}`, data),
     editPerformance: (athleteId, data) => axiosInstance.put(`/athlete/editPerformance/${athleteId}`, data),
     getPerformances: (athleteId) => axiosInstance.get(`/athlete/getPerformance/${athleteId}`),
+    addHealthcare: (athleteId, data) => axiosInstance.post(`/healthcare/addHealthcare/${athleteId}`, data),
+    editHealthcare: (athleteId, data) => axiosInstance.put(`/healthcare/editHealthcare/${athleteId}`, data),
+    getHealthcareDetails: (athleteId) => axiosInstance.get(`/healthcare/getHealthcareDetails/${athleteId}`),
   },
 
   metrics: {
