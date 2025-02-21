@@ -29,6 +29,7 @@ export default function WhyUs() {
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
       variants={containerVariants}
+      id="services"
     >
       <div className="text-center">
         <motion.p variants={textVariants} className="text-lg text-gray-500">

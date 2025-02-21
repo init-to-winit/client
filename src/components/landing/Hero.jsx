@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
-    <div className="bg-[#F3F7F6] flex flex-col items-center justify-center min-h-[calc(100vh-80px)]">
+    <div className="bg-[#F3F7F6] flex flex-col items-center justify-center min-h-[calc(100vh-80px)]" id="home">
       <motion.p
         className="font-['Poppins'] uppercase tracking-widest"
         initial={{ opacity: 0, y: -20 }}
