@@ -7,7 +7,10 @@ import Matches from "../assets/images/Matches.png";
 import Wins from "../assets/images/Wins.png";
 import Losses from "../assets/images/Losses.png";
 import Winrate from "../assets/images/Winrate.png";
+import Forms from "@/components/Form/Forms";
+import { useState } from "react";
 export default function Dashboard() {
+  const [isFormOpen, setIsFormOpen] = useState(false);
   const currentDietData = [
     {
       icon: Matches,
@@ -24,6 +27,26 @@ export default function Dashboard() {
       subText: "Fats",
       percentage: "4%",
       up: false,
+    },
+  ];
+  const fields = [
+    {
+      id: "total_matches",
+      label: "Total Number of Matches Played",
+      type: "number",
+      placeholder: "Ex: 90",
+    },
+    {
+      id: "matches_won",
+      label: "No of Matches Won",
+      type: "number",
+      placeholder: "Ex: 66",
+    },
+    {
+      id: "matches_lost",
+      label: "No of Matches Lost",
+      type: "number",
+      placeholder: "Ex: 24",
     },
   ];
   return (
@@ -46,6 +69,21 @@ export default function Dashboard() {
           <PerformanceChart />
         </div>
         <PerformanceSuggestions />
+        <button
+          onClick={() => setIsFormOpen(true)}
+          className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+        >
+          Open Form
+        </button>
+
+        <Forms
+          isOpen={isFormOpen}
+          onClose={() => setIsFormOpen(false)}
+          onSubmit={(data) => console.log(data)}
+          fields={fields}
+          title="Add Match Details"
+          description="Please fill in the required details below."
+        />
       </div>
     </>
   );
