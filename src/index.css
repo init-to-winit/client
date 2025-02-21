@@ -9,3 +9,20 @@
   font-style: normal;
   font-variation-settings: "wdth" 100;
 }
+::-webkit-scrollbar {
+  width: 5px; /* Adjust width */
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Track color */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #149891; /* Scrollbar color */
+  border-radius: 10px; /* Rounded edges */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Color on hover */
+}
+
