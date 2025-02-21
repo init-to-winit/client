@@ -1,11 +1,17 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Landing from "./pages/Landing";
+import SignupForm from "./pages/Signup";
 
-function App() {
+
+const App = () => {
   return (
-    <>
-      <Landing />
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/signup" element = {<SignupForm />} />
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;
