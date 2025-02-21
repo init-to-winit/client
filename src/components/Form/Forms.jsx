@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import Logo from "../../assets/images/Logo.png";
+
 const Forms = ({
   isOpen,
   onClose,
@@ -45,21 +46,20 @@ const Forms = ({
     <div className="fixed inset-0 flex items-center justify-center z-50">
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-black transition-opacity duration-300"
-        style={{ opacity: isVisible ? 0.5 : 0 }}
+        className="fixed inset-0 bg-black transition-opacity duration-300 opacity-50"
         onClick={onClose}
       />
 
       {/* Modal */}
       <div
-        className="relative bg-white rounded-lg w-full max-w-md shadow-xl transform transition-all duration-300"
+        className="relative bg-white rounded-lg w-full max-w-md max-h-[90vh] shadow-xl transform transition-all duration-300 overflow-y-auto p-6"
         style={{
           opacity: isVisible ? 1 : 0,
           transform: isVisible ? "scale(1)" : "scale(0.95)",
         }}
       >
         {/* Header */}
-        <div className="p-6 border-b border-gray-200">
+        <div className="border-b border-gray-200 pb-4">
           <div className="flex items-center justify-between">
             <div className="flex gap-4 items-center">
               <img src={Logo} alt="Logo" className="w-10 h-10" />
@@ -80,27 +80,25 @@ const Forms = ({
         </div>
 
         {/* Form */}
-        <form onSubmit={handleSubmit} className="p-6">
-          <div className="space-y-4">
-            {fields.map((field) => (
-              <div key={field.id}>
-                <label
-                  htmlFor={field.id}
-                  className="block text-sm font-medium text-primary mb-1"
-                >
-                  {field.label}
-                </label>
-                <input
-                  id={field.id}
-                  type={field.type}
-                  placeholder={field.placeholder}
-                  value={formData[field.id] || ""}
-                  onChange={handleChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-                />
-              </div>
-            ))}
-          </div>
+        <form onSubmit={handleSubmit} className="mt-4 space-y-4">
+          {fields.map((field) => (
+            <div key={field.id}>
+              <label
+                htmlFor={field.id}
+                className="block text-sm font-medium text-primary mb-1"
+              >
+                {field.label}
+              </label>
+              <input
+                id={field.id}
+                type={field.type}
+                placeholder={field.placeholder}
+                value={formData[field.id] || ""}
+                onChange={handleChange}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+              />
+            </div>
+          ))}
 
           {/* Footer */}
           <div className="mt-6 flex justify-end gap-3">
@@ -113,7 +111,7 @@ const Forms = ({
             </button>
             <button
               type="submit"
-              className="px-4 py-2 text-sm font-medium text-white bg-primary rounded-md hover:bg-white hover:text-primary transition-colors  hover:border hover:border-gray-300"
+              className="px-4 py-2 text-sm font-medium text-white bg-primary rounded-md hover:bg-white hover:text-primary transition-colors hover:border hover:border-gray-300"
             >
               Submit
             </button>
