@@ -2,6 +2,7 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import Sidebar from "./common/Sidebar";
 import Header from "./common/Header";
+import Hello from "./common/Hello";
 
 export default function Layout() {
   return (
@@ -13,6 +14,7 @@ export default function Layout() {
       <div className="flex-1 flex flex-col">
         {/* Header Positioned at the Top */}
         <Header />
+        <Hello />
 
         {/* Main Content */}
         <div className="flex-1 p-6 overflow-auto bg-gray-100">

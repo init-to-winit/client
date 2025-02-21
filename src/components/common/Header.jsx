@@ -3,7 +3,7 @@ import { FaSearch } from "react-icons/fa";
 import Logo from "../../assets/images/signuplogo.png";
 export default function Header() {
   return (
-    <div className="flex items-center bg-[#F3F7F6] justify-between w-full px-6 py-4 shadow-md">
+    <div className="flex items-center bg-[#F3F7F6] justify-between w-full px-6 py-4">
       {/* Search Bar */}
       <div className="flex items-center bg-white border px-4 py-2 rounded-md w-1/2">
         <FaSearch className="text-gray-400" />
