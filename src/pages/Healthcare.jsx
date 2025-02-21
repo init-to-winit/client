@@ -150,6 +150,14 @@ export default function Healthcare() {
 
   return (
     <div className="mt-8">
+      <div className="flex mb-6  justify-end">
+        <button
+          onClick={() => setIsFormOpen(true)}
+          className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+        >
+          Add Data +
+        </button>
+      </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {healthStatData.map((item, index) => (
           <StatCard
@@ -171,14 +179,6 @@ export default function Healthcare() {
           })) || []
         }
       />
-      <div className="flex mt-9 justify-end">
-        <button
-          onClick={() => setIsFormOpen(true)}
-          className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
-        >
-          Add Data +
-        </button>
-      </div>
 
       <Forms
         isOpen={isFormOpen}

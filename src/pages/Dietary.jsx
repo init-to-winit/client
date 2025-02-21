@@ -125,6 +125,14 @@ export default function Dietary() {
 
   return (
     <div>
+      <div className="flex justify-end mr-8">
+        <button
+          onClick={() => setIsFormOpen(true)}
+          className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+        >
+          Add Data +
+        </button>
+      </div>
       <div>
         <p className="text-ptext">Current Diet Plan</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-4">
@@ -175,14 +183,6 @@ export default function Dietary() {
               <MealCard key={index} time={meal.meal} list={meal.items} />
             ))}
         </div>
-      </div>
-      <div className="flex justify-end mr-16">
-        <button
-          onClick={() => setIsFormOpen(true)}
-          className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
-        >
-          Add Data +
-        </button>
       </div>
 
       <Forms
