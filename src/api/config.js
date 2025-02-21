@@ -50,9 +50,12 @@ const api = {
   },
 
   athletes: {
-    createPerformance: (athleteId, data) => axiosInstance.post(`/athlete/addPerformance/${athleteId}`, data),
-    editPerformance: (athleteId, data) => axiosInstance.put(`/athlete/editPerformance/${athleteId}`, data),
-    getPerformances: (athleteId) => axiosInstance.get(`/athlete/getPerformance/${athleteId}`),
+    createPerformance: (athleteId, data) =>
+      axiosInstance.post(`/athlete/addPerformance/${athleteId}`, data),
+    editPerformance: (athleteId, data) =>
+      axiosInstance.put(`/athlete/editPerformance/${athleteId}`, data),
+    getPerformances: (athleteId) =>
+      axiosInstance.get(`/athlete/getPerformance/${athleteId}`),
   },
 
   metrics: {
@@ -69,6 +72,9 @@ const api = {
   },
   coaches: {
     getAllCoaches: () => axiosInstance.get(`/all/getAllCoaches`),
+  },
+  sponsors: {
+    getAllSponsors: () => axiosInstance.get(`/all/getAllSponsors`),
   },
 };
 
