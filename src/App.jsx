@@ -12,6 +12,7 @@ import Coaches from "./pages/Coaches";
 import RunnerStatsTable from "./components/LeaderBoard";
 import Players from "./pages/Players";
 import AthleteProfile from "./pages/AthleteProfile";
+import Requests from "./pages/Requests";
 
 const App = () => {
   return (
@@ -36,6 +37,7 @@ const App = () => {
                 path="/athleteProfile/:athleteId"
                 element={<AthleteProfile />}
               />
+              <Route path="requests" element={<Requests />} />
             </Route>
           </Route>
         </Routes>

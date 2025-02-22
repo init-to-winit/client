@@ -30,6 +30,7 @@ export default function Sidebar() {
     },
     { id: 4, label: "Sponsors", icon: "ri-file-list-line", path: "/sponsors" },
     { id: 5, label: "Coaches", icon: "ri-user-star-line", path: "/coaches" },
+    { id: 12, label: "Requests", icon: "ri-link", path: "/requests" },
   ];
 
   const coachMenuItems = [
@@ -41,6 +42,7 @@ export default function Sidebar() {
       icon: "ri-bar-chart-box-line",
       path: "/leaderboard",
     },
+    { id: 13, label: "Requests", icon: "ri-link", path: "/requests" },
   ];
 
   const sponsorMenuItems = [
@@ -52,6 +54,7 @@ export default function Sidebar() {
       icon: "ri-bar-chart-box-line",
       path: "/leaderboard",
     },
+    { id: 14, label: "Requests", icon: "ri-link", path: "/requests" },
   ];
 
   // Determine the menu based on role
@@ -59,7 +62,7 @@ export default function Sidebar() {
 
   if (role === "Athlete") {
     menuItems = [...menuItems, ...athleteMenuItems];
-  } else if (role === "Coache") {
+  } else if (role === "Coach") {
     menuItems = [...coachMenuItems];
   } else if (role === "Sponsor") {
     menuItems = [...sponsorMenuItems];

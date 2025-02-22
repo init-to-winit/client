@@ -102,6 +102,14 @@ const api = {
   connect: {
     sendConnection: (data) =>
       axiosInstance.post(`/connect/send-connection`, data),
+    getConnections: (id) => axiosInstance.get(`/connect/connections/${id}`),
+    handleConnections: ({ senderId, receiverId, action }) => {
+      return axiosInstance.post(`/connect/handle-connection`, {
+        senderId,
+        receiverId,
+        action,
+      });
+    },
   },
 };
 
