@@ -7,10 +7,19 @@ import InjuryHistory from "@/components/healthcare/InjuryHistory";
 import api from "../api/config";
 import { useEffect, useState } from "react";
 import Forms from "@/components/Form/Forms";
+import HealthcareSuggestions from "@/components/healthcare/Suggestions";
+
+// Loading State Component
+const LoadingState = () => (
+  <div className="flex flex-col items-center justify-center h-screen">
+    <div className="w-12 h-12 border-4 border-gray-200 border-t-[#002E25] rounded-full animate-spin mb-4"></div>
+    <p className="text-lg text-gray-600">Loading healthcare data...</p>
+  </div>
+);
 
 export default function Healthcare() {
   const [isFormOpen, setIsFormOpen] = useState(false);
-  const [healthData, setHealthData] = useState({});
+  const [healthData, setHealthData] = useState(null); // Set initial value to null to indicate loading state
   const athleteId = JSON.parse(localStorage.getItem("user"))?.id;
   const healthStatData = [
     {
@@ -148,8 +157,13 @@ export default function Healthcare() {
     }
   };
 
+  if (!healthData) {
+    // Show loading state while healthData is not available
+    return <LoadingState />;
+  }
+
   return (
-    <div className="mt-8">
+    <div className="">
       <div className="flex mb-6  justify-end">
         <button
           onClick={() => setIsFormOpen(true)}
@@ -179,7 +193,7 @@ export default function Healthcare() {
           })) || []
         }
       />
-
+      <HealthcareSuggestions />
       <Forms
         isOpen={isFormOpen}
         onClose={() => setIsFormOpen(false)}

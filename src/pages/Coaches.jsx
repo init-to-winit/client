@@ -1,6 +1,14 @@
 import React, { useEffect, useState } from "react";
 import api from "../api/config";
 
+// Loading Spinner Component
+const LoadingSpinner = () => (
+  <div className="flex justify-center items-center h-32">
+    <div className="w-12 h-12 border-4 border-gray-200 border-t-[#002E25] rounded-full animate-spin"></div>
+    <p className="ml-4 text-lg text-gray-600">Loading...</p>
+  </div>
+);
+
 const NameAvatar = ({ firstName, lastName }) => {
   const firstInitial = firstName ? firstName.charAt(0) : "";
   const lastInitial = lastName ? lastName.charAt(0) : "";
@@ -126,7 +134,7 @@ const SponsorsListing = ({ person }) => {
       : data;
 
   if (loading) {
-    return <div className="p-6 text-lg text-gray-700">Loading...</div>;
+    return <LoadingSpinner />; // Display loading spinner while fetching data
   }
 
   if (error) {
