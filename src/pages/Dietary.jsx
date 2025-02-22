@@ -7,6 +7,7 @@ import Fats from "../assets/images/Fats.png";
 import MealCard from "@/components/dietary/MealCard";
 import Forms from "@/components/Form/Forms";
 import api from "../api/config";
+import SuggestionsSection from "@/components/dietary/SuggestionsSection";
 
 // Loading State Component
 const LoadingState = () => (
@@ -240,6 +241,12 @@ export default function Dietary() {
         title="Add Match Details"
         description="Please fill in the required details below."
       />
+
+      <div className="my-8">
+        {dietarySuggestions && Object.keys(dietarySuggestions).length > 0 && (
+          <SuggestionsSection dietaryPlan={dietarySuggestions} />
+        )}
+      </div>
     </div>
   );
 }
