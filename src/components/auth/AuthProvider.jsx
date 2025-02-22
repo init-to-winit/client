@@ -26,7 +26,7 @@ export const AuthProvider = ({ children }) => {
     localStorage.setItem("user", JSON.stringify(userData));
     localStorage.setItem("token", token); // ✅ Storing token
     setUser(userData);
-    if (userData.role === "Coache") {
+    if (userData.role === "Coach") {
       navigate("/players");
     } else if (userData.role === "Sponsor") {
       navigate("/players");
