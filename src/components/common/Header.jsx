@@ -10,6 +10,9 @@ export default function Header() {
   const [name, setName] = useState("Athlete"); // Default name
   const [showDropdown, setShowDropdown] = useState(false); // Toggle dropdown
   const navigate = useNavigate();
+  const user = JSON.parse(localStorage.getItem("user")) || null;
+  const role = user?.role || "";
+  const id = user?.id || "";
 
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -21,6 +24,9 @@ export default function Header() {
   // Handle Logout
   const handleLogout = () => {
     logout();
+  };
+  const handleNavigate = () => {
+    navigate(`/athleteProfile/${athleteId}`);
   };
 
   return (
@@ -52,12 +58,15 @@ export default function Header() {
         {/* Dropdown Menu */}
         {showDropdown && (
           <div className="absolute top-16 right-0 bg-white rounded-md shadow-lg py-2 w-40 z-50">
-            <button
-              className="block px-4 py-2 text-gray-700 hover:bg-gray-100 w-full text-left"
-              onClick={() => navigate("/profile")}
-            >
-              Profile
-            </button>
+            {role === "Athlete" && (
+              <button
+                className="block px-4 py-2 text-gray-700 hover:bg-gray-100 w-full text-left"
+                onClick={() => navigate(`/athleteProfile/${id}`)}
+              >
+                Profile
+              </button>
+            )}
+
             <button
               className="block px-4 py-2 text-gray-700 hover:bg-gray-100 w-full text-left"
               onClick={() => navigate("/help")}
