@@ -65,7 +65,11 @@ export default function Header() {
           onClick={() => setShowDropdown(!showDropdown)}
         >
           <div className="flex w-10 h-10 rounded-full bg-green-100">
-            <img src={Logo} alt="User Avatar" className="w-10 h-10 rounded-full" />
+            <img
+              src={Logo}
+              alt="User Avatar"
+              className="w-10 h-10 rounded-full"
+            />
           </div>
           <IoIosArrowDown className="ml-2 text-gray-500 text-lg" />
         </div>
@@ -76,14 +80,20 @@ export default function Header() {
             {role === "Athlete" && (
               <button
                 className="block px-4 py-2 text-gray-700 hover:bg-gray-100 w-full text-left"
-                onClick={() => navigate(`/athleteProfile/${id}`)}
+                onClick={() => {
+                  navigate(`/athleteProfile/${id}`);
+                  setShowDropdown(false);
+                }}
               >
                 Profile
               </button>
             )}
             <button
               className="block px-4 py-2 text-gray-700 hover:bg-gray-100 w-full text-left"
-              onClick={() => navigate("/help")}
+              onClick={() => {
+                setShowDropdown(false);
+                navigate("/help");
+              }}
             >
               Help
             </button>
