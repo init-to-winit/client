@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { FaSearch } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { IoIosArrowDown } from "react-icons/io"; // Dropdown arrow icon
@@ -9,6 +9,7 @@ export default function Header() {
   const { logout } = useAuth();
   const [name, setName] = useState("Athlete"); // Default name
   const [showDropdown, setShowDropdown] = useState(false); // Toggle dropdown
+  const dropdownRef = useRef(null); // Reference for dropdown
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("user")) || null;
   const role = user?.role || "";
@@ -21,12 +22,26 @@ export default function Header() {
     }
   }, []);
 
+  // Handle clicks outside dropdown to close it
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setShowDropdown(false);
+      }
+    };
+
+    if (showDropdown) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [showDropdown]);
+
   // Handle Logout
   const handleLogout = () => {
     logout();
-  };
-  const handleNavigate = () => {
-    navigate(`/athleteProfile/${athleteId}`);
   };
 
   return (
@@ -42,17 +57,17 @@ export default function Header() {
       </div>
 
       {/* User Info + Dropdown */}
-      <div className="flex items-center space-x-4 relative">
+      <div className="flex items-center space-x-4 relative" ref={dropdownRef}>
         <span className="text-gray-600">Hello, {name}</span>
 
         <div
-          className=" flex items-center justify-center rounded-full cursor-pointer"
+          className="flex items-center cursor-pointer"
           onClick={() => setShowDropdown(!showDropdown)}
         >
-          <div className="flex w-10 h-10 rounded-full bg-green-100 ">
-            <img src={Logo} alt="User Avatar" className="w-18" />
+          <div className="flex w-10 h-10 rounded-full bg-green-100">
+            <img src={Logo} alt="User Avatar" className="w-10 h-10 rounded-full" />
           </div>
-          <IoIosArrowDown className=" text-gray-500 text-lg" />
+          <IoIosArrowDown className="ml-2 text-gray-500 text-lg" />
         </div>
 
         {/* Dropdown Menu */}
@@ -66,7 +81,6 @@ export default function Header() {
                 Profile
               </button>
             )}
-
             <button
               className="block px-4 py-2 text-gray-700 hover:bg-gray-100 w-full text-left"
               onClick={() => navigate("/help")}
