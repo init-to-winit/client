@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   LineChart,
   Line,
@@ -6,18 +6,18 @@ import {
   YAxis,
   Tooltip,
   ResponsiveContainer,
-} from "recharts";
+} from 'recharts';
 
-const PracticeSessionsChart = ({practiceSessions}) => {
+const PracticeSessionsChart = ({ practiceSessions }) => {
   // Sample data for the chart
   const data = [
-    { name: "Sunday", sessions: 80 },
-    { name: "Monday", sessions: 150 },
-    { name: "Tuesday", sessions: 220 },
-    { name: "Wednesday", sessions: 150 },
-    { name: "Thursday", sessions: 180 },
-    { name: "Friday", sessions: 120 },
-    { name: "Saturday", sessions: 220 },
+    { name: 'Sunday', sessions: 80 },
+    { name: 'Monday', sessions: 150 },
+    { name: 'Tuesday', sessions: 220 },
+    { name: 'Wednesday', sessions: 150 },
+    { name: 'Thursday', sessions: 180 },
+    { name: 'Friday', sessions: 120 },
+    { name: 'Saturday', sessions: 220 },
   ];
 
   // Custom tooltip component to match the design
@@ -49,7 +49,8 @@ const PracticeSessionsChart = ({practiceSessions}) => {
         Practice Sessions Per Week
       </h2>
       <p className="text-gray-400 mb-8 text-sm">
-        Lorem ipsum dolor sit amet, consectetur adip
+        Increasing to 5 allows for better recovery and reduces the risk of
+        overtraining.{' '}
       </p>
 
       <div className="h-64">
@@ -68,7 +69,7 @@ const PracticeSessionsChart = ({practiceSessions}) => {
               dataKey="name"
               axisLine={false}
               tickLine={false}
-              tick={{ fill: "#6B7280",fontSize: 13 }}
+              tick={{ fill: '#6B7280', fontSize: 13 }}
               dy={10}
             />
             <YAxis hide={true} />
