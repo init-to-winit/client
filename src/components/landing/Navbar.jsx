@@ -1,8 +1,10 @@
-import React from "react";
-import Logo from "../../assets/images/Logo.png";
-import { Link } from "react-scroll";
+import React from 'react';
+import Logo from '../../assets/images/Logo.png';
+import { Link } from 'react-scroll';
+import { useNavigate } from 'react-router-dom';
 
 export default function Navbar() {
+  const navigate = useNavigate();
   return (
     <div>
       <nav className="bg-white border-gray-200 fixed w-full z-50 shadow-sm">
@@ -21,7 +23,7 @@ export default function Navbar() {
             {/* Navigation Links */}
             <div className="hidden md:flex items-center ml-10">
               <ul className="flex space-x-8 font-medium">
-                {["home", "about", "services", "faq"].map((section) => (
+                {['home', 'about', 'services', 'faq'].map((section) => (
                   <li key={section}>
                     <Link
                       activeClass="active"
@@ -46,6 +48,7 @@ export default function Navbar() {
               <button
                 type="button"
                 className="text-primary border-primary border bg-white hover:bg-primary hover:text-white focus:ring-4 focus:outline-none font-medium rounded-3xl text-sm px-4 py-2 text-center transition-all duration-300"
+                onClick={() => navigate('/login')}
               >
                 Sign in
               </button>
