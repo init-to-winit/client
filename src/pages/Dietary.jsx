@@ -8,16 +8,23 @@ import MealCard from "@/components/dietary/MealCard";
 import Forms from "@/components/Form/Forms";
 import api from "../api/config";
 
+// Loading State Component
+const LoadingState = () => (
+  <div className="flex flex-col items-center justify-center h-screen">
+    <div className="w-12 h-12 border-4 border-gray-200 border-t-[#002E25] rounded-full animate-spin mb-4"></div>
+    <p className="text-lg text-gray-600">Loading athlete dietary data...</p>
+  </div>
+);
+
 export default function Dietary() {
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [dietaryData, setDietaryData] = useState({});
+  const [dietarySuggestions, setDietarySuggestions] = useState({});
+  const [isLoadingData, setIsLoadingData] = useState(true); // loading state for data
+  const [isLoadingSuggestions, setIsLoadingSuggestions] = useState(true); // loading state for suggestions
+
   const athleteId = JSON.parse(localStorage.getItem("user"))?.id;
-  const enhancedDietData = [
-    { icon: kcal, value: "2800", subText: "Calories" },
-    { icon: Egg, value: "140g", subText: "Proteins" },
-    { icon: Carbs, value: "380g", subText: "Carbs" },
-    { icon: Fats, value: "50g", subText: "Fats" },
-  ];
+
   const fields = [
     {
       id: "calories_per_day",
@@ -67,14 +74,34 @@ export default function Dietary() {
     try {
       const res = await api.athletes.getDietary(athleteId);
       setDietaryData(res.data.dietaryPlan);
+      setIsLoadingData(false); // Data fetched, stop loading
       console.log("Performance data fetched successfully.", dietaryData);
     } catch (error) {
       console.error("Failed to fetch performance data:", error);
+      setIsLoadingData(false); // Stop loading even on error
+    }
+  };
+
+  const fetchDietarySuggestions = async () => {
+    try {
+      const res = await api.athletes.getDietarySuggestions(athleteId);
+      setDietarySuggestions(res.data.dietarySuggestion);
+      setIsLoadingSuggestions(false); // Suggestions fetched, stop loading
+      console.log(
+        "Dietary suggestions fetched successfully.",
+        res.data.dietarySuggestion
+      );
+    } catch (error) {
+      console.error("Failed to fetch dietary suggestions:", error);
+      setIsLoadingSuggestions(false); // Stop loading even on error
     }
   };
 
   useEffect(() => {
-    if (athleteId) fetchDietaryData();
+    if (athleteId) {
+      fetchDietaryData();
+      fetchDietarySuggestions();
+    }
   }, [athleteId]);
 
   // Handle Form Submit - Create or Update Performance
@@ -123,6 +150,10 @@ export default function Dietary() {
     }
   };
 
+  if (isLoadingData || isLoadingSuggestions) {
+    return <LoadingState />; // Show loading while data or suggestions are being fetched
+  }
+
   return (
     <div>
       <div className="flex justify-end mr-8">
@@ -165,14 +196,30 @@ export default function Dietary() {
       <div className="my-8">
         <p className="text-ptext">Enhanced Diet Plan</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-4">
-          {enhancedDietData.map((item, index) => (
-            <DietCard
-              key={index}
-              icon={item.icon}
-              value={item.value}
-              subText={item.subText}
-            />
-          ))}
+          {dietarySuggestions.calorie_suggestion && (
+            <>
+              <DietCard
+                icon={kcal}
+                value={dietarySuggestions.calorie_suggestion}
+                subText="Calories"
+              />
+              <DietCard
+                icon={Egg}
+                value={`${dietarySuggestions.protein_suggestion}g`}
+                subText="Proteins"
+              />
+              <DietCard
+                icon={Carbs}
+                value={`${dietarySuggestions.carbs_suggestion}g`}
+                subText="Carbs"
+              />
+              <DietCard
+                icon={Fats}
+                value={`${dietarySuggestions.fats_suggestion}g`}
+                subText="Fats"
+              />
+            </>
+          )}
         </div>
       </div>
       <div className="my-8">

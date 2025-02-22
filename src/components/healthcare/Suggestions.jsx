@@ -1,7 +1,15 @@
 import React, { useEffect, useState } from "react";
 import api from "../../api/config";
 
-const PerformanceSuggestions = () => {
+// Loading Spinner Component
+const LoadingSpinner = () => (
+  <div className="flex justify-center items-center h-32">
+    <div className="w-12 h-12 border-4 border-gray-200 border-t-[#002E25] rounded-full animate-spin"></div>
+    <p className="ml-4 text-lg text-gray-600">Loading suggestions...</p>
+  </div>
+);
+
+const HealthcareSuggestions = () => {
   const [suggestions, setSuggestions] = useState({});
   const [loading, setLoading] = useState(true);
   const athleteId = JSON.parse(localStorage.getItem("user"))?.id;
@@ -9,11 +17,11 @@ const PerformanceSuggestions = () => {
   const fetchSuggestions = async () => {
     try {
       setLoading(true);
-      const response = await api.athletes.getPerformanceSuggestions(athleteId);
-      console.log(response.data.performanceSuggestion);
+      const response = await api.athletes.getHealthcareSuggestions(athleteId);
+      console.log(response.data.healthcareSuggestion);
 
       // Directly use the response as it's already an object
-      setSuggestions(response.data.performanceSuggestion);
+      setSuggestions(response.data.healthcareSuggestion);
     } catch (error) {
       console.error("Error fetching suggestions:", error);
     } finally {
@@ -26,13 +34,13 @@ const PerformanceSuggestions = () => {
   }, []);
 
   if (loading) {
-    return <div>Loading suggestions...</div>;
+    return <LoadingSpinner />;
   }
 
   return (
-    <div className="p-8 bg-white rounded-lg shadow-lg">
+    <div className="p-8 bg-white rounded-lg shadow-lg mt-8">
       <h1 className="text-3xl font-bold text-gray-800 mb-6">
-        Performance Suggestions
+        Healthcare Suggestions
       </h1>
 
       {/* Dynamically Render Suggestions & Rationales */}
@@ -64,4 +72,4 @@ const PerformanceSuggestions = () => {
   );
 };
 
-export default PerformanceSuggestions;
+export default HealthcareSuggestions;
