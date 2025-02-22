@@ -6,7 +6,7 @@ const ChatBot = () => {
     {
       id: 1,
       sender: 'bot',
-      text: "Hello! I'm your personal AI Assistant SlothPilot.",
+      text: "Hello! I'm your personal AI Assistant Vismoh.",
       time: '10:25',
     },
   ]);
