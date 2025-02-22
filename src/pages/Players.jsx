@@ -26,9 +26,10 @@ const PlayerCard = ({
 }) => {
   const [status, setStatus] = useState(connectionStatus);
   const navigate = useNavigate();
+  const athleteId = receiverId;
 
-  const handleConnect = async () => {
-    e.stopPropagation();
+  const handleConnect = async (e) => {
+    e.stopPropagation(); // Prevent navigating when clicking Connect
     if (!user) return;
 
     const requestData = {
@@ -45,7 +46,6 @@ const PlayerCard = ({
       console.error("Error sending connection request:", error);
     }
   };
-  const athleteId = receiverId;
 
   const handleNavigate = () => {
     navigate(`/athleteProfile/${athleteId}`);
@@ -54,7 +54,7 @@ const PlayerCard = ({
   return (
     <div
       className="flex items-center bg-gray-100 p-6 rounded-lg mb-8 cursor-pointer hover:bg-gray-200 transition"
-      onClick={handleNavigate} // Navigate when card is clicked
+      onClick={handleNavigate} // Navigate when clicking outside the button
     >
       <div className="mr-6">
         <NameAvatar firstName={firstName} lastName={lastName} />
@@ -78,7 +78,7 @@ const PlayerCard = ({
           <span className="text-yellow-500 font-semibold">Pending</span>
         ) : (
           <button
-            onClick={handleConnect}
+            onClick={(e) => handleConnect(e)}
             className="border border-gray-800 rounded-lg py-2 px-5 text-gray-800 hover:bg-gray-50 transition"
           >
             Connect
