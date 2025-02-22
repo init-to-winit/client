@@ -6,7 +6,7 @@ const ChatBot = () => {
     {
       id: 1,
       sender: 'bot',
-      text: "Hello! I'm your personal AI Assistant Vismoh.",
+      text: "Hello! I'm your personal AI Assistant VISMOH.",
       time: '10:25',
     },
   ]);
@@ -162,7 +162,7 @@ const ChatBot = () => {
           <div className="flex-grow">
             <input
               type="text"
-              placeholder="Message to slothpilot..."
+              placeholder="Message to VISMOH..."
               className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-300"
               value={newMessage}
               onChange={(e) => setNewMessage(e.target.value)}
