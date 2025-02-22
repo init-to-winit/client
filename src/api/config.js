@@ -71,6 +71,12 @@ const api = {
     getAllAthletes: (data) => axiosInstance.post(`all/getAllAthletes`, data),
     getAthlete: (athleteId) =>
       axiosInstance.get(`/all/getAthlete/${athleteId}`),
+    getPerformanceSuggestions: (athleteId) =>
+      axiosInstance.get(`/suggestion/performance/${athleteId}`),
+    getDietarySuggestions: (athleteId) =>
+      axiosInstance.get(`/suggestion/dietary/${athleteId}`),
+    getHealthcareSuggestions: (athleteId) =>
+      axiosInstance.get(`/suggestion/healthcare/${athleteId}`),
   },
 
   metrics: {
