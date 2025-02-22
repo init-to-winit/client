@@ -79,31 +79,36 @@ export default function Footer() {
               </form>
             </motion.div>
 
-            {["Services", "Company", "Helpful Links", "Legal", "Downloads"].map(
-              (title, index) => (
-                <motion.div
-                  key={index}
-                  className="col-span-2 sm:col-span-1"
-                  initial={{ y: 20, opacity: 0 }}
-                  whileInView={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                >
-                  <p className="font-medium">{title}</p>
-                  <ul className="mt-6 space-y-4 text-sm">
-                    {["Link 1", "Link 2", "Link 3"].map((link, i) => (
-                      <li key={i}>
-                        <a
-                          href="#"
-                          className="text-gray-300 transition hover:text-gray-100"
-                        >
-                          {link}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </motion.div>
-              )
-            )}
+            {/* Updated Sections with Real Links */}
+            {[
+              { title: "Services", links: ["Training Programs", "Performance Analytics", "Injury Prevention"] },
+              { title: "Company", links: ["About Us", "Careers", "Contact"] },
+              { title: "Helpful Links", links: ["FAQs", "Blog", "Support"] },
+              { title: "Legal", links: ["Privacy Policy", "Terms & Conditions", "Cookie Policy"] },
+              { title: "Downloads", links: ["iOS App", "Android App", "API Docs"] },
+            ].map((section, index) => (
+              <motion.div
+                key={index}
+                className="col-span-2 sm:col-span-1"
+                initial={{ y: 20, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <p className="font-medium">{section.title}</p>
+                <ul className="mt-6 space-y-4 text-sm">
+                  {section.links.map((link, i) => (
+                    <li key={i}>
+                      <a
+                        href="#"
+                        className="text-gray-300 transition hover:text-gray-100"
+                      >
+                        {link}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
 
             <motion.ul
               className="col-span-2 flex justify-start gap-6 lg:col-span-5 lg:justify-end"
