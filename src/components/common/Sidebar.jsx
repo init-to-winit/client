@@ -31,6 +31,7 @@ export default function Sidebar() {
     { id: 4, label: "Sponsors", icon: "ri-file-list-line", path: "/sponsors" },
     { id: 5, label: "Coaches", icon: "ri-user-star-line", path: "/coaches" },
     { id: 12, label: "Requests", icon: "ri-link", path: "/requests" },
+    { id: 18, label: "Chatbot", icon: "ri-chat-1-line", path: "/help" },
   ];
 
   const coachMenuItems = [
@@ -43,6 +44,7 @@ export default function Sidebar() {
       path: "/leaderboard",
     },
     { id: 13, label: "Requests", icon: "ri-link", path: "/requests" },
+    { id: 18, label: "Chatbot", icon: "ri-chat-1-line", path: "/help" },
   ];
 
   const sponsorMenuItems = [
@@ -55,6 +57,7 @@ export default function Sidebar() {
       path: "/leaderboard",
     },
     { id: 14, label: "Requests", icon: "ri-link", path: "/requests" },
+    { id: 18, label: "Chatbot", icon: "ri-chat-1-line", path: "/help" },
   ];
 
   // Determine the menu based on role
