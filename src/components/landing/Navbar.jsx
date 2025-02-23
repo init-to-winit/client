@@ -23,7 +23,7 @@ export default function Navbar() {
             {/* Navigation Links */}
             <div className="hidden md:flex items-center ml-10">
               <ul className="flex space-x-8 font-medium">
-                {['home', 'about', 'services', 'faq'].map((section) => (
+                {['home', 'about', 'services', 'FAQ'].map((section) => (
                   <li key={section}>
                     <Link
                       activeClass="active"
@@ -55,6 +55,7 @@ export default function Navbar() {
               <button
                 type="button"
                 className="text-white bg-primary hover:bg-white hover:text-primary hover:border-primary hover:border focus:ring-4 focus:outline-none font-medium rounded-3xl text-sm px-4 py-2 text-center transition-all duration-300"
+                onClick={() => navigate('/signup')}
               >
                 Sign up for free
               </button>
