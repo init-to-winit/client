@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
-import api from "../api/config";
+import React, { useEffect, useState } from 'react';
+import api from '../api/config';
+import { useNavigate } from 'react-router-dom';
 
 // Loading Spinner Component
 const LoadingSpinner = () => (
@@ -10,8 +11,8 @@ const LoadingSpinner = () => (
 );
 
 const NameAvatar = ({ firstName, lastName }) => {
-  const firstInitial = firstName ? firstName.charAt(0) : "";
-  const lastInitial = lastName ? lastName.charAt(0) : "";
+  const firstInitial = firstName ? firstName.charAt(0) : '';
+  const lastInitial = lastName ? lastName.charAt(0) : '';
   const initials = (firstInitial + lastInitial).toUpperCase();
 
   return (
@@ -33,7 +34,15 @@ const PersonCard = ({
   person, // 'coaches' or 'sponsors'
 }) => {
   const [status, setStatus] = useState(connectionStatus);
-  const receiverRole = person === "coaches" ? "Coach" : "Sponsor"; // Dynamic role
+  const receiverRole = person === 'coaches' ? 'Coach' : 'Sponsor'; // Dynamic role
+  const navigate = useNavigate();
+  const handleNavigate = () => {
+    if (person === 'coaches') {
+      navigate(`/coachProfile/${receiverId}`);
+    } else if (person === 'sponsors') {
+      navigate(`/sponsorProfile/${receiverId}`);
+    }
+  };
 
   const handleConnect = async () => {
     if (!user) return;
@@ -47,14 +56,17 @@ const PersonCard = ({
 
     try {
       await api.connect.sendConnection(requestData);
-      setStatus("pending"); // Update UI optimistically
+      setStatus('pending'); // Update UI optimistically
     } catch (error) {
-      console.error("Error sending connection request:", error);
+      console.error('Error sending connection request:', error);
     }
   };
 
   return (
-    <div className="flex items-center bg-gray-100 p-6 rounded-lg mb-8">
+    <div
+      className="flex items-center bg-gray-100 p-6 rounded-lg mb-8 cursor-pointer hover:bg-gray-200 transition"
+      onClick={handleNavigate}
+    >
       <div className="mr-6">
         <NameAvatar firstName={firstName} lastName={lastName} />
       </div>
@@ -71,11 +83,11 @@ const PersonCard = ({
         )}
       </div>
       <div className="flex items-center">
-        {status === "accepted" ? (
+        {status === 'accepted' ? (
           <span className="text-green-600 font-semibold">Connected</span>
-        ) : status === "pending" ? (
+        ) : status === 'pending' ? (
           <span className="text-yellow-500 font-semibold">Pending</span>
-        ) : status === "rejected" ? (
+        ) : status === 'rejected' ? (
           <span className="text-red-500 font-semibold">Rejected</span>
         ) : (
           <button
@@ -92,19 +104,19 @@ const PersonCard = ({
 
 const SponsorsListing = ({ person }) => {
   const [data, setData] = useState([]);
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);
-  const [filter, setFilter] = useState("all"); // Filter state (all, connected, pending)
-  const user = JSON.parse(localStorage.getItem("user")) || null;
-  const role = user?.role || "";
-  const id = user?.id || "";
+  const [filter, setFilter] = useState('all'); // Filter state (all, connected, pending)
+  const user = JSON.parse(localStorage.getItem('user')) || null;
+  const role = user?.role || '';
+  const id = user?.id || '';
 
   const fetchData = async () => {
     try {
       let res;
       const requestData = { id, role };
 
-      if (person === "coaches") {
+      if (person === 'coaches') {
         res = await api.coaches.getAllCoaches(requestData);
         setData(res.data.coaches);
       } else {
@@ -127,10 +139,10 @@ const SponsorsListing = ({ person }) => {
 
   // Filtered data based on selected filter
   const filteredData =
-    filter === "connected"
-      ? data.filter((item) => item.connectionStatus === "accepted")
-      : filter === "pending"
-      ? data.filter((item) => item.connectionStatus === "pending")
+    filter === 'connected'
+      ? data.filter((item) => item.connectionStatus === 'accepted')
+      : filter === 'pending'
+      ? data.filter((item) => item.connectionStatus === 'pending')
       : data;
 
   if (loading) {
@@ -145,36 +157,36 @@ const SponsorsListing = ({ person }) => {
     <div className="p-8 bg-white rounded-lg shadow-lg">
       <div className="flex justify-between items-center mb-8">
         <h1 className="text-3xl font-bold text-gray-800">
-          {person === "coaches" ? "Coaches" : "Sponsors"}
+          {person === 'coaches' ? 'Coaches' : 'Sponsors'}
         </h1>
 
         {/* Filter Toggle Switch */}
         <div className="flex space-x-4 bg-gray-200 p-2 rounded-lg">
           <button
             className={`px-4 py-2 rounded-lg ${
-              filter === "all" ? "bg-gray-800 text-white" : "text-gray-800"
+              filter === 'all' ? 'bg-gray-800 text-white' : 'text-gray-800'
             }`}
-            onClick={() => setFilter("all")}
+            onClick={() => setFilter('all')}
           >
             All
           </button>
           <button
             className={`px-4 py-2 rounded-lg ${
-              filter === "connected"
-                ? "bg-green-600 text-white"
-                : "text-gray-800"
+              filter === 'connected'
+                ? 'bg-green-600 text-white'
+                : 'text-gray-800'
             }`}
-            onClick={() => setFilter("connected")}
+            onClick={() => setFilter('connected')}
           >
             Connected
           </button>
           <button
             className={`px-4 py-2 rounded-lg ${
-              filter === "pending"
-                ? "bg-yellow-500 text-white"
-                : "text-gray-800"
+              filter === 'pending'
+                ? 'bg-yellow-500 text-white'
+                : 'text-gray-800'
             }`}
-            onClick={() => setFilter("pending")}
+            onClick={() => setFilter('pending')}
           >
             Pending
           </button>

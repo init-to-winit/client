@@ -1,85 +1,88 @@
-import React from "react";
-import { Link, useLocation } from "react-router-dom";
-import Logo from "../../assets/images/Logo.png";
+import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import Logo from '../../assets/images/Logo.png';
 
 export default function Sidebar() {
   const location = useLocation(); // Get current route
 
   // Fetch user data
-  const user = JSON.parse(localStorage.getItem("user")) || null;
-  const role = user?.role || "";
-  const id = user?.id || "";
+  const user = JSON.parse(localStorage.getItem('user')) || null;
+  const role = user?.role || '';
+  const id = user?.id || '';
 
   // Define menu items for different roles
-  const baseMenuItems = [
+  const baseMenuItems = [];
+
+  // Menu items for different roles
+  const athleteMenuItems = [
     {
       id: 1,
-      label: "Dashboard",
-      icon: "ri-dashboard-line",
-      path: "/dashboard",
+      label: 'Dashboard',
+      icon: 'ri-dashboard-line',
+      path: '/dashboard',
     },
-    {
-      id: 20,
-      label: "Chats",
-      icon: "ri-chat-1-line",
-      path: "/communication",
-    },
-  ];
-
-  const athleteMenuItems = [
-    { id: 2, label: "Dietary", icon: "ri-leaf-line", path: "/dietary" },
+    { id: 2, label: 'Dietary', icon: 'ri-leaf-line', path: '/dietary' },
     {
       id: 3,
-      label: "Healthcare",
-      icon: "ri-heart-pulse-line",
-      path: "/healthcare",
+      label: 'Healthcare',
+      icon: 'ri-heart-pulse-line',
+      path: '/healthcare',
     },
-    { id: 4, label: "Sponsors", icon: "ri-file-list-line", path: "/sponsors" },
-    { id: 5, label: "Coaches", icon: "ri-user-star-line", path: "/coaches" },
-    { id: 12, label: "Requests", icon: "ri-link", path: "/requests" },
-    { id: 18, label: "Chatbot", icon: "ri-chat-1-line", path: "/help" },
+    { id: 4, label: 'Sponsors', icon: 'ri-file-list-line', path: '/sponsors' },
+    { id: 5, label: 'Coaches', icon: 'ri-user-star-line', path: '/coaches' },
+    { id: 12, label: 'Requests', icon: 'ri-link', path: '/requests' },
     {
       id: 19,
-      label: "Video Analyser",
-      icon: "ri-user-line",
-      path: `/video-analysis`,
+      label: 'Video Analyser',
+      icon: 'ri-user-line',
+      path: '/video-analysis',
     },
+    { id: 20, label: 'Chats', icon: 'ri-chat-1-line', path: '/communication' },
+    { id: 18, label: 'Chatbot', icon: 'ri-chat-1-line', path: '/help' },
   ];
 
   const coachMenuItems = [
-    { id: 6, label: "Players", icon: "ri-team-line", path: "/players" },
-    { id: 7, label: "Sponsors", icon: "ri-file-list-line", path: "/sponsors" },
+    { id: 6, label: 'Players', icon: 'ri-team-line', path: '/players' },
+    { id: 7, label: 'Sponsors', icon: 'ri-file-list-line', path: '/sponsors' },
     {
       id: 11,
-      label: "Leaderboard",
-      icon: "ri-bar-chart-box-line",
-      path: "/leaderboard",
+      label: 'Leaderboard',
+      icon: 'ri-bar-chart-box-line',
+      path: '/leaderboard',
     },
-    { id: 13, label: "Requests", icon: "ri-link", path: "/requests" },
-    { id: 18, label: "Chatbot", icon: "ri-chat-1-line", path: "/help" },
+    { id: 13, label: 'Requests', icon: 'ri-link', path: '/requests' },
+    {
+      id: 19,
+      label: 'Video Analyser',
+      icon: 'ri-user-line',
+      path: '/video-analysis',
+    },
+    { id: 20, label: 'Chats', icon: 'ri-chat-1-line', path: '/communication' },
+    { id: 18, label: 'Chatbot', icon: 'ri-chat-1-line', path: '/help' },
   ];
 
   const sponsorMenuItems = [
-    { id: 8, label: "Players", icon: "ri-team-line", path: "/players" },
-    { id: 9, label: "Coaches", icon: "ri-user-star-line", path: "/coaches" },
+    { id: 8, label: 'Players', icon: 'ri-team-line', path: '/players' },
+    { id: 9, label: 'Coaches', icon: 'ri-user-star-line', path: '/coaches' },
     {
       id: 10,
-      label: "Leaderboard",
-      icon: "ri-bar-chart-box-line",
-      path: "/leaderboard",
+      label: 'Leaderboard',
+      icon: 'ri-bar-chart-box-line',
+      path: '/leaderboard',
     },
-    { id: 14, label: "Requests", icon: "ri-link", path: "/requests" },
-    { id: 18, label: "Chatbot", icon: "ri-chat-1-line", path: "/help" },
+    { id: 14, label: 'Requests', icon: 'ri-link', path: '/requests' },
+    { id: 20, label: 'Chats', icon: 'ri-chat-1-line', path: '/communication' },
+    { id: 18, label: 'Chatbot', icon: 'ri-chat-1-line', path: '/help' },
   ];
 
   // Determine the menu based on role
   let menuItems = [...baseMenuItems];
 
-  if (role === "Athlete") {
+  if (role === 'Athlete') {
     menuItems = [...menuItems, ...athleteMenuItems];
-  } else if (role === "Coach") {
-    menuItems = [...coachMenuItems];
-  } else if (role === "Sponsor") {
+  } else if (role === 'Coach') {
+    menuItems = [...menuItems, ...coachMenuItems];
+  } else if (role === 'Sponsor') {
     menuItems = [...sponsorMenuItems];
   }
 
@@ -100,7 +103,7 @@ export default function Sidebar() {
                 <Link
                   to={item.path}
                   className={`flex font-medium items-center gap-4 w-full px-6 py-4 text-lg rounded-md transition-all ${
-                    isActive ? "bg-secondary" : "text-primary hover:bg-gray-100"
+                    isActive ? 'bg-secondary' : 'text-primary hover:bg-gray-100'
                   }`}
                 >
                   <i className={`${item.icon} text-xl`}></i>

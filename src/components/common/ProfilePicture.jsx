@@ -7,6 +7,7 @@ const ProfilePicture = ({
   userId: propUserId,
   role: propRole,
   size = 'md',
+  disableUpload = false,
 }) => {
   const [profileImage, setProfileImage] = useState(initialImage);
   const [isUploading, setIsUploading] = useState(false);
@@ -18,7 +19,8 @@ const ProfilePicture = ({
   // Get user data from props or localStorage
   const userId = propUserId || JSON.parse(localStorage.getItem('user'))?.id;
   const role = propRole || JSON.parse(localStorage.getItem('user'))?.role;
-
+  const user = JSON.parse(localStorage.getItem('user')) || null;
+  const currentUserId = user.id;
   // Size classes mapping
   const sizeClasses = {
     sm: 'w-16 h-16',
@@ -152,7 +154,7 @@ const ProfilePicture = ({
       </div>
 
       {/* Edit button (only visible when not uploading) */}
-      {!showUploadControls && !isUploading && (
+      {!disableUpload && !showUploadControls && !isUploading && (
         <button
           onClick={triggerFileInput}
           className="absolute bottom-2 right-0 bg-[#002E25] text-white p-2 rounded-full shadow-md hover:bg-[#003c32] transition-colors"
