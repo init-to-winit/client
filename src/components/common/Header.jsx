@@ -9,11 +9,33 @@ export default function Header() {
   const { logout } = useAuth();
   const [name, setName] = useState("Athlete"); // Default name
   const [showDropdown, setShowDropdown] = useState(false); // Toggle dropdown
+  const [searchTerm, setSearchTerm] = useState(""); // Search term
+  const [filteredPages, setFilteredPages] = useState([]); // Filtered search results
+  const searchRef = useRef(null);
   const dropdownRef = useRef(null); // Reference for dropdown
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("user")) || null;
   const role = user?.role || "";
   const id = user?.id || "";
+
+  // List of available pages (Profile should only be available for Athletes)
+  const pages = [
+    { name: "Home", path: "/dashboard" },
+    { name: "Dashboard", path: "/dashboard" },
+    { name: "Coaches", path: "/coaches" },
+    { name: "Sponsors", path: "/sponsors" },
+    { name: "ChatBot", path: "/help" },
+    { name: "Help", path: "/help" },
+    { name: "Settings", path: "/settings" },
+    { name: "Requests", path: "/requests" },
+  ];
+
+  // Only add Profile if user is an Athlete
+  if (role === "Athlete") {
+    pages.splice(2, 0, { name: "Profile", path: `/athleteProfile/${id}` });
+    pages.splice(3, 0, { name: "Healthcare", path: "/healthcare" });
+    pages.splice(4, 0, { name: "Dietary", path: "/dietary" });
+  }
 
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -22,38 +44,76 @@ export default function Header() {
     }
   }, []);
 
-  // Handle clicks outside dropdown to close it
+  // Handle clicks outside dropdowns (for both search and profile dropdown)
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      if (
+        (dropdownRef.current && !dropdownRef.current.contains(event.target)) &&
+        (searchRef.current && !searchRef.current.contains(event.target))
+      ) {
         setShowDropdown(false);
+        setFilteredPages([]); // Hide search results
       }
     };
 
-    if (showDropdown) {
-      document.addEventListener("mousedown", handleClickOutside);
-    }
-
+    document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [showDropdown]);
+  }, []);
 
   // Handle Logout
   const handleLogout = () => {
     logout();
   };
 
+  // Handle search input change
+  const handleSearchChange = (e) => {
+    const query = e.target.value.toLowerCase();
+    setSearchTerm(query);
+    if (query.trim() === "") {
+      setFilteredPages([]);
+    } else {
+      const filtered = pages.filter((page) =>
+        page.name.toLowerCase().includes(query)
+      );
+      setFilteredPages(filtered);
+    }
+  };
+
   return (
     <div className="flex items-center bg-[#F3F7F6] justify-between w-full px-6 py-4 relative">
       {/* Search Bar */}
-      <div className="flex items-center bg-white border px-4 py-2 rounded-md w-1/2">
-        <FaSearch className="text-gray-400" />
-        <input
-          type="text"
-          placeholder="Search here"
-          className="ml-2 bg-transparent outline-none w-full"
-        />
+      <div className="relative w-1/2" ref={searchRef}>
+        <div className="flex items-center bg-white border px-4 py-2 rounded-md w-full">
+          <FaSearch className="text-gray-400" />
+          <input
+            type="text"
+            placeholder="Search pages..."
+            value={searchTerm}
+            onChange={handleSearchChange}
+            className="ml-2 bg-transparent outline-none w-full"
+          />
+        </div>
+
+        {/* Search Results Dropdown */}
+        {filteredPages.length > 0 && (
+          <div className="absolute top-full mt-1 w-full bg-white rounded-md shadow-lg py-2 z-50">
+            {filteredPages.map((page, index) => (
+              <button
+                key={index}
+                className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100"
+                onClick={() => {
+                  navigate(page.path);
+                  setFilteredPages([]); // Hide results after navigation
+                  setSearchTerm(""); // Clear search input
+                }}
+              >
+                {page.name}
+              </button>
+            ))}
+          </div>
+        )}
       </div>
 
       {/* User Info + Dropdown */}

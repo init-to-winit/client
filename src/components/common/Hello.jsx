@@ -9,8 +9,7 @@ export default function Hello() {
     if (storedUser?.name) {
       setName(storedUser.name);
     }
-  }, []);  
-  
+  }, []);
 
   // Dynamic content for each route
   const pageData = {
@@ -37,6 +36,15 @@ export default function Hello() {
     "/coaches": {
       title: "Coaching & Training",
       message: "Connect with top coaches and enhance your skills.",
+    },
+    "/communication": {
+      title: "Communication Hub",
+      message:
+        "Seamlessly connect and collaborate with athletes, coaches, and sponsors.",
+    },
+    "/video-analysis": {
+      title: "Video Analysis",
+      message: "Upload a video and get insights on your performance.",
     },
   };
 
