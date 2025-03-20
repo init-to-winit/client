@@ -1,52 +1,78 @@
 import React from "react";
 
-const CoachList = ({ coaches, activeChat, onSelectCoach }) => {
+const CoachList = ({
+  connections,
+  activeChat,
+  onSelectconnection,
+  searchTerm,
+  onSearchChange,
+}) => {
+  // console.log("connections: ehdvvdu", connections);
   return (
-    <div className="w-full md:w-80 bg-white border-r rounded-l-lg ">
+    <div className="w-full md:w-80 bg-white border-r rounded-l-lg">
+      {/* 🔍 Search Input */}
       <div className="p-4 border-b">
-        <h2 className="font-bold text-primary text-xl">Your Connections</h2>
+        <input
+          type="text"
+          placeholder="Search connections..."
+          value={searchTerm}
+          onChange={(e) => onSearchChange(e.target.value)}
+          className="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
       </div>
 
+      {/* ✅ connections List */}
       <div className="overflow-y-auto h-full max-h-[calc(100vh-130px)]">
-        {coaches.map((coach) => (
-          <div
-            key={coach.id}
-            onClick={() => onSelectCoach(coach.id)}
-            className={`p-4 border-b flex items-center cursor-pointer hover:bg-gray-50 ${
-              activeChat === coach.id ? "bg-gray-100" : ""
-            }`}
-          >
-            <div className="relative">
-              <img
-                src={coach.profileImage}
-                alt={coach.name}
-                className="w-12 h-12 rounded-full object-cover"
-              />
-              {coach.isOnline && (
-                <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-white"></div>
-              )}
-            </div>
-
-            <div className="ml-3 flex-1 overflow-hidden">
-              <div className="flex justify-between items-center">
-                <h3 className="font-medium truncate">{coach.name}</h3>
-                <span className="text-xs text-gray-500">
-                  {coach.lastMessageTime}
-                </span>
+        {connections?.length > 0 ? (
+          connections.map((connection) => (
+            <div
+              key={connection.id}
+              onClick={() => onSelectconnection(connection.id)}
+              className={`p-4 border-b flex items-center cursor-pointer hover:bg-gray-50 ${
+                activeChat === connection.id ? "bg-gray-100" : ""
+              }`}
+            >
+              {/* ✅ Profile Image and Online Status */}
+              <div className="relative">
+                <img
+                  src={
+                    connection.profilePhoto ||
+                    "https://via.placeholder.com/48?text=No+Image"
+                  }
+                  alt={`${connection.firstName} ${connection.lastName}`}
+                  className="w-12 h-12 rounded-full object-cover"
+                />
               </div>
-              <p className="text-sm text-gray-600 truncate">{coach.role}</p>
-              <p className="text-sm text-gray-500 truncate">
-                {coach.lastMessage}
-              </p>
-            </div>
 
-            {coach.unread > 0 && (
-              <div className="ml-2 bg-[#CDFA89] text-[#002E25] w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold">
-                {coach.unread}
+              {/* ✅ connection Info */}
+              <div className="ml-3 flex-1 overflow-hidden">
+                <div className="flex justify-between items-center">
+                  <h3 className="font-medium truncate">
+                    {connection.firstName} {connection.lastName}
+                  </h3>
+                  {/* <span className="text-xs text-gray-500">
+                    {connection.lastMessageTime || "N/A"}
+                  </span> */}
+                </div>
+                <p className="text-sm text-gray-600 truncate">{connection.role}</p>
+                {/* <p className="text-sm text-gray-500 truncate">
+                  {connection.lastMessage || "No recent message"}
+                </p> */}
               </div>
-            )}
+
+              {/* ✅ Unread Message Badge */}
+              {/* {connection.unread > 0 && (
+                <div className="ml-2 bg-[#CDFA89] text-[#002E25] w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold">
+                  {connection.unread}
+                </div>
+              )} */}
+            </div>
+          ))
+        ) : (
+          <div className="w-full text-center mt-8 text-gray-500">
+            No connections Found
           </div>
-        ))}
+        )}
       </div>
     </div>
   );
