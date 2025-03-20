@@ -50,6 +50,7 @@ const api = {
     updateProfile: (data) => axiosInstance.put("/user/profile", data),
     getMessage: (userId, question) =>
       axiosInstance.post("suggestion/chat/", { userId, question }),
+    getAllUsers : () => axiosInstance.get("/all/getAllUsers"),
   },
 
   athletes: {
@@ -121,6 +122,10 @@ const api = {
       });
     },
     getVideoAnalysis: (id) => axiosInstance.get(`athlete/getVideoPerformanceAnalysis/${id}`),
+  },
+  chat : {
+    getMessages: (user1, user2) => axiosInstance.get(`/chat/${user1}/${user2}`),
+    sendMessage: (data,userId) => axiosInstance.post(`/chat/send`, data),
   },
   connect: {
     sendConnection: (data) =>
