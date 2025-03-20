@@ -1,37 +1,39 @@
-import React, { useState } from "react";
-import tennisPlayer from "../assets/images/TennisPlayer.png";
-import logo from "../assets/images/signuplogo.png";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import api from "../api/config";
+import React, { useState } from 'react';
+import tennisPlayer from '../assets/images/TennisPlayer.png';
+import logo from '../assets/images/signuplogo.png';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import api from '../api/config';
 
-import CommonFields from "@/components/Form/CommonFields";
-import AthleteFields from "@/components/Form/AthleteFields";
-import CoachFields from "@/components/Form/CoachFields";
-import SponsorFields from "@/components/Form/SponsorFields";
+import CommonFields from '@/components/Form/CommonFields';
+import AthleteFields from '@/components/Form/AthleteFields';
+import CoachFields from '@/components/Form/CoachFields';
+import SponsorFields from '@/components/Form/SponsorFields';
 
 const SignupForm = () => {
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
   const navigate = useNavigate();
   const location = useLocation();
-  const mail = location.state?.email || "";
+  const mail = location.state?.email || '';
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
+    firstName: '',
+    lastName: '',
     email: mail,
-    password: "",
-    dob: "",
-    role: "",
-    phone: "",
-    position: "",
-    sport: "",
-    latitude: "",
-    longitude: "",
-    address: "",
-    country: "",
-    bloodGroup: "",
-    gender: "",
-    experienceLevel: "",
+    password: '',
+    dob: '',
+    role: '',
+    phone: '',
+    position: '',
+    sport: '',
+    latitude: '',
+    longitude: '',
+    address: '',
+    country: '',
+    bloodGroup: '',
+    gender: '',
+    experienceLevel: '',
+    companyName: '',
+    sponsorshipType: '',
   });
 
   const handleChange = (e) => {
@@ -50,21 +52,21 @@ const SignupForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setError("");
+    setError('');
 
     if (!validatePhoneNumber(formData.phone)) {
-      setError("Phone number must be in E.164 format (e.g., +1234567890).");
+      setError('Phone number must be in E.164 format (e.g., +1234567890).');
       setLoading(false);
       return;
     }
 
     try {
       const res = await api.auth.register(formData);
-      console.log("Registration Successful:", res.data);
-      navigate("/login");
+      console.log('Registration Successful:', res.data);
+      navigate('/login');
     } catch (err) {
       setError(
-        err.response?.data?.message || "Registration failed. Please try again."
+        err.response?.data?.message || 'Registration failed. Please try again.'
       );
     } finally {
       setLoading(false);
@@ -77,7 +79,7 @@ const SignupForm = () => {
       <div className="w-full md:w-1/2 p-20 md:p-12 flex flex-col justify-center">
         <div className="text-sm mb-1 text-gray-600">Sign Up</div>
         <span className="text-4xl font-bold mb-10 text-gray-900">
-          Welcome to{" "}
+          Welcome to{' '}
           <span className="bg-secondary px-2 py-1 rounded-lg">Vismoh!</span>
         </span>
 
@@ -129,13 +131,13 @@ const SignupForm = () => {
             />
 
             {/* Role-specific fields */}
-            {formData.role === "Athlete" && (
+            {formData.role === 'Athlete' && (
               <AthleteFields formData={formData} handleChange={handleChange} />
             )}
-            {formData.role === "Coach" && (
+            {formData.role === 'Coach' && (
               <CoachFields formData={formData} handleChange={handleChange} />
             )}
-            {formData.role === "Sponsor" && (
+            {formData.role === 'Sponsor' && (
               <SponsorFields formData={formData} handleChange={handleChange} />
             )}
 
@@ -146,13 +148,13 @@ const SignupForm = () => {
               disabled={loading}
               className="w-full p-4 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-colors focus:outline-none"
             >
-              {loading ? "Signing Up..." : "Sign Up"}
+              {loading ? 'Signing Up...' : 'Sign Up'}
             </button>
           </form>
         )}
 
         <div className="mt-6 text-center">
-          Already have an account?{" "}
+          Already have an account?{' '}
           <Link to="/login" className="text-teal-600 hover:underline">
             Login
           </Link>
