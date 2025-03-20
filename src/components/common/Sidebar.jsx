@@ -18,6 +18,12 @@ export default function Sidebar() {
       icon: "ri-dashboard-line",
       path: "/dashboard",
     },
+    {
+      id: 20,
+      label: "Chats",
+      icon: "ri-chat-1-line",
+      path: "/communication",
+    },
   ];
 
   const athleteMenuItems = [
