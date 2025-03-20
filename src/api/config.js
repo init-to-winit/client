@@ -2,8 +2,6 @@
 
 import axios from 'axios';
 import { get } from 'react-scroll/modules/mixins/scroller';
-import axios from 'axios';
-import { get } from 'react-scroll/modules/mixins/scroller';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL; // Update with your actual base URL
 
