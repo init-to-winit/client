@@ -65,8 +65,6 @@ const sportsOptions = [
   "Speed Skating",
 ];
 
-module.exports = sportsOptions;
-
 const CoachFields = ({ formData, handleChange }) => {
   return (
     <div className="relative">

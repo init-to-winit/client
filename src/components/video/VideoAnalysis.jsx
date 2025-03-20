@@ -36,8 +36,12 @@ const VideoAnalyzer = ({ report }) => {
 
   // Function to render each section
   const renderSection = (title, data) => (
-    <div className="py-6">
-      <div className={`grid grid-cols-12 gap-4 ${title === "Training Focus Areas" ? "" : "border-b-2"}  `}>
+    <div className="pt-6">
+      <div
+        className={`grid grid-cols-12 gap-4 pb-4 ${
+          title === "Training Focus Areas" ? "" : "border-b-2"
+        }  `}
+      >
         {/* Title */}
         <div className="col-span-3">
           <h3 className="text-lg font-semibold text-gray-700">{title}</h3>
@@ -53,7 +57,7 @@ const VideoAnalyzer = ({ report }) => {
                 {/* Heading */}
                 {heading && (
                   <h4 className="font-medium text-gray-800 mb-1">
-                    {heading.trim().replace("**","")}
+                    {heading.trim().replace("**", "")}
                   </h4>
                 )}
                 {/* Body */}
@@ -73,7 +77,7 @@ const VideoAnalyzer = ({ report }) => {
   return (
     <div className="w-full mx-auto p-6 bg-white">
       {/* Header */}
-      <h2 className="text-2xl font-semibold text-gray-800 mb-6 border-b pb-2">
+      <h2 className="text-xl font-semibold text-primary bg-secondary px-2 inline-block rounded-md mb-4">
         Performance Suggestions
       </h2>
 
