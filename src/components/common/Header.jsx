@@ -1,44 +1,44 @@
-import React, { useEffect, useState, useRef } from "react";
-import { FaSearch } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
-import { IoIosArrowDown } from "react-icons/io"; // Dropdown arrow icon
-import Logo from "../../assets/images/signuplogo.png";
-import { useAuth } from "../auth/AuthProvider";
+import React, { useEffect, useState, useRef } from 'react';
+import { FaSearch } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
+import { IoIosArrowDown } from 'react-icons/io'; // Dropdown arrow icon
+import Logo from '../../assets/images/signuplogo.png';
+import { useAuth } from '../auth/AuthProvider';
 
 export default function Header() {
   const { logout } = useAuth();
-  const [name, setName] = useState("Athlete"); // Default name
+  const [name, setName] = useState('Athlete'); // Default name
   const [showDropdown, setShowDropdown] = useState(false); // Toggle dropdown
-  const [searchTerm, setSearchTerm] = useState(""); // Search term
+  const [searchTerm, setSearchTerm] = useState(''); // Search term
   const [filteredPages, setFilteredPages] = useState([]); // Filtered search results
   const searchRef = useRef(null);
   const dropdownRef = useRef(null); // Reference for dropdown
   const navigate = useNavigate();
-  const user = JSON.parse(localStorage.getItem("user")) || null;
-  const role = user?.role || "";
-  const id = user?.id || "";
+  const user = JSON.parse(localStorage.getItem('user')) || null;
+  const role = user?.role || '';
+  const id = user?.id || '';
 
   // List of available pages (Profile should only be available for Athletes)
   const pages = [
-    { name: "Home", path: "/dashboard" },
-    { name: "Dashboard", path: "/dashboard" },
-    { name: "Coaches", path: "/coaches" },
-    { name: "Sponsors", path: "/sponsors" },
-    { name: "ChatBot", path: "/help" },
-    { name: "Help", path: "/help" },
-    { name: "Settings", path: "/settings" },
-    { name: "Requests", path: "/requests" },
+    { name: 'Home', path: '/dashboard' },
+    { name: 'Dashboard', path: '/dashboard' },
+    { name: 'Coaches', path: '/coaches' },
+    { name: 'Sponsors', path: '/sponsors' },
+    { name: 'ChatBot', path: '/help' },
+    { name: 'Help', path: '/help' },
+    { name: 'Settings', path: '/settings' },
+    { name: 'Requests', path: '/requests' },
   ];
 
   // Only add Profile if user is an Athlete
-  if (role === "Athlete") {
-    pages.splice(2, 0, { name: "Profile", path: `/athleteProfile/${id}` });
-    pages.splice(3, 0, { name: "Healthcare", path: "/healthcare" });
-    pages.splice(4, 0, { name: "Dietary", path: "/dietary" });
+  if (role === 'Athlete') {
+    pages.splice(2, 0, { name: 'Profile', path: `/athleteProfile/${id}` });
+    pages.splice(3, 0, { name: 'Healthcare', path: '/healthcare' });
+    pages.splice(4, 0, { name: 'Dietary', path: '/dietary' });
   }
 
   useEffect(() => {
-    const storedUser = JSON.parse(localStorage.getItem("user"));
+    const storedUser = JSON.parse(localStorage.getItem('user'));
     if (storedUser?.name) {
       setName(storedUser.name);
     }
@@ -48,17 +48,19 @@ export default function Header() {
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
-        (dropdownRef.current && !dropdownRef.current.contains(event.target)) &&
-        (searchRef.current && !searchRef.current.contains(event.target))
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target) &&
+        searchRef.current &&
+        !searchRef.current.contains(event.target)
       ) {
         setShowDropdown(false);
         setFilteredPages([]); // Hide search results
       }
     };
 
-    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener('mousedown', handleClickOutside);
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
 
@@ -71,7 +73,7 @@ export default function Header() {
   const handleSearchChange = (e) => {
     const query = e.target.value.toLowerCase();
     setSearchTerm(query);
-    if (query.trim() === "") {
+    if (query.trim() === '') {
       setFilteredPages([]);
     } else {
       const filtered = pages.filter((page) =>
@@ -106,7 +108,7 @@ export default function Header() {
                 onClick={() => {
                   navigate(page.path);
                   setFilteredPages([]); // Hide results after navigation
-                  setSearchTerm(""); // Clear search input
+                  setSearchTerm(''); // Clear search input
                 }}
               >
                 {page.name}
@@ -137,22 +139,28 @@ export default function Header() {
         {/* Dropdown Menu */}
         {showDropdown && (
           <div className="absolute top-16 right-0 bg-white rounded-md shadow-lg py-2 w-40 z-50">
-            {role === "Athlete" && (
-              <button
-                className="block px-4 py-2 text-gray-700 hover:bg-gray-100 w-full text-left"
-                onClick={() => {
-                  navigate(`/athleteProfile/${id}`);
-                  setShowDropdown(false);
-                }}
-              >
-                Profile
-              </button>
-            )}
+            <button
+              className="block px-4 py-2 text-gray-700 hover:bg-gray-100 w-full text-left"
+              onClick={() => {
+                const profilePath =
+                  role === 'Athlete'
+                    ? `/athleteProfile/${id}`
+                    : role === 'Coach'
+                    ? `/coachProfile/${id}`
+                    : `/sponsorProfile/${id}`;
+
+                navigate(profilePath);
+                setShowDropdown(false);
+              }}
+            >
+              Profile
+            </button>
+
             <button
               className="block px-4 py-2 text-gray-700 hover:bg-gray-100 w-full text-left"
               onClick={() => {
                 setShowDropdown(false);
-                navigate("/help");
+                navigate('/help');
               }}
             >
               Help
