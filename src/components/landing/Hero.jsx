@@ -3,9 +3,12 @@ import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
-    <div className="bg-[#F3F7F6] flex flex-col items-center justify-center min-h-[calc(100vh-80px)]" id="home">
+    <div
+      className="bg-[#F3F7F6] flex flex-col items-center justify-center  min-h-[calc(100vh-80px)]"
+      id="home"
+    >
       <motion.p
-        className="font-['Poppins'] uppercase tracking-widest"
+        className="font-['Poppins'] uppercase tracking-widest mt-[20vh]"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}

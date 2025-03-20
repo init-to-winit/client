@@ -31,7 +31,7 @@ const PerformanceSuggestions = () => {
 
   return (
     <div className="p-8 bg-white rounded-lg shadow-lg">
-      <h1 className="text-3xl font-bold text-gray-800 mb-6">
+      <h1 className="text-3xl font-bold text-primary bg-secondary px-2 inline-block rounded-md mb-6">
         Performance Suggestions
       </h1>
 
