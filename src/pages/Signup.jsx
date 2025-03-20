@@ -1,17 +1,19 @@
 import React, { useState } from "react";
 import tennisPlayer from "../assets/images/TennisPlayer.png";
 import logo from "../assets/images/signuplogo.png";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import api from "../api/config";
 
 const SignupForm = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
+  const mail = location.state?.email || "";
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
-    email: "",
+    email: mail,
     password: "",
     dob: "",
     role: "",
