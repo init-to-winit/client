@@ -2,6 +2,8 @@
 
 import axios from 'axios';
 import { get } from 'react-scroll/modules/mixins/scroller';
+import axios from 'axios';
+import { get } from 'react-scroll/modules/mixins/scroller';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL; // Update with your actual base URL
 
@@ -53,6 +55,7 @@ const api = {
     uploadProfilePicture: (userId, data) =>
       axiosInstance.post(`upload/profilePic/${userId}`, data, {
         headers: {
+          'Content-Type': 'multipart/form-data',
           'Content-Type': 'multipart/form-data',
         },
       }),
@@ -141,12 +144,8 @@ const api = {
     sendConnection: (data) =>
       axiosInstance.post(`/connect/send-connection`, data),
     getConnections: (id) => axiosInstance.get(`/connect/connections/${id}`),
-    handleConnections: ({ senderId, receiverId, action }) => {
-      return axiosInstance.post(`/connect/handle-connection`, {
-        senderId,
-        receiverId,
-        action,
-      });
+    handleConnections: (payload) => {
+      return axiosInstance.post(`/connect/handle-connection`, payload);
     },
     getAllConnections: (id) =>
       axiosInstance.get(`/connect/getAcceptedConnections/${id}`),
