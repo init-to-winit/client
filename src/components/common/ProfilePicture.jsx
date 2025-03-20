@@ -1,15 +1,39 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Camera, Upload, Check, X } from "lucide-react";
 import api from "@/api/config";
 import initialImage from "../../assets/images/profile.jpg";
-const ProfilePicture = ({ athleteId }) => {
+
+const ProfilePicture = () => {
   const [profileImage, setProfileImage] = useState(initialImage);
   const [isUploading, setIsUploading] = useState(false);
   const [uploadError, setUploadError] = useState(null);
   const [showUploadControls, setShowUploadControls] = useState(false);
   const fileInputRef = useRef(null);
+  const userId = JSON.parse(localStorage.getItem("user"))?.id;
+  const role = JSON.parse(localStorage.getItem("user"))?.role;
 
-  // Handle file selection
+  // Fetch profile photo on component mount
+  useEffect(() => {
+    const fetchProfilePhoto = async () => {
+      try {
+        const response = await api.user.getProfilePhoto(userId, { role });
+        if (response.status === 200 && response.data.profilePhoto) {
+          setProfileImage(response.data.profilePhoto);
+        } else {
+          setProfileImage(null); // Fallback to dummy image if no photo exists
+        }
+      } catch (error) {
+        console.error("Error fetching profile photo:", error);
+        setProfileImage(null); // Fallback to dummy image on error
+      }
+    };
+
+    if (userId && role) {
+      fetchProfilePhoto();
+    }
+  }, [userId, role]);
+
+  // Handle file selection and upload
   const handleFileChange = async (e) => {
     const file = e.target.files[0];
     if (!file) return;
@@ -32,17 +56,16 @@ const ProfilePicture = ({ athleteId }) => {
     try {
       // Create form data
       const formData = new FormData();
-      formData.append("profilePicture", file);
+      formData.append("photo", file);
+      formData.append("role", role);
 
       // Upload image to server
-      const response = await api.athletes.uploadProfilePicture(
-        athleteId,
-        formData
-      );
+      const response = await api.user.uploadProfilePicture(userId, formData);
+      console.log(response);
 
-      if (response.data.success) {
+      if (response.status === 200) {
         // Update the profile image with the URL returned from server
-        setProfileImage(response.data.imageUrl);
+        setProfileImage(response.data.profilePhoto);
         setShowUploadControls(false);
       } else {
         setUploadError(response.data.message || "Failed to upload image");
@@ -57,13 +80,13 @@ const ProfilePicture = ({ athleteId }) => {
 
   // Handle trigger for file input
   const triggerFileInput = () => {
+    setShowUploadControls(true); // Show controls before triggering input
     fileInputRef.current.click();
   };
 
-  // Get profile image URL
+  // Get profile image URL with fallback to dummy image
   const getProfileImageUrl = () => {
-    if (profileImage) return profileImage;
-    return `/api/placeholder/150/150`;
+    return profileImage || "https://via.placeholder.com/150"; // Proper dummy image URL
   };
 
   // Cancel upload process
@@ -88,12 +111,17 @@ const ProfilePicture = ({ athleteId }) => {
             <Camera className="w-10 h-10 text-gray-400" />
           </div>
         )}
+        {isUploading && (
+          <div className="absolute inset-0 flex items-center justify-center bg-gray-500 bg-opacity-50 rounded-full">
+            <div className="w-8 h-8 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+          </div>
+        )}
       </div>
 
       {/* Controls */}
       {!showUploadControls ? (
         <button
-          onClick={() => setShowUploadControls(true)}
+          onClick={triggerFileInput}
           className="absolute bottom-2 right-0 bg-[#002E25] text-white p-2 rounded-full shadow-md hover:bg-[#003c32] transition-colors"
           title="Change profile picture"
         >

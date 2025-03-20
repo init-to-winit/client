@@ -38,7 +38,12 @@ export default function Sidebar() {
     { id: 5, label: "Coaches", icon: "ri-user-star-line", path: "/coaches" },
     { id: 12, label: "Requests", icon: "ri-link", path: "/requests" },
     { id: 18, label: "Chatbot", icon: "ri-chat-1-line", path: "/help" },
-    { id: 19, label: "Video Analyser", icon: "ri-user-line", path: `/video-analysis` },
+    {
+      id: 19,
+      label: "Video Analyser",
+      icon: "ri-user-line",
+      path: `/video-analysis`,
+    },
   ];
 
   const coachMenuItems = [
@@ -79,14 +84,14 @@ export default function Sidebar() {
   }
 
   return (
-    <div className="h-full w-72 bg-white shadow-md flex flex-col">
+    <div className="h-full w-72 bg-white shadow-md flex flex-col ">
       <div className="flex items-center gap-4 my-8 px-8">
         <img src={Logo} alt="Vismoh" className="h-12 w-12" />
         <h1 className="uppercase text-2xl font-semibold font-primary text-primary">
           Vismoh
         </h1>
       </div>
-      <nav className="flex-1 mt-4">
+      <nav className="flex-1 mt-4 overflow-y-auto">
         <ul className="space-y-2 px-4">
           {menuItems.map((item) => {
             const isActive = location.pathname === item.path;
