@@ -15,7 +15,7 @@ import AthleteProfile from "./pages/AthleteProfile";
 import Requests from "./pages/Requests";
 import Chatbot from "./pages/Chatbot";
 import Communication from "./pages/Communication";
-
+import "leaflet/dist/leaflet.css";
 const App = () => {
   return (
     <Router>

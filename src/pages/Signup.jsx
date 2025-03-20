@@ -4,6 +4,11 @@ import logo from "../assets/images/signuplogo.png";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import api from "../api/config";
 
+import CommonFields from "@/components/Form/CommonFields";
+import AthleteFields from "@/components/Form/AthleteFields";
+import CoachFields from "@/components/Form/CoachFields";
+import SponsorFields from "@/components/Form/SponsorFields";
+
 const SignupForm = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -20,12 +25,20 @@ const SignupForm = () => {
     phone: "",
     position: "",
     sport: "",
+    latitude: "",
+    longitude: "",
+    address: "",
+    country: "",
+    bloodGroup: "",
+    gender: "",
+    experienceLevel: "",
   });
 
   const handleChange = (e) => {
+    const { name, value } = e.target;
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [name]: value,
     });
   };
 
@@ -47,8 +60,8 @@ const SignupForm = () => {
 
     try {
       const res = await api.auth.register(formData);
-      console.log("Login Successful:", res.data);
-      navigate("/login")
+      console.log("Registration Successful:", res.data);
+      navigate("/login");
     } catch (err) {
       setError(
         err.response?.data?.message || "Registration failed. Please try again."
@@ -61,92 +74,32 @@ const SignupForm = () => {
   return (
     <div className="flex min-h-screen mx-32">
       {/* Left side - Form */}
-      <div className="w-full md:w-1/2 p-20 md:p-12 flex flex-col justify-center ">
-        <div className=" text-sm mb-1 text-gray-600">Sign Up</div>
+      <div className="w-full md:w-1/2 p-20 md:p-12 flex flex-col justify-center">
+        <div className="text-sm mb-1 text-gray-600">Sign Up</div>
         <span className="text-4xl font-bold mb-10 text-gray-900">
           Welcome to{" "}
           <span className="bg-secondary px-2 py-1 rounded-lg">Vismoh!</span>
         </span>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <input
-              type="text"
-              name="firstName"
-              placeholder="FName"
-              value={formData.firstName}
-              onChange={handleChange}
-              className="w-full p-4 bg-gray-100 rounded-lg focus:outline-none"
-            />
-          </div>
-
-          <div>
-            <input
-              type="text"
-              name="lastName"
-              placeholder="LName"
-              value={formData.lastName}
-              onChange={handleChange}
-              className="w-full p-4 bg-gray-100 rounded-lg focus:outline-none"
-            />
-          </div>
-
-          <div>
-            <input
-              type="email"
-              name="email"
-              placeholder="Email"
-              value={formData.email}
-              onChange={handleChange}
-              className="w-full p-4 bg-gray-100 rounded-lg focus:outline-none"
-            />
-          </div>
-
-          <div>
-            <input
-              type="password"
-              name="password"
-              placeholder="Password"
-              value={formData.password}
-              onChange={handleChange}
-              className="w-full p-4 bg-gray-100 rounded-lg focus:outline-none"
-            />
-          </div>
-
-          <div>
-            <input
-              type="date"
-              name="dob"
-              placeholder="DOB"
-              value={formData.dob}
-              onChange={handleChange}
-              className="w-full p-4 bg-gray-100 rounded-lg focus:outline-none"
-            />
-          </div>
-          <div>
-            <input
-              type="text"
-              name="phone"
-              placeholder="Phone (e.g., +1234567890)"
-              value={formData.phone}
-              onChange={handleChange}
-              className="w-full p-4 bg-gray-100 rounded-lg focus:outline-none"
-            />
-          </div>
-
+        {/* Role selection at the top */}
+        <div className="mb-6">
+          <label className="block text-gray-600 mb-2">
+            I am registering as:
+          </label>
           <div className="relative">
             <select
               name="role"
               value={formData.role}
               onChange={handleChange}
               className="w-full p-4 bg-gray-100 rounded-lg appearance-none focus:outline-none"
+              required
             >
               <option value="" disabled>
-                Role
+                Select your role
               </option>
               <option value="Athlete">Athlete</option>
-              <option value="Sponsor">Sponsor</option>
               <option value="Coach">Coach</option>
+              <option value="Sponsor">Sponsor</option>
             </select>
             <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
               <svg
@@ -160,44 +113,43 @@ const SignupForm = () => {
                   strokeLinejoin="round"
                   strokeWidth="2"
                   d="M19 9l-7 7-7-7"
-                ></path>
+                />
               </svg>
             </div>
           </div>
-          {(formData.role === "Athlete" || formData.role === "Coach") && (
-            <div>
-              <input
-                type="text"
-                name="sport"
-                placeholder="Sport"
-                value={formData.sport}
-                onChange={handleChange}
-                className="w-full p-4 bg-gray-100 rounded-lg focus:outline-none"
-              />
-            </div>
-          )}
+        </div>
 
-          {formData.role === "Athlete" && (
-            <div>
-              <input
-                type="text"
-                name="position"
-                placeholder="Position"
-                value={formData.position}
-                onChange={handleChange}
-                className="w-full p-4 bg-gray-100 rounded-lg focus:outline-none"
-              />
-            </div>
-          )}
+        {formData.role && (
+          <form onSubmit={handleSubmit} className="space-y-4">
+            {/* Common fields for all roles */}
+            <CommonFields
+              formData={formData}
+              handleChange={handleChange}
+              setFormData={setFormData} // Pass setFormData here
+            />
 
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full p-4 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-colors focus:outline-none"
-          >
-            {loading ? "Signing Up..." : "Sign Up"}
-          </button>
-        </form>
+            {/* Role-specific fields */}
+            {formData.role === "Athlete" && (
+              <AthleteFields formData={formData} handleChange={handleChange} />
+            )}
+            {formData.role === "Coach" && (
+              <CoachFields formData={formData} handleChange={handleChange} />
+            )}
+            {formData.role === "Sponsor" && (
+              <SponsorFields formData={formData} handleChange={handleChange} />
+            )}
+
+            {error && <div className="text-red-500 text-sm py-2">{error}</div>}
+
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full p-4 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-colors focus:outline-none"
+            >
+              {loading ? "Signing Up..." : "Sign Up"}
+            </button>
+          </form>
+        )}
 
         <div className="mt-6 text-center">
           Already have an account?{" "}
@@ -208,9 +160,9 @@ const SignupForm = () => {
       </div>
 
       {/* Right side - Image */}
-      <div className=" md:flex flex-col hidden md:w-1/2 mt-4">
+      <div className="md:flex flex-col hidden md:w-1/2 mt-4">
         {/* Logo */}
-        <div className=" py-3 rounded-full">
+        <div className="py-3 rounded-full">
           <div className="w-12 h-12 text-green-600">
             <img src={logo} alt="logo" className="max-h-full object-cover" />
           </div>
