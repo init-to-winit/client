@@ -138,6 +138,17 @@ const api = {
     getMessages: (user1, user2) => axiosInstance.get(`/chat/${user1}/${user2}`),
     sendMessage: (data) => axiosInstance.post(`/chat/send`, data),
   },
+  verify:{
+    verifyAthlete:(data,id)=>{
+      return axiosInstance.post(`/verify/athlete/${id}`,data,{
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+        timeout: 500000,
+      });
+    },
+    verifyCoach:(data,id)=>axiosInstance.post(`/verify/coach/${id}`,data),
+  },
   connect: {
     sendConnection: (data) =>
       axiosInstance.post(`/connect/send-connection`, data),
