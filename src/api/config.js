@@ -148,6 +148,8 @@ const api = {
         action,
       });
     },
+    getAllConnections: (id) =>
+      axiosInstance.get(`/connect/getAcceptedConnections/${id}`),
   },
 };
 

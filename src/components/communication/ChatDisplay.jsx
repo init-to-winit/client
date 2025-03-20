@@ -1,66 +1,78 @@
-import React, { useState, useRef, useEffect } from "react";
-import { Send, Phone, Video, Paperclip, ArrowLeft, Clock } from "lucide-react";
-import MessageBubble from "./MessageBubble";
-import ChatHeader from "./ChatHeader";
-import api from "../../api/config"
+import React, { useState, useRef, useEffect } from 'react';
+import { Send, Paperclip } from 'lucide-react';
+import MessageBubble from './MessageBubble';
+import ChatHeader from './ChatHeader';
 
 const ChatDisplay = ({
   connection,
-  messages: initialMessages,
+  messages,
   onSendMessage,
+  isLoading = false,
 }) => {
-  const [messageText, setMessageText] = useState("");
-  const [messages, setMessages] = useState(initialMessages || []);
+  const [messageText, setMessageText] = useState('');
   const messagesEndRef = useRef(null);
-  console.log(connection);
+  const messagesContainerRef = useRef(null);
+  const [wasScrolledToBottom, setWasScrolledToBottom] = useState(true);
 
+  // Check if user was at bottom before new messages
   useEffect(() => {
-    setMessages(initialMessages || []); // Sync with prop changes
-  }, [initialMessages]);
+    if (messagesContainerRef.current) {
+      const container = messagesContainerRef.current;
+      const isScrolledToBottom =
+        container.scrollHeight - container.clientHeight <=
+        container.scrollTop + 20;
+      setWasScrolledToBottom(isScrolledToBottom);
+    }
+  }, [messages.length]);
 
+  // Scroll to bottom on new messages if user was already at bottom
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
+    if (wasScrolledToBottom && messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [messages, wasScrolledToBottom]);
+
+  // Always scroll to bottom when conversation changes
+  useEffect(() => {
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+    setWasScrolledToBottom(true);
+  }, [connection?.id]);
 
   const handleSendMessage = async () => {
-    if (messageText.trim() === "") return;
+    if (messageText.trim() === '' || !connection) return;
 
     const newMessage = {
-      sender: "you",
       text: messageText,
       time: new Date().toLocaleTimeString([], {
-        hour: "2-digit",
-        minute: "2-digit",
+        hour: '2-digit',
+        minute: '2-digit',
       }),
     };
 
-    setMessages((prevMessages) => [...prevMessages, newMessage]);
-
     try {
-      // ✅ Construct the payload
-      const payload = {
-        senderId: JSON.parse(localStorage.getItem("user"))?.id,
-        receiverId: connection.id, // ✅ Use connection id as receiverId
-        message: messageText,
-      };
-
-      console.log("Sending message:", payload);
-
-      // ✅ Send the message via API
-      await api.chat.sendMessage(payload, connection.id);
-
-      // ✅ Optionally, update parent state if needed
-      if (onSendMessage) onSendMessage(newMessage);
+      // Call the parent's onSendMessage handler
+      if (onSendMessage) {
+        await onSendMessage(newMessage);
+      }
     } catch (error) {
-      console.error("Failed to send message:", error);
+      console.error('Failed to send message:', error);
     }
 
-    setMessageText("");
+    setMessageText('');
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleSendMessage();
+    }
   };
 
   if (!connection) {
     return (
-      <div className="flex-1 flex items-center justify-center ">
+      <div className="flex-1 flex items-center justify-center">
         <p className="text-gray-500">
           Select a conversation to start messaging
         </p>
@@ -75,19 +87,32 @@ const ChatDisplay = ({
 
       {/* Messages */}
       <div
-        className="flex-1 overflow-y-auto p-4  max-h-[80vh] rounded"
+        ref={messagesContainerRef}
+        className="flex-1 overflow-y-auto p-4 max-h-[80vh] rounded"
         style={{
           background:
-            "linear-gradient(to bottom, rgba(187, 249, 94, 0.1) 0%, rgba(187, 249, 94, 0.4) 100%)",
+            'linear-gradient(to bottom, rgba(187, 249, 94, 0.1) 0%, rgba(187, 249, 94, 0.4) 100%)',
         }}
       >
-        {messages.map((message, index) => (
-          <MessageBubble
-            key={index}
-            message={message}
-            connectionImage={connection.profileImage || ""}
-          />
-        ))}
+        {isLoading ? (
+          <div className="flex justify-center items-center h-full">
+            <p className="text-gray-500">Loading messages...</p>
+          </div>
+        ) : messages && messages.length > 0 ? (
+          messages.map((message, index) => (
+            <MessageBubble
+              key={`${message.timestamp || index}`}
+              message={message}
+              connectionImage={connection.profileImage || ''}
+            />
+          ))
+        ) : (
+          <div className="flex justify-center items-center h-full">
+            <p className="text-gray-500">
+              Start a conversation with {connection.firstName}
+            </p>
+          </div>
+        )}
         <div ref={messagesEndRef} />
       </div>
 
@@ -100,16 +125,17 @@ const ChatDisplay = ({
           type="text"
           value={messageText}
           onChange={(e) => setMessageText(e.target.value)}
+          onKeyDown={handleKeyDown}
           placeholder="Type a message..."
           className="flex-1 border rounded-full px-4 py-2 mx-2 focus:outline-none focus:ring-2 focus:ring-[#002E25]/40"
         />
         <button
           onClick={handleSendMessage}
-          disabled={messageText.trim() === ""}
+          disabled={messageText.trim() === '' || isLoading}
           className={`p-2 rounded-full ${
-            messageText.trim() === ""
-              ? "bg-gray-200 text-gray-400"
-              : "bg-[#002E25] text-white hover:bg-[#003c32]"
+            messageText.trim() === '' || isLoading
+              ? 'bg-gray-200 text-gray-400'
+              : 'bg-[#002E25] text-white hover:bg-[#003c32]'
           }`}
         >
           <Send className="w-5 h-5" />

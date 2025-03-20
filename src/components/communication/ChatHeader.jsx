@@ -1,6 +1,6 @@
-import React from "react";
-import { ArrowLeft, Phone, Video } from "lucide-react";
-
+import React from 'react';
+import { ArrowLeft, Phone, Video } from 'lucide-react';
+import dummy from '../../assets/images/profile.jpg';
 const ChatHeader = ({ connection }) => {
   return (
     <div className="bg-white p-4 border-b flex items-center justify-between rounded-r-lg">
@@ -9,7 +9,7 @@ const ChatHeader = ({ connection }) => {
           <ArrowLeft className="w-5 h-5" />
         </button>
         <img
-          src={connection.profileImage || "https://via.placeholder.com/48?text=No+Image"}
+          src={connection.profilePhoto || dummy}
           alt={connection.firstName}
           className="w-10 h-10 rounded-full object-cover"
         />
@@ -18,15 +18,6 @@ const ChatHeader = ({ connection }) => {
           <p className="text-xs text-gray-500">{connection.role}</p>
         </div>
       </div>
-
-      {/* <div className="flex items-center space-x-2">
-        <button className="p-2 rounded-full hover:bg-gray-100">
-          <Phone className="w-5 h-5 text-[#002E25]" />
-        </button>
-        <button className="p-2 rounded-full hover:bg-gray-100">
-          <Video className="w-5 h-5 text-[#002E25]" />
-        </button>
-      </div> */}
     </div>
   );
 };
