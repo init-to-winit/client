@@ -14,6 +14,7 @@ import Players from './pages/Players';
 import AthleteProfile from './pages/AthleteProfile';
 import Requests from './pages/Requests';
 import Chatbot from './pages/Chatbot';
+import VideoAnalyzer from './components/video/VideoUpload';
 
 const App = () => {
   return (
@@ -38,6 +39,7 @@ const App = () => {
                 path="/athleteProfile/:athleteId"
                 element={<AthleteProfile />}
               />
+              <Route path="video-analysis" element={<VideoAnalyzer />} />
               <Route path="requests" element={<Requests />} />
               <Route path="help" element={<Chatbot />} />
             </Route>

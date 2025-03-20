@@ -38,6 +38,10 @@ export default function Hello() {
       title: "Coaching & Training",
       message: "Connect with top coaches and enhance your skills.",
     },
+    "/video-analysis": {
+      title: "Video Analysis",
+      message: "Upload a video and get insights on your performance.",
+    },
   };
 
   // Get current page data or default
