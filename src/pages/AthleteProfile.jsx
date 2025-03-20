@@ -13,6 +13,7 @@ import {
   RefreshCw,
   ArrowLeft,
 } from "lucide-react";
+import ProfilePicture from "@/components/common/ProfilePicture";
 
 export default function AthleteProfile() {
   const [athlete, setAthlete] = useState(null);
@@ -147,16 +148,24 @@ export default function AthleteProfile() {
         {/* Header */}
         <div className="p-6">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between">
-            <div>
-              <h1 className="text-3xl font-bold text-[#002E25]">
-                {basicInfo.firstName} {basicInfo.lastName}
-              </h1>
-              <div className="flex items-center mt-2">
-                <span className="text-[#002E25]/80">{basicInfo.position}</span>
-                <span className="mx-2">•</span>
-                <span className="capitalize text-[#002E25]/80">
-                  {basicInfo.sport}
-                </span>
+            <div className="flex items-center">
+              <ProfilePicture
+                athleteId={athleteId}
+                initialImage={basicInfo?.profilePictureUrl} // Assuming this is in your athlete data
+              />
+              <div className="ml-4">
+                <h1 className="text-3xl font-bold text-[#002E25]">
+                  {basicInfo.firstName} {basicInfo.lastName}
+                </h1>
+                <div className="flex items-center mt-2">
+                  <span className="text-[#002E25]/80">
+                    {basicInfo.position}
+                  </span>
+                  <span className="mx-2">•</span>
+                  <span className="capitalize text-[#002E25]/80">
+                    {basicInfo.sport}
+                  </span>
+                </div>
               </div>
             </div>
             <div className="mt-4 md:mt-0 flex items-center">
@@ -320,9 +329,11 @@ export default function AthleteProfile() {
                       <div
                         className="bg-[#CDFA89] h-2 rounded-full"
                         style={{
-                          width: `${
-                            (healthcareDetails?.hydration_level / 5) * 100
-                          }%`,
+                          width: `${Math.min(
+                            (healthcareDetails?.hydration_level / 5) * 100,
+                            100
+                          )}%`,
+                          maxWidth: "100%",
                         }}
                       ></div>
                     </div>

@@ -157,10 +157,10 @@ export default function Healthcare() {
     }
   };
 
-  if (!healthData) {
-    // Show loading state while healthData is not available
-    return <LoadingState />;
-  }
+  // if (!healthData) {
+  //   // Show loading state while healthData is not available
+  //   return <LoadingState />;
+  // }
 
   return (
     <div className="">
