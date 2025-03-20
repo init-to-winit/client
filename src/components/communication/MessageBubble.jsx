@@ -2,6 +2,7 @@ import React from "react";
 import { Clock } from "lucide-react";
 
 const MessageBubble = ({ message, coachImage }) => {
+  console.log(message);
   const isUserMessage = message.sender === "you";
 
   return (

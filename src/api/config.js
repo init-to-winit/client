@@ -58,6 +58,7 @@ const api = {
       }),
     getProfilePhoto: (userId, data) =>
       axiosInstance.post(`/upload/getProfilePic/${userId}`, data),
+    getAllUsers : () => axiosInstance.get("/all/getAllUsers"),
   },
 
   athletes: {
@@ -130,6 +131,10 @@ const api = {
     },
     getVideoAnalysis: (id) =>
       axiosInstance.get(`athlete/getVideoPerformanceAnalysis/${id}`),
+  },
+  chat : {
+    getMessages: (user1, user2) => axiosInstance.get(`/chat/${user1}/${user2}`),
+    sendMessage: (data) => axiosInstance.post(`/chat/send`, data),
   },
   connect: {
     sendConnection: (data) =>
