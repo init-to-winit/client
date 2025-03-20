@@ -38,6 +38,7 @@ export default function Sidebar() {
     { id: 5, label: "Coaches", icon: "ri-user-star-line", path: "/coaches" },
     { id: 12, label: "Requests", icon: "ri-link", path: "/requests" },
     { id: 18, label: "Chatbot", icon: "ri-chat-1-line", path: "/help" },
+    { id: 19, label: "Video Analyser", icon: "ri-user-line", path: `/video-analysis` },
   ];
 
   const coachMenuItems = [
