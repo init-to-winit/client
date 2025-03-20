@@ -38,6 +38,12 @@ export default function Sidebar() {
       path: '/video-analysis',
     },
     { id: 20, label: 'Chats', icon: 'ri-chat-1-line', path: '/communication' },
+    {
+      id: 21,
+      label: 'Sports Rules',
+      icon: 'ri-medal-line',
+      path: '/sportsRules',
+    },
     { id: 18, label: 'Chatbot', icon: 'ri-chat-1-line', path: '/help' },
   ];
 
@@ -58,6 +64,13 @@ export default function Sidebar() {
       path: '/video-analysis',
     },
     { id: 20, label: 'Chats', icon: 'ri-chat-1-line', path: '/communication' },
+    {
+      id: 21,
+      label: 'Sports Rules',
+      icon: 'ri-medal-line',
+      path: '/sportsRules',
+    },
+
     { id: 18, label: 'Chatbot', icon: 'ri-chat-1-line', path: '/help' },
   ];
 
@@ -72,6 +85,13 @@ export default function Sidebar() {
     },
     { id: 14, label: 'Requests', icon: 'ri-link', path: '/requests' },
     { id: 20, label: 'Chats', icon: 'ri-chat-1-line', path: '/communication' },
+    {
+      id: 21,
+      label: 'Sports Rules',
+      icon: 'ri-medal-line',
+      path: '/sportsRules',
+    },
+
     { id: 18, label: 'Chatbot', icon: 'ri-chat-1-line', path: '/help' },
   ];
 
