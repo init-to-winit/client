@@ -14,6 +14,7 @@ import Players from "./pages/Players";
 import AthleteProfile from "./pages/AthleteProfile";
 import Requests from "./pages/Requests";
 import Chatbot from "./pages/Chatbot";
+import VideoAnalyzer from "./components/video/VideoUpload";
 import Communication from "./pages/Communication";
 import "leaflet/dist/leaflet.css";
 const App = () => {
@@ -41,6 +42,7 @@ const App = () => {
               />
               <Route path="communication" element={<Communication />} />
 
+              <Route path="video-analysis" element={<VideoAnalyzer />} />
               <Route path="requests" element={<Requests />} />
               <Route path="help" element={<Chatbot />} />
             </Route>

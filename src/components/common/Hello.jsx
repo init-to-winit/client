@@ -42,6 +42,10 @@ export default function Hello() {
       message:
         "Seamlessly connect and collaborate with athletes, coaches, and sponsors.",
     },
+    "/video-analysis": {
+      title: "Video Analysis",
+      message: "Upload a video and get insights on your performance.",
+    },
   };
 
   // Get current page data or default
