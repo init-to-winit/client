@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 export default function Hero() {
+  const [email, setEmail] = useState("");
+  const navigate = useNavigate();
+
+  // Email validation regex pattern
+  const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  const handleLogin = (email) =>{
+    navigate("/signup", { state: { email } });
+  }
+
   return (
     <div
       className="bg-[#F3F7F6] flex flex-col items-center justify-center  min-h-[calc(100vh-80px)]"
@@ -56,13 +66,21 @@ export default function Hero() {
       >
         <input
           type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           placeholder="Enter your email address"
           className="flex-grow px-4 py-3 bg-white focus:outline-none text-gray-700"
         />
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="bg-lime-300 text-gray-600 font-semibold px-5 py-3 rounded-full hover:bg-lime-400"
+          className={`font-semibold px-5 py-3 rounded-full transition-all duration-300 ${
+            isValidEmail(email)
+              ? "bg-lime-300 text-gray-600 hover:bg-lime-400"
+              : "bg-gray-300 text-gray-500 cursor-not-allowed"
+          }`}
+          disabled={!isValidEmail(email)}
+          onClick={()=>handleLogin(email)}
         >
           Get Started
         </motion.button>
