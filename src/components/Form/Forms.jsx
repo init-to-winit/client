@@ -1,15 +1,17 @@
-import React, { useEffect } from "react";
-import Logo from "../../assets/images/Logo.png";
+import React, { useEffect } from 'react';
+import Logo from '../../assets/images/Logo.png';
 
 const Forms = ({
   isOpen,
   onClose,
   title,
-  description = "Please fill in the required details below.",
+  description = 'Please fill in the required details below.',
   fields,
+  Data,
   onSubmit,
 }) => {
-  const [formData, setFormData] = React.useState({});
+  console.log('data', Data);
+  const [formData, setFormData] = React.useState(Data);
   const [isVisible, setIsVisible] = React.useState(false);
 
   useEffect(() => {
@@ -19,13 +21,89 @@ const Forms = ({
   }, [isOpen]);
 
   useEffect(() => {
+    if (Data) {
+      const initialData = {
+        calories_per_day: Data.calories_per_day || '',
+        protein_intake: Data.protein_intake
+          ? Number(Data.protein_intake.replace(/[^\d.-]/g, '')) // Remove non-numeric characters and convert to number
+          : '',
+        carbs_intake: Data.carbs_intake
+          ? Number(Data.carbs_intake.replace(/[^\d.-]/g, ''))
+          : '',
+        fats_intake: Data.fats_intake
+          ? Number(Data.fats_intake.replace(/[^\d.-]/g, ''))
+          : '',
+        breakfast_items:
+          Data.meal_plan
+            ?.find((meal) => meal.meal === 'Breakfast')
+            ?.items.join(', ') || '',
+        lunch_items:
+          Data.meal_plan
+            ?.find((meal) => meal.meal === 'Lunch')
+            ?.items.join(', ') || '',
+        dinner_items:
+          Data.meal_plan
+            ?.find((meal) => meal.meal === 'Dinner')
+            ?.items.join(', ') || '',
+        calories_per_day: Data.calories_per_day || '',
+        protein_intake: Data.protein_intake
+          ? Number(Data.protein_intake.replace(/[^\d.-]/g, ''))
+          : '',
+        carbs_intake: Data.carbs_intake
+          ? Number(Data.carbs_intake.replace(/[^\d.-]/g, ''))
+          : '',
+        fats_intake: Data.fats_intake
+          ? Number(Data.fats_intake.replace(/[^\d.-]/g, ''))
+          : '',
+        breakfast_items:
+          Data.meal_plan
+            ?.find((meal) => meal.meal === 'Breakfast')
+            ?.items.join(', ') || '',
+        lunch_items:
+          Data.meal_plan
+            ?.find((meal) => meal.meal === 'Lunch')
+            ?.items.join(', ') || '',
+        dinner_items:
+          Data.meal_plan
+            ?.find((meal) => meal.meal === 'Dinner')
+            ?.items.join(', ') || '',
+
+        // Healthcare data
+        hydration_level: Data.hydration_level || '',
+        sleep_hours: Data.sleep_hours || '',
+        height: Data.height || '',
+        weight: Data.weight || '',
+        bmi: Data.bmi ? Number(Data.bmi.replace(/[^\d.-]/g, '')) : '',
+
+        // Injury history (first entry for simplicity)
+        injury: Data.injury_history?.[0]?.injury || '',
+        recoveryPlan: Data.injury_history?.[0]?.recoveryPlan || '',
+        recoveryDuration: Data.injury_history?.[0]?.recoveryDuration
+          ? Number(
+              Data.injury_history[0].recoveryDuration.replace(/[^\d.-]/g, '')
+            )
+          : '',
+        date: Data.injury_history?.[0]?.date || '',
+
+        total_matches: Data?.total_matches || '',
+        wins: Data?.wins || '',
+        losses: Data?.losses || '',
+        practice_sessions_per_week:
+          Data?.practice_sessions_per_week || '',
+      };
+
+      setFormData(initialData);
+    }
+  }, [Data]);
+
+  useEffect(() => {
     const handleKeyDown = (e) => {
-      if (e.key === "Escape") onClose();
+      if (e.key === 'Escape') onClose();
     };
     if (isOpen) {
-      window.addEventListener("keydown", handleKeyDown);
+      window.addEventListener('keydown', handleKeyDown);
     }
-    return () => window.removeEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, onClose]);
 
   const handleChange = (e) => {
@@ -55,7 +133,7 @@ const Forms = ({
         className="relative bg-white rounded-lg w-full max-w-md max-h-[90vh] shadow-xl transform transition-all duration-300 overflow-y-auto p-6"
         style={{
           opacity: isVisible ? 1 : 0,
-          transform: isVisible ? "scale(1)" : "scale(0.95)",
+          transform: isVisible ? 'scale(1)' : 'scale(0.95)',
         }}
       >
         {/* Header */}
@@ -93,7 +171,7 @@ const Forms = ({
                 id={field.id}
                 type={field.type}
                 placeholder={field.placeholder}
-                value={formData[field.id] || ""}
+                value={formData[field.id] || ''}
                 onChange={handleChange}
                 className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
               />

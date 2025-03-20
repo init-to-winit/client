@@ -132,7 +132,7 @@ export default function Dashboard() {
           onClick={() => setIsFormOpen(true)}
           className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
         >
-          Add Data +
+         {performanceData?"Update Data":"Add Data +"}
         </button>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 my-4">
@@ -160,6 +160,7 @@ export default function Dashboard() {
           isOpen={isFormOpen}
           onClose={() => setIsFormOpen(false)}
           onSubmit={formSubmit}
+          Data = {performanceData}
           fields={fields}
           title="Add Match Details"
           description="Please fill in the required details below."
