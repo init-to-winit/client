@@ -34,8 +34,9 @@ export default function SponsorProfile() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const { id } = useParams();
-  const user = JSON.parse(localStorage.getItem('user')) || null;
-  const role = user?.role || '';
+  const currentUser = JSON.parse(localStorage.getItem('user')) || {};
+  const disableUpload = currentUser.id !== id;
+  const role = 'Sponsor';
 
   const fetchSponsorData = async () => {
     if (!id) {
@@ -153,7 +154,8 @@ export default function SponsorProfile() {
         <div className="p-6">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between">
             <div className="flex items-center">
-              <ProfilePicture />
+              <ProfilePicture userId={id} disableUpload={disableUpload} />
+
               <div className="ml-4">
                 <h1 className="text-3xl font-bold text-[#002E25]">
                   {sponsor.firstName} {sponsor.lastName}
