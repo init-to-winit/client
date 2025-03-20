@@ -1,22 +1,22 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { AuthProvider } from './components/auth/AuthProvider';
-import ProtectedRoute from './components/auth/ProtectedRoute';
-import Landing from './pages/Landing';
-import SignupForm from './pages/Signup';
-import VismohLoginPage from './pages/Login';
-import Layout from './components/Layout';
-import Dashboard from './pages/Dashboard';
-import Dietary from './pages/Dietary';
-import Healthcare from './pages/Healthcare';
-import Coaches from './pages/Coaches';
-import RunnerStatsTable from './components/LeaderBoard';
-import Players from './pages/Players';
-import AthleteProfile from './pages/AthleteProfile';
-import Requests from './pages/Requests';
-import Chatbot from './pages/Chatbot';
-import VideoAnalyzer from './components/video/VideoUpload';
-import Communication from './pages/Communication';
-
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { AuthProvider } from "./components/auth/AuthProvider";
+import ProtectedRoute from "./components/auth/ProtectedRoute";
+import Landing from "./pages/Landing";
+import SignupForm from "./pages/Signup";
+import VismohLoginPage from "./pages/Login";
+import Layout from "./components/Layout";
+import Dashboard from "./pages/Dashboard";
+import Dietary from "./pages/Dietary";
+import Healthcare from "./pages/Healthcare";
+import Coaches from "./pages/Coaches";
+import RunnerStatsTable from "./components/LeaderBoard";
+import Players from "./pages/Players";
+import AthleteProfile from "./pages/AthleteProfile";
+import Requests from "./pages/Requests";
+import Chatbot from "./pages/Chatbot";
+import VideoAnalyzer from "./components/video/VideoUpload";
+import Communication from "./pages/Communication";
+import "leaflet/dist/leaflet.css";
 const App = () => {
   return (
     <Router>

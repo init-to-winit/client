@@ -12,8 +12,10 @@ const VideoUploader = () => {
   const [error, setError] = useState(null);
   const [analysisReport, setAnalysisReport] = useState(null);
   const [videoUrl, setVideoUrl] = useState(null);
+  const [isPortrait, setIsPortrait] = useState(false); // New state for orientation
   const id = JSON.parse(localStorage.getItem("user"))?.id;
   const fileInputRef = useRef(null);
+  const videoRef = useRef(null); // Ref for the video element
 
   useEffect(() => {
     const fetchAnalysis = async () => {
@@ -31,9 +33,20 @@ const VideoUploader = () => {
     };
 
     if (id) {
-      fetchAnalysis(); // ✅ Proper function call
+      fetchAnalysis();
     }
   }, [id]);
+
+  // Detect video orientation when metadata is loaded
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video && videoUrl) {
+      video.onloadedmetadata = () => {
+        const isVideoPortrait = video.videoHeight > video.videoWidth;
+        setIsPortrait(isVideoPortrait);
+      };
+    }
+  }, [videoUrl]);
 
   const handleDragOver = (e) => {
     e.preventDefault();
@@ -54,7 +67,6 @@ const VideoUploader = () => {
   const handleFileSelection = (selectedFile) => {
     if (!selectedFile) return;
 
-    // Check if the file is a video
     if (!selectedFile.type.startsWith("video/")) {
       setError("Please select a valid video file");
       return;
@@ -81,7 +93,6 @@ const VideoUploader = () => {
     setError(null);
 
     try {
-      // Simulate upload progress for UI smoothness
       const uploadProgressInterval = setInterval(() => {
         setUploadProgress((prev) => {
           if (prev >= 95) {
@@ -92,9 +103,7 @@ const VideoUploader = () => {
         });
       }, 200);
 
-      // ✅ Send only the video file
       const response = await api.video_analysis.postVideo(id, videoFile);
-
       clearInterval(uploadProgressInterval);
 
       if (response.status !== 200) {
@@ -103,13 +112,13 @@ const VideoUploader = () => {
         );
       }
 
-      // ✅ Access the response data directly
       const result = response.data;
 
       setUploadProgress(100);
       setIsUploading(false);
       setUploadComplete(true);
       setAnalysisReport(result);
+      setVideoUrl(result.videoUrl || URL.createObjectURL(videoFile)); // Fallback to local URL if no server-provided URL
     } catch (err) {
       console.error("Error uploading video:", err);
       setError(`Failed to upload: ${err.message}`);
@@ -125,24 +134,30 @@ const VideoUploader = () => {
     setAnalysisReport(null);
     setError(null);
     setVideoUrl(null);
+    setIsPortrait(false); // Reset orientation
   };
 
   return (
     <div className="w-full h-auto mx-auto p-6 bg-white rounded-lg">
       {videoUrl && (
         <>
-          <div className="relative w-full h-80 mb-6 rounded-lg overflow-hidden">
+          <div className="relative w-full max-w-3xl mx-auto mb-6 rounded-lg overflow-hidden">
             <video
+              ref={videoRef} // Attach ref to video element
               src={videoUrl}
-              className="w-full h-full object-fill max-w-3xl mx-auto"
+              className={`w-full h-auto max-h-[80vh] object-contain mx-auto ${
+                isPortrait ? "max-w-[50vw]" : "max-w-3xl"
+              }`}
               controls
             />
-            {/* Reupload Button */}
             <button
               onClick={resetUpload}
               className="absolute top-4 right-4 bg-blue-900 text-white px-4 py-2 rounded-lg hover:bg-blue-800 transition-colors"
             >
-              <span className="flex items-center"><RefreshCcw size={18} /><span className="ml-2"> Reupload</span></span>
+              <span className="flex items-center">
+                <RefreshCcw size={18} />
+                <span className="ml-2"> Reupload</span>
+              </span>
             </button>
           </div>
           <div className="mt-6">
@@ -163,8 +178,7 @@ const VideoUploader = () => {
       <div
         className={`w-full mx-auto bg-gray-100 rounded-lg flex flex-col items-center justify-center transition-all ${
           isDragging ? "border-2 border-blue-500 border-dashed" : ""
-        } ${videoUrl ? "":"p-20"
-        } ${file ? "border border-gray-300" : ""}`}
+        } ${videoUrl ? "" : "p-20"} ${file ? "border border-gray-300" : ""}`}
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
@@ -174,19 +188,16 @@ const VideoUploader = () => {
             <div className="bg-gray-300 rounded-full p-6 mb-4 shadow-lg">
               <Upload className="w-12 h-12 text-blue-900" />
             </div>
-
             <h2 className="text-xl font-semibold text-gray-700 mb-2">
               Video Analyzer
             </h2>
             <p className="text-gray-500 mb-4">Upload a video for analysis</p>
-
             <button
               onClick={handleButtonClick}
               className="bg-blue-900 text-white px-4 py-2 rounded hover:bg-blue-800 transition-colors"
             >
               {analysisReport ? "Reupload Video" : "Upload Video"}
             </button>
-
             <input
               type="file"
               ref={fileInputRef}
@@ -194,20 +205,16 @@ const VideoUploader = () => {
               accept="video/*"
               className="hidden"
             />
-
             {error && <p className="text-red-500 mt-4">{error}</p>}
           </>
         ) : (
           !videoUrl && (
             <div className="w-full">
               <div className="max-w-md w-full mx-auto">
-                {/* Upload Status */}
                 <div className="flex items-center justify-between mb-2">
                   <span className="font-medium truncate max-w-xs">
                     {file ? file.name : "Uploading video..."}
                   </span>
-
-                  {/* Cancel Button */}
                   {!isUploading && !uploadComplete && (
                     <button
                       onClick={resetUpload}
@@ -216,14 +223,10 @@ const VideoUploader = () => {
                       <X size={20} />
                     </button>
                   )}
-
-                  {/* Upload Complete Icon */}
                   {uploadComplete && (
                     <Check size={20} className="text-green-500" />
                   )}
                 </div>
-
-                {/* Progress Bar */}
                 <div className="w-full bg-gray-300 rounded-full h-2 mb-4 overflow-hidden">
                   <div
                     className={`h-2 rounded-full transition-all ${
@@ -235,8 +238,6 @@ const VideoUploader = () => {
                     }}
                   ></div>
                 </div>
-
-                {/* Upload Status */}
                 <div className="flex justify-between text-sm text-gray-600">
                   <span>
                     {isUploading
@@ -247,16 +248,12 @@ const VideoUploader = () => {
                   </span>
                   <span>{uploadProgress}%</span>
                 </div>
-
-                {/* Loader */}
                 {isUploading && (
                   <div className="flex justify-center mt-4">
                     <Loader className="w-8 h-8 text-blue-900 animate-spin" />
                   </div>
                 )}
               </div>
-
-              {/* Upload Complete Message & Analysis */}
               {uploadComplete && (
                 <div className="mt-4 w-full">
                   <p className="text-green-600 text-center w-full font-medium mb-2">

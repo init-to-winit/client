@@ -149,10 +149,7 @@ export default function AthleteProfile() {
         <div className="p-6">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between">
             <div className="flex items-center">
-              <ProfilePicture
-                athleteId={athleteId}
-                initialImage={basicInfo?.profilePictureUrl} // Assuming this is in your athlete data
-              />
+              <ProfilePicture />
               <div className="ml-4">
                 <h1 className="text-3xl font-bold text-[#002E25]">
                   {basicInfo.firstName} {basicInfo.lastName}
