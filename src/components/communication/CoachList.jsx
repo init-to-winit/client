@@ -1,9 +1,9 @@
-import React from "react";
-
+import React from 'react';
+import dummy from '../../assets/images/profile.jpg';
 const CoachList = ({
   connections,
   activeChat,
-  onSelectconnection,
+  onSelectConnection,
   searchTerm,
   onSearchChange,
 }) => {
@@ -27,18 +27,15 @@ const CoachList = ({
           connections.map((connection) => (
             <div
               key={connection.id}
-              onClick={() => onSelectconnection(connection.id)}
+              onClick={() => onSelectConnection(connection.id)}
               className={`p-4 border-b flex items-center cursor-pointer hover:bg-gray-50 ${
-                activeChat === connection.id ? "bg-gray-100" : ""
+                activeChat === connection.id ? 'bg-gray-100' : ''
               }`}
             >
               {/* ✅ Profile Image and Online Status */}
               <div className="relative">
                 <img
-                  src={
-                    connection.profilePhoto ||
-                    "https://via.placeholder.com/48?text=No+Image"
-                  }
+                  src={connection.profilePhoto || dummy}
                   alt={`${connection.firstName} ${connection.lastName}`}
                   className="w-12 h-12 rounded-full object-cover"
                 />
@@ -54,7 +51,9 @@ const CoachList = ({
                     {connection.lastMessageTime || "N/A"}
                   </span> */}
                 </div>
-                <p className="text-sm text-gray-600 truncate">{connection.role}</p>
+                <p className="text-sm text-gray-600 truncate">
+                  {connection.role}
+                </p>
                 {/* <p className="text-sm text-gray-500 truncate">
                   {connection.lastMessage || "No recent message"}
                 </p> */}

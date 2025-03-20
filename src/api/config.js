@@ -54,11 +54,13 @@ const api = {
       axiosInstance.post(`upload/profilePic/${userId}`, data, {
         headers: {
           'Content-Type': 'multipart/form-data',
+          'Content-Type': 'multipart/form-data',
         },
       }),
     getProfilePhoto: (userId, data) =>
       axiosInstance.post(`/upload/getProfilePic/${userId}`, data),
     getAllUsers: () => axiosInstance.get('/all/getAllUsers'),
+    getUser: (userId, role) => axiosInstance.get(`/all/user/${userId}/${role}`),
   },
 
   athletes: {
@@ -143,6 +145,8 @@ const api = {
     handleConnections: (payload) => {
       return axiosInstance.post(`/connect/handle-connection`, payload);
     },
+    getAllConnections: (id) =>
+      axiosInstance.get(`/connect/getAcceptedConnections/${id}`),
   },
 };
 
