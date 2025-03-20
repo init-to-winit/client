@@ -1,7 +1,7 @@
 // src/config/apiConfig.js
 
-import axios from "axios";
-import { get } from "react-scroll/modules/mixins/scroller";
+import axios from 'axios';
+import { get } from 'react-scroll/modules/mixins/scroller';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL; // Update with your actual base URL
 
@@ -9,16 +9,16 @@ const axiosInstance = axios.create({
   baseURL: API_BASE_URL,
   timeout: 90000,
   headers: {
-    "Content-Type": "application/json",
+    'Content-Type': 'application/json',
   },
 });
 
 // Request Interceptor
 axiosInstance.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem('token');
     if (token) {
-      config.headers["Authorization"] = `Bearer ${token}`;
+      config.headers['Authorization'] = `Bearer ${token}`;
     }
     return config;
   },
@@ -30,7 +30,7 @@ axiosInstance.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response && error.response.status === 401) {
-      console.error("Unauthorized. Redirecting to login...");
+      console.error('Unauthorized. Redirecting to login...');
       // Handle token expiration or unauthorized access
     }
     return Promise.reject(error);
@@ -40,25 +40,25 @@ axiosInstance.interceptors.response.use(
 // API Endpoints
 const api = {
   auth: {
-    login: (credentials) => axiosInstance.post("/auth/login", credentials),
-    register: (userData) => axiosInstance.post("/auth/signup", userData),
-    logout: () => axiosInstance.post("/auth/logout"),
+    login: (credentials) => axiosInstance.post('/auth/login', credentials),
+    register: (userData) => axiosInstance.post('/auth/signup', userData),
+    logout: () => axiosInstance.post('/auth/logout'),
   },
 
   user: {
-    getProfile: () => axiosInstance.get("/user/profile"),
-    updateProfile: (data) => axiosInstance.put("/user/profile", data),
+    getProfile: () => axiosInstance.get('/user/profile'),
+    updateProfile: (data) => axiosInstance.put('/user/profile', data),
     getMessage: (userId, question) =>
-      axiosInstance.post("suggestion/chat/", { userId, question }),
+      axiosInstance.post('suggestion/chat/', { userId, question }),
     uploadProfilePicture: (userId, data) =>
       axiosInstance.post(`upload/profilePic/${userId}`, data, {
         headers: {
-          "Content-Type": "multipart/form-data",
+          'Content-Type': 'multipart/form-data',
         },
       }),
     getProfilePhoto: (userId, data) =>
       axiosInstance.post(`/upload/getProfilePic/${userId}`, data),
-    getAllUsers : () => axiosInstance.get("/all/getAllUsers"),
+    getAllUsers: () => axiosInstance.get('/all/getAllUsers'),
   },
 
   athletes: {
@@ -114,11 +114,11 @@ const api = {
   video_analysis: {
     postVideo: (id, videoFile) => {
       const formData = new FormData();
-      formData.append("video", videoFile);
+      formData.append('video', videoFile);
 
       return axiosInstance.post(`/athlete/videoAnalysis/${id}`, formData, {
         headers: {
-          "Content-Type": "multipart/form-data",
+          'Content-Type': 'multipart/form-data',
         },
         timeout: 500000,
         onUploadProgress: (progressEvent) => {
@@ -132,7 +132,7 @@ const api = {
     getVideoAnalysis: (id) =>
       axiosInstance.get(`athlete/getVideoPerformanceAnalysis/${id}`),
   },
-  chat : {
+  chat: {
     getMessages: (user1, user2) => axiosInstance.get(`/chat/${user1}/${user2}`),
     sendMessage: (data) => axiosInstance.post(`/chat/send`, data),
   },
@@ -140,12 +140,8 @@ const api = {
     sendConnection: (data) =>
       axiosInstance.post(`/connect/send-connection`, data),
     getConnections: (id) => axiosInstance.get(`/connect/connections/${id}`),
-    handleConnections: ({ senderId, receiverId, action }) => {
-      return axiosInstance.post(`/connect/handle-connection`, {
-        senderId,
-        receiverId,
-        action,
-      });
+    handleConnections: (payload) => {
+      return axiosInstance.post(`/connect/handle-connection`, payload);
     },
   },
 };
