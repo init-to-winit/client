@@ -169,7 +169,7 @@ export default function Healthcare() {
           onClick={() => setIsFormOpen(true)}
           className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
         >
-          Add Data +
+          {healthData ? "Update Data" : "Add Data +"}
         </button>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -196,6 +196,7 @@ export default function Healthcare() {
       <HealthcareSuggestions />
       <Forms
         isOpen={isFormOpen}
+        Data={healthData}
         onClose={() => setIsFormOpen(false)}
         onSubmit={formSubmit}
         fields={fields}

@@ -75,6 +75,7 @@ export default function Dietary() {
     try {
       const res = await api.athletes.getDietary(athleteId);
       setDietaryData(res.data.dietaryPlan);
+      console.log("Dietary data fetched successfully.", res.data.dietaryPlan);
       setIsLoadingData(false); // Data fetched, stop loading
       console.log("Performance data fetched successfully.", dietaryData);
     } catch (error) {
@@ -162,7 +163,7 @@ export default function Dietary() {
           onClick={() => setIsFormOpen(true)}
           className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
         >
-          Add Data +
+          {dietaryData? "Update Data" : "Add Data +"}
         </button>
       </div>
       <div>
@@ -236,6 +237,7 @@ export default function Dietary() {
       <Forms
         isOpen={isFormOpen}
         onClose={() => setIsFormOpen(false)}
+        Data={dietaryData || {}}
         onSubmit={formSubmit}
         fields={fields}
         title="Add Match Details"
