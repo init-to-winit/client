@@ -2,11 +2,17 @@ import React, { useState, useRef, useEffect } from "react";
 import { Send, Phone, Video, Paperclip, ArrowLeft, Clock } from "lucide-react";
 import MessageBubble from "./MessageBubble";
 import ChatHeader from "./ChatHeader";
+import api from "../../api/config"
 
-const ChatDisplay = ({ coach, messages: initialMessages, onSendMessage }) => {
+const ChatDisplay = ({
+  connection,
+  messages: initialMessages,
+  onSendMessage,
+}) => {
   const [messageText, setMessageText] = useState("");
   const [messages, setMessages] = useState(initialMessages || []);
   const messagesEndRef = useRef(null);
+  console.log(connection);
 
   useEffect(() => {
     setMessages(initialMessages || []); // Sync with prop changes
@@ -16,7 +22,7 @@ const ChatDisplay = ({ coach, messages: initialMessages, onSendMessage }) => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  const handleSendMessage = () => {
+  const handleSendMessage = async () => {
     if (messageText.trim() === "") return;
 
     const newMessage = {
@@ -29,12 +35,30 @@ const ChatDisplay = ({ coach, messages: initialMessages, onSendMessage }) => {
     };
 
     setMessages((prevMessages) => [...prevMessages, newMessage]);
-    if (onSendMessage) onSendMessage(newMessage); // Notify parent component
+
+    try {
+      // ✅ Construct the payload
+      const payload = {
+        senderId: JSON.parse(localStorage.getItem("user"))?.id,
+        receiverId: connection.id, // ✅ Use connection id as receiverId
+        message: messageText,
+      };
+
+      console.log("Sending message:", payload);
+
+      // ✅ Send the message via API
+      await api.chat.sendMessage(payload, connection.id);
+
+      // ✅ Optionally, update parent state if needed
+      if (onSendMessage) onSendMessage(newMessage);
+    } catch (error) {
+      console.error("Failed to send message:", error);
+    }
 
     setMessageText("");
   };
 
-  if (!coach) {
+  if (!connection) {
     return (
       <div className="flex-1 flex items-center justify-center ">
         <p className="text-gray-500">
@@ -47,7 +71,7 @@ const ChatDisplay = ({ coach, messages: initialMessages, onSendMessage }) => {
   return (
     <div className="flex-1 flex flex-col min-h-screen">
       {/* Chat Header */}
-      <ChatHeader coach={coach} />
+      <ChatHeader connection={connection} />
 
       {/* Messages */}
       <div
@@ -61,7 +85,7 @@ const ChatDisplay = ({ coach, messages: initialMessages, onSendMessage }) => {
           <MessageBubble
             key={index}
             message={message}
-            coachImage={coach.profileImage}
+            connectionImage={connection.profileImage || ""}
           />
         ))}
         <div ref={messagesEndRef} />
