@@ -19,6 +19,7 @@ import Communication from './pages/Communication';
 import 'leaflet/dist/leaflet.css';
 import CoachProfile from './pages/CoachProfile';
 import SponsorProfile from './pages/SponsorProfile';
+import SportsList from './pages/SportsRules';
 const App = () => {
   return (
     <Router>
@@ -49,6 +50,7 @@ const App = () => {
               <Route path="help" element={<Chatbot />} />
               <Route path="coachProfile/:id" element={<CoachProfile />} />
               <Route path="sponsorProfile/:id" element={<SponsorProfile />} />
+              <Route path="sportsRules" element={<SportsList />} />
             </Route>
           </Route>
         </Routes>

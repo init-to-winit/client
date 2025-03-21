@@ -1,0 +1,1927 @@
+{
+  "sports": [
+    {
+      "name": "Archery",
+      "category": "Summer",
+      "rules": {
+        "objective": "Hit the center of a target from a set distance to score the most points.",
+        "equipment": ["Bow", "Arrows", "Targets", "Finger tab", "Arm guard"],
+        "playing_area": "Outdoor or indoor range with targets set at specific distances.",
+        "scoring": {
+          "description": "Target has 10 concentric rings, scoring from 1 (outermost) to 10 (innermost).",
+          "points": "10 points for innermost ring (bullseye), decreasing by 1 point per ring outward."
+        },
+        "basic_rules": [
+          "Competitors shoot from a set distance (typically 70m for Olympic competition).",
+          "Ranking round consists of 72 arrows, with maximum 720 points possible.",
+          "Elimination rounds use head-to-head matches with set system.",
+          "In set system, winning a set earns 2 points, tie earns 1 point each.",
+          "First archer to reach 6 set points wins the match."
+        ],
+        "competition_format": {
+          "individual": "Qualification round followed by head-to-head elimination bracket.",
+          "team": "Three-member teams, with combined scores determining winners."
+        },
+        "Olympic_events": [
+          "Men's Individual",
+          "Women's Individual",
+          "Men's Team",
+          "Women's Team",
+          "Mixed Team"
+        ]
+      }
+    },
+    {
+      "name": "Artistic Swimming",
+      "category": "Summer",
+      "rules": {
+        "objective": "Perform synchronized routines with artistic and technical elements in water.",
+        "equipment": [
+          "Nose clips",
+          "Swim caps",
+          "Swimsuits",
+          "Gelatin for hair"
+        ],
+        "playing_area": "Pool (minimum depth of 3m for Olympic competition).",
+        "scoring": {
+          "description": "Judges evaluate technical merit and artistic impression.",
+          "components": [
+            "Execution",
+            "Artistic impression",
+            "Difficulty",
+            "Synchronization"
+          ]
+        },
+        "basic_rules": [
+          "Routines combine technical and free portions.",
+          "Athletes perform choreographed movements to music.",
+          "Swimmers must use only their bodies to stay afloat (no touching bottom).",
+          "Routines must include required elements within time limits.",
+          "Points deducted for violations like touching bottom of pool or exceeding time limits."
+        ],
+        "competition_format": {
+          "duet": "Two swimmers perform together.",
+          "team": "Eight swimmers perform as a team."
+        },
+        "Olympic_events": ["Duet", "Team"]
+      }
+    },
+    {
+      "name": "Athletics",
+      "category": "Summer",
+      "rules": {
+        "objective": "Compete in various track and field events testing speed, endurance, jumping and throwing abilities.",
+        "disciplines": {
+          "track": {
+            "sprint_events": ["100m", "200m", "400m"],
+            "middle_distance": ["800m", "1500m"],
+            "long_distance": ["5000m", "10000m", "Marathon"],
+            "hurdles": ["110m/100m hurdles", "400m hurdles"],
+            "relays": ["4x100m relay", "4x400m relay"],
+            "basic_rules": [
+              "Runners must stay in assigned lanes for sprints.",
+              "False starts result in disqualification.",
+              "Batons must be passed within designated exchange zones in relays.",
+              "First athlete to cross finish line wins."
+            ]
+          },
+          "field": {
+            "jumping_events": [
+              "High Jump",
+              "Long Jump",
+              "Triple Jump",
+              "Pole Vault"
+            ],
+            "throwing_events": [
+              "Shot Put",
+              "Discus",
+              "Javelin",
+              "Hammer Throw"
+            ],
+            "basic_rules": [
+              "Competitors get multiple attempts (typically three, with three more for top qualifiers).",
+              "Measurements taken from landing point to takeoff line or circle.",
+              "High Jump and Pole Vault continue until all competitors fail at a height."
+            ]
+          },
+          "combined_events": {
+            "decathlon": "Men compete in 10 events over two days.",
+            "heptathlon": "Women compete in 7 events over two days."
+          }
+        },
+        "scoring": "Based on time (track) or distance/height (field). Points tables used for combined events.",
+        "Olympic_events": "Multiple individual and relay events for men and women."
+      }
+    },
+    {
+      "name": "Badminton",
+      "category": "Summer",
+      "rules": {
+        "objective": "Score points by hitting a shuttlecock over the net so opponents cannot return it.",
+        "equipment": ["Rackets", "Shuttlecock", "Net"],
+        "playing_area": "Rectangular court divided by a net, with specific boundaries for singles and doubles play.",
+        "scoring": {
+          "description": "Rally scoring system to 21 points.",
+          "details": [
+            "Point scored on every serve.",
+            "Game won by first to reach 21 points with 2-point lead.",
+            "If tied 20-20, play continues until one side gains 2-point lead (max 30).",
+            "Matches are best of 3 games."
+          ]
+        },
+        "basic_rules": [
+          "Service must be made diagonally to opponent's service court.",
+          "Server must keep part of both feet stationary during service.",
+          "Shuttlecock must be hit below waist level during service.",
+          "Players change ends after each game and in third game when leading player reaches 11.",
+          "Faults include hitting shuttlecock into net or out of bounds, touching net, or reaching over net."
+        ],
+        "competition_format": "Group stage followed by knockout rounds.",
+        "Olympic_events": [
+          "Men's Singles",
+          "Women's Singles",
+          "Men's Doubles",
+          "Women's Doubles",
+          "Mixed Doubles"
+        ]
+      }
+    },
+    {
+      "name": "Basketball",
+      "category": "Summer",
+      "rules": {
+        "objective": "Score points by shooting a ball through opponent's hoop while preventing them from scoring.",
+        "equipment": ["Basketball", "Hoops", "Backboards", "Court markings"],
+        "playing_area": "Rectangular court with hoops at each end.",
+        "scoring": {
+          "field_goal": "2 points",
+          "three_pointer": "3 points (shots made from beyond arc)",
+          "free_throw": "1 point"
+        },
+        "basic_rules": [
+          "Teams of 5 players each.",
+          "Game divided into 4 quarters of 10 minutes (Olympic rules).",
+          "Ball moved by dribbling (bouncing) or passing.",
+          "Players cannot run with ball without dribbling (traveling violation).",
+          "Defenders cannot make excessive physical contact (fouls).",
+          "Shot clock of 24 seconds to attempt a shot that hits rim.",
+          "Team fouls result in free throws after bonus situation reached."
+        ],
+        "violations": [
+          "Traveling",
+          "Double dribble",
+          "Carrying",
+          "Backcourt violation",
+          "Shot clock violation"
+        ],
+        "fouls": [
+          "Personal fouls",
+          "Technical fouls",
+          "Flagrant fouls",
+          "Offensive fouls"
+        ],
+        "competition_format": "Group stage followed by knockout rounds.",
+        "Olympic_events": ["Men's Tournament", "Women's Tournament"]
+      }
+    },
+    {
+      "name": "Basketball 3x3",
+      "category": "Summer",
+      "rules": {
+        "objective": "Score more points than opponents on a half court.",
+        "equipment": ["Basketball", "Single hoop", "Half-court markings"],
+        "playing_area": "Half basketball court with one hoop.",
+        "scoring": {
+          "inside_arc": "1 point",
+          "beyond_arc": "2 points",
+          "free_throw": "1 point"
+        },
+        "basic_rules": [
+          "Teams of 3 players with 1 substitute.",
+          "Game is played to 21 points or 10 minutes, whichever comes first.",
+          "Shot clock of 12 seconds per possession.",
+          "After a score, non-scoring team starts possession from behind arc.",
+          "After defensive rebound or steal, ball must be taken beyond arc.",
+          "Substitutions allowed during any dead ball situation.",
+          "Each team allowed one 30-second timeout."
+        ],
+        "competition_format": "Pool play followed by knockout rounds.",
+        "Olympic_events": ["Men's Tournament", "Women's Tournament"]
+      }
+    },
+    {
+      "name": "Boxing",
+      "category": "Summer",
+      "rules": {
+        "objective": "Score points by landing clean punches on opponent's target areas.",
+        "equipment": [
+          "Gloves",
+          "Headgear (women)",
+          "Mouthguard",
+          "Boxing ring"
+        ],
+        "playing_area": "Square ring surrounded by ropes.",
+        "scoring": {
+          "description": "10-point must system: winner of round gets 10 points, loser 9 or fewer.",
+          "criteria": [
+            "Number of quality blows on target area",
+            "Domination of the bout",
+            "Competitiveness",
+            "Technique and tactical superiority"
+          ]
+        },
+        "basic_rules": [
+          "Olympic bouts consist of three 3-minute rounds.",
+          "Punches must land with knuckle part of the glove on the front or sides of the head or torso.",
+          "Boxers cannot hit below the belt, on the back, or back of the head.",
+          "Clinching (holding) is prohibited.",
+          "Knockdown results when boxer touches floor with anything other than feet, or hangs helplessly on ropes.",
+          "After knockdown, referee counts to 8 before bout can continue.",
+          "Three knockdowns in one round or four total result in automatic stoppage."
+        ],
+        "ways_to_win": [
+          "Points decision",
+          "Referee stops contest (RSC)",
+          "Knockout",
+          "Disqualification",
+          "Walkover (opponent doesn't appear)"
+        ],
+        "competition_format": "Single elimination tournament.",
+        "Olympic_events": "Various weight classes for men and women."
+      }
+    },
+    {
+      "name": "Breaking",
+      "category": "Summer",
+      "rules": {
+        "objective": "Perform creative and athletic breaking moves (break dancing) to impress judges.",
+        "equipment": "Smooth floor surface/stage.",
+        "playing_area": "Square or circular performance area.",
+        "scoring": {
+          "criteria": [
+            "Technique",
+            "Variety",
+            "Originality",
+            "Musicality",
+            "Performance"
+          ],
+          "battles": "Head-to-head format with judges deciding winners."
+        },
+        "basic_rules": [
+          "Competitors (B-Boys and B-Girls) battle one-on-one in rounds.",
+          "Each breaker performs sets (runs) alternately.",
+          "Typically 1-2 rounds per battle, with time limits for each run.",
+          "No physical contact with opponent allowed.",
+          "Judges evaluate based on creativity, physicality, technique, and performance."
+        ],
+        "competition_format": "Round-robin qualifying followed by knockout battles.",
+        "Olympic_events": [
+          "Men's Breaking (B-Boys)",
+          "Women's Breaking (B-Girls)"
+        ]
+      }
+    },
+    {
+      "name": "Canoe Slalom",
+      "category": "Summer",
+      "rules": {
+        "objective": "Navigate whitewater course through gates in shortest time possible.",
+        "equipment": [
+          "Canoe (C1) or Kayak (K1)",
+          "Paddle",
+          "Helmet",
+          "Life vest"
+        ],
+        "playing_area": "Artificial or natural whitewater course with gates.",
+        "scoring": {
+          "description": "Time-based with penalties for missing or touching gates.",
+          "penalties": [
+            "2-second penalty for touching gate pole.",
+            "50-second penalty for missing gate completely or negotiating it incorrectly."
+          ]
+        },
+        "basic_rules": [
+          "Course contains 18-25 gates.",
+          "Green gates navigated downstream, red gates upstream.",
+          "Athletes must pass through all gates in correct order.",
+          "Final ranking determined by best run time including penalties.",
+          "Qualification consists of two runs, with better run counting.",
+          "Finals consist of single run."
+        ],
+        "competition_format": "Qualification round followed by final.",
+        "Olympic_events": [
+          "Men's Canoe (C1)",
+          "Women's Canoe (C1)",
+          "Men's Kayak (K1)",
+          "Women's Kayak (K1)"
+        ]
+      }
+    },
+    {
+      "name": "Canoe Sprint",
+      "category": "Summer",
+      "rules": {
+        "objective": "Paddle in a straight line to finish line as fast as possible.",
+        "equipment": ["Canoe (C1/C2) or Kayak (K1/K2/K4)", "Paddle"],
+        "playing_area": "Calm water course with marked lanes.",
+        "scoring": "Timed event, fastest time wins.",
+        "basic_rules": [
+          "Races conducted in lanes (typically 9).",
+          "Kayakers use double-bladed paddles and sit in boat.",
+          "Canoeists use single-bladed paddles and kneel in boat.",
+          "False starts result in disqualification.",
+          "Boats must stay in designated lanes.",
+          "Distances range from 200m to 1000m."
+        ],
+        "competition_format": "Heats, semifinals, and finals.",
+        "Olympic_events": [
+          "Men's and Women's Kayak Singles (K1)",
+          "Men's and Women's Kayak Doubles (K2)",
+          "Men's and Women's Kayak Fours (K4)",
+          "Men's and Women's Canoe Singles (C1)",
+          "Men's and Women's Canoe Doubles (C2)"
+        ]
+      }
+    },
+    {
+      "name": "Cricket",
+      "category": "Summer",
+      "rules": {
+        "objective": "Score more runs than opposing team.",
+        "equipment": ["Bat", "Ball", "Wickets", "Protective gear"],
+        "playing_area": "Oval field with rectangular pitch in center.",
+        "scoring": {
+          "description": "Runs scored by running between wickets or hitting boundaries.",
+          "runs": [
+            "1-6 runs for running between wickets after hitting ball.",
+            "4 runs for hitting ball to boundary on ground.",
+            "6 runs for hitting ball over boundary without touching ground."
+          ]
+        },
+        "basic_rules": [
+          "Teams of 11 players each.",
+          "Olympic format is T20 (20 overs per team).",
+          "Each over consists of 6 legal deliveries.",
+          "Batting team aims to score runs, fielding team aims to dismiss batters.",
+          "Innings ends when all batters are out or overs completed.",
+          "Ways to dismiss batters include bowled, caught, run out, stumped, LBW.",
+          "Team with most runs after both innings wins."
+        ],
+        "competition_format": "Group stage followed by knockout rounds.",
+        "Olympic_events": ["Men's Tournament", "Women's Tournament"]
+      }
+    },
+    {
+      "name": "Cycling BMX Freestyle",
+      "category": "Summer",
+      "rules": {
+        "objective": "Perform tricks and stunts on BMX bikes to impress judges.",
+        "equipment": ["BMX bike", "Helmet", "Protective pads"],
+        "playing_area": "Park course with ramps, walls, and obstacles.",
+        "scoring": {
+          "description": "Judges score routines based on difficulty, execution, and originality.",
+          "scale": "0-100 point scale."
+        },
+        "basic_rules": [
+          "Each rider gets two 60-second runs.",
+          "Best run score counts as final result.",
+          "Riders judged on difficulty, execution, originality, style, and use of course.",
+          "Falls reduce points but do not disqualify riders."
+        ],
+        "competition_format": "Seeding round followed by final.",
+        "Olympic_events": ["Men's Park", "Women's Park"]
+      }
+    },
+    {
+      "name": "Cycling BMX Racing",
+      "category": "Summer",
+      "rules": {
+        "objective": "Race BMX bikes around track and finish first.",
+        "equipment": [
+          "BMX bike",
+          "Helmet",
+          "Full-body protection",
+          "Starting gate"
+        ],
+        "playing_area": "BMX track with jumps, berms, and obstacles.",
+        "scoring": "First to cross finish line wins.",
+        "basic_rules": [
+          "8 riders compete simultaneously from starting gate.",
+          "Track typically 300-400m long with various obstacles.",
+          "Races last approximately 30-40 seconds.",
+          "Contact between riders allowed but deliberate interference prohibited.",
+          "False starts result in warning or disqualification."
+        ],
+        "competition_format": "Multiple qualifying runs, quarterfinals, semifinals, and finals.",
+        "Olympic_events": ["Men's BMX Racing", "Women's BMX Racing"]
+      }
+    },
+    {
+      "name": "Cycling Mountain Bike",
+      "category": "Summer",
+      "rules": {
+        "objective": "Complete off-road course in fastest time.",
+        "equipment": ["Mountain bike", "Helmet"],
+        "playing_area": "Natural terrain course with various obstacles and elevation changes.",
+        "scoring": "Timed event, fastest completes specified number of laps wins.",
+        "basic_rules": [
+          "Mass start format.",
+          "Course includes climbs, descents, and technical sections.",
+          "Riders must complete specified number of laps.",
+          "No outside assistance allowed except in designated technical zones.",
+          "Riders must stay on marked course."
+        ],
+        "competition_format": "Single race, typically 1.5-2 hours for men, 1-1.5 hours for women.",
+        "Olympic_events": ["Men's Cross-country", "Women's Cross-country"]
+      }
+    },
+    {
+      "name": "Cycling Road",
+      "category": "Summer",
+      "rules": {
+        "objective": "Complete road course or time trial in fastest time.",
+        "equipment": [
+          "Road bike",
+          "Helmet",
+          "Time trial equipment for TT events"
+        ],
+        "playing_area": "Road course with varying terrain.",
+        "events": {
+          "road_race": {
+            "description": "Mass start race over long distance (130-280km).",
+            "scoring": "First to cross finish line wins."
+          },
+          "time_trial": {
+            "description": "Individual race against the clock over 30-50km.",
+            "scoring": "Fastest time wins."
+          }
+        },
+        "basic_rules": [
+          "Road race features mass start with all riders competing together.",
+          "Time trial features individual starts at set intervals.",
+          "Drafting allowed in road race, prohibited in time trial.",
+          "Outside assistance limited to designated zones.",
+          "Various penalties for rule infractions including time penalties."
+        ],
+        "competition_format": "Single race for each event.",
+        "Olympic_events": [
+          "Men's Road Race",
+          "Women's Road Race",
+          "Men's Time Trial",
+          "Women's Time Trial"
+        ]
+      }
+    },
+    {
+      "name": "Cycling Track",
+      "category": "Summer",
+      "rules": {
+        "objective": "Various events testing speed, endurance, and tactics on velodrome.",
+        "equipment": ["Track bike", "Helmet", "Skinsuit"],
+        "playing_area": "Indoor or outdoor velodrome (250m track with banked turns).",
+        "events": {
+          "sprint": {
+            "description": "Head-to-head speed contest over 3 laps.",
+            "format": "Qualification by flying 200m, followed by knockout rounds."
+          },
+          "keirin": {
+            "description": "Sprint event where riders follow motorized pacer before sprinting final laps.",
+            "format": "Multiple rounds with repechages."
+          },
+          "team_sprint": {
+            "description": "3 riders (men) or 2 riders (women) complete single lap each at maximum speed.",
+            "format": "Qualifying round followed by head-to-head finals."
+          },
+          "team_pursuit": {
+            "description": "4 riders work together to complete 4km (men) or 3km (women).",
+            "format": "Qualifying round followed by head-to-head finals."
+          },
+          "omnium": {
+            "description": "Multi-event competition testing various skills.",
+            "format": "Four events (Scratch Race, Tempo Race, Elimination Race, Points Race)."
+          },
+          "madison": {
+            "description": "Relay race with teams of two riders.",
+            "format": "Points awarded for laps gained and sprints."
+          }
+        },
+        "basic_rules": "Specific rules vary by event, generally involving set distance or time limits.",
+        "competition_format": "Varies by event, typically qualification rounds followed by finals.",
+        "Olympic_events": [
+          "Sprint",
+          "Keirin",
+          "Team Sprint",
+          "Team Pursuit",
+          "Omnium",
+          "Madison"
+        ]
+      }
+    },
+    {
+      "name": "Diving",
+      "category": "Summer",
+      "rules": {
+        "objective": "Perform acrobatic dives from springboard or platform with minimal splash.",
+        "equipment": ["Springboard (1m/3m)", "Platform (10m)", "Pool"],
+        "playing_area": "Diving pool with specific depth requirements.",
+        "scoring": {
+          "description": "Judges award points (0-10) for each dive based on execution.",
+          "calculation": "Highest and lowest scores eliminated, remaining scores multiplied by dive difficulty."
+        },
+        "basic_rules": [
+          "Divers perform series of dives (typically 6 for men, 5 for women).",
+          "Dives classified by position (straight, pike, tuck, free) and approach (forward, backward, reverse, inward, twisting).",
+          "Each dive assigned difficulty factor based on complexity.",
+          "Judges evaluate approach, takeoff, execution, and entry into water.",
+          "Preliminary, semifinal, and final rounds in Olympic competition."
+        ],
+        "competition_format": "Preliminaries, semifinals, and finals.",
+        "Olympic_events": [
+          "Men's 3m Springboard",
+          "Women's 3m Springboard",
+          "Men's 10m Platform",
+          "Women's 10m Platform",
+          "Men's Synchronized 3m Springboard",
+          "Women's Synchronized 3m Springboard",
+          "Men's Synchronized 10m Platform",
+          "Women's Synchronized 10m Platform"
+        ]
+      }
+    },
+    {
+      "name": "Equestrian Dressage",
+      "category": "Summer",
+      "rules": {
+        "objective": "Demonstrate horse's obedience, flexibility, and balance through prescribed movements.",
+        "equipment": ["Horse", "Saddle", "Bridle", "Formal riding attire"],
+        "playing_area": "60m x 20m rectangular arena with letter markers.",
+        "scoring": {
+          "description": "Judges award marks (0-10) for each prescribed movement.",
+          "calculation": "Percentage score calculated from total points."
+        },
+        "basic_rules": [
+          "Riders perform series of predetermined movements from memory.",
+          "Grand Prix test used for team competition.",
+          "Grand Prix Special and Grand Prix Freestyle used for individual medals.",
+          "Movements include various gaits, transitions, and figures.",
+          "Judges evaluate accuracy, harmony, lightness, and submission."
+        ],
+        "competition_format": "Team competition and individual competition.",
+        "Olympic_events": ["Individual Dressage", "Team Dressage"]
+      }
+    },
+    {
+      "name": "Equestrian Eventing",
+      "category": "Summer",
+      "rules": {
+        "objective": "Complete three different disciplines with same horse and rider combination.",
+        "equipment": [
+          "Horse",
+          "Different tack for each phase",
+          "Riding attire"
+        ],
+        "playing_area": "Dressage arena, cross-country course, and jumping arena.",
+        "phases": {
+          "dressage": "Demonstrates obedience and training through precise movements.",
+          "cross_country": "Tests endurance and courage over fixed obstacles on varied terrain.",
+          "jumping": "Tests accuracy and control over knockable obstacles in arena."
+        },
+        "scoring": {
+          "description": "Penalty points accumulated across all phases, lowest score wins.",
+          "penalties": [
+            "Dressage: Points deducted from perfect score.",
+            "Cross Country: Penalties for refusals, falls, time faults.",
+            "Jumping: Penalties for knocked rails or time faults."
+          ]
+        },
+        "basic_rules": [
+          "All three phases must be completed with same horse and rider.",
+          "Order of phases: dressage, cross-country, jumping.",
+          "Elimination in any phase results in elimination from entire competition.",
+          "Cross-country course includes approximately 40 jumping efforts over 5-6km.",
+          "Jumping course includes 12-15 obstacles."
+        ],
+        "competition_format": "Three-day event with both team and individual standings.",
+        "Olympic_events": ["Individual Eventing", "Team Eventing"]
+      }
+    },
+    {
+      "name": "Equestrian Jumping",
+      "category": "Summer",
+      "rules": {
+        "objective": "Jump a series of obstacles in correct order with fewest faults.",
+        "equipment": ["Horse", "Saddle", "Bridle", "Jumping obstacles"],
+        "playing_area": "Arena with 12-15 jumping obstacles.",
+        "scoring": {
+          "description": "Penalty faults assigned for various errors.",
+          "penalties": [
+            "4 faults for knocking down obstacle.",
+            "4 faults for first refusal, elimination after second refusal.",
+            "1 fault for each second over time allowed."
+          ]
+        },
+        "basic_rules": [
+          "Course must be completed in specified order within time allowed.",
+          "Obstacles vary in height (up to 1.65m) and width (up to 2m).",
+          "Jump-offs used to break ties (shorter course against the clock).",
+          "Team competition combines scores of 3 or 4 riders per team.",
+          "Individual competition includes multiple rounds with cumulative scoring."
+        ],
+        "competition_format": "Qualification rounds followed by finals, with jump-offs to break ties.",
+        "Olympic_events": ["Individual Jumping", "Team Jumping"]
+      }
+    },
+    {
+      "name": "Fencing",
+      "category": "Summer",
+      "rules": {
+        "objective": "Score points by touching opponent with weapon on valid target areas.",
+        "equipment": [
+          "Weapon (foil, épée, or sabre)",
+          "Mask",
+          "Protective clothing",
+          "Electronic scoring equipment"
+        ],
+        "playing_area": "Piste (strip) 14m long and 1.5-2m wide.",
+        "weapons": {
+          "foil": {
+            "target_area": "Torso only (including back).",
+            "scoring": "Point scoring only with tip of weapon.",
+            "right_of_way": "Applies - attacker has priority."
+          },
+          "épée": {
+            "target_area": "Entire body.",
+            "scoring": "Point scoring only with tip of weapon.",
+            "right_of_way": "Does not apply - first to hit scores."
+          },
+          "sabre": {
+            "target_area": "Everything above waist (excluding hands).",
+            "scoring": "Both point and cutting edge valid.",
+            "right_of_way": "Applies - attacker has priority."
+          }
+        },
+        "basic_rules": [
+          "Bouts fought to 15 points (direct elimination) or 5 points (pool bouts).",
+          "Time limits: 3 periods of 3 minutes each with 1-minute breaks.",
+          "Competitors must remain on piste - stepping off results in penalty.",
+          "Electronic scoring system indicates valid hits.",
+          "Right-of-way rules determine priority in foil and sabre when both fencers hit."
+        ],
+        "competition_format": "Pool rounds followed by direct elimination bracket.",
+        "Olympic_events": [
+          "Men's Foil Individual",
+          "Women's Foil Individual",
+          "Men's Épée Individual",
+          "Women's Épée Individual",
+          "Men's Sabre Individual",
+          "Women's Sabre Individual",
+          "Team events for each weapon"
+        ]
+      }
+    },
+    {
+      "name": "Football (Soccer)",
+      "category": "Summer",
+      "rules": {
+        "objective": "Score goals by getting ball into opponent's net while preventing them from scoring.",
+        "equipment": ["Ball", "Goals", "Corner flags"],
+        "playing_area": "Rectangular field (approximately 105m x 68m).",
+        "scoring": "1 point per goal.",
+        "basic_rules": [
+          "Teams of 11 players each (including goalkeeper).",
+          "Match consists of two 45-minute halves.",
+          "Ball played primarily with feet, goalkeeper can use hands within penalty area.",
+          "Offsides rule: attacking player cannot be beyond last defender when ball is played.",
+          "Direct free kicks awarded for serious fouls, indirect for technical infractions.",
+          "Penalty kicks awarded for fouls inside penalty area.",
+          "Yellow card for caution, two yellows or straight red card results in ejection."
+        ],
+        "restarts": [
+          "Kick-off: Starts each half and after goals.",
+          "Throw-in: When ball goes out over sideline.",
+          "Goal kick: When attacking team puts ball over end line.",
+          "Corner kick: When defending team puts ball over end line.",
+          "Free kick: After fouls or infractions."
+        ],
+        "competition_format": "Group stage followed by knockout rounds.",
+        "Olympic_events": ["Men's Tournament", "Women's Tournament"]
+      }
+    },
+    {
+      "name": "Golf",
+      "category": "Summer",
+      "rules": {
+        "objective": "Complete course with fewest number of strokes.",
+        "equipment": ["Golf clubs", "Golf balls", "Tees"],
+        "playing_area": "18-hole course with varying terrain.",
+        "scoring": {
+          "description": "Count total strokes taken to complete course.",
+          "terms": [
+            "Par: Standard number of strokes for hole.",
+            "Birdie: 1 under par.",
+            "Eagle: 2 under par.",
+            "Bogey: 1 over par."
+          ]
+        },
+        "basic_rules": [
+          "Play ball as it lies.",
+          "Maximum 14 clubs allowed in bag.",
+          "Player furthest from hole plays first.",
+          "Ball must be played from within teeing area to start each hole.",
+          "Various penalties for rule infractions (typically 1 or 2 strokes).",
+          "Ball is holed when it comes to rest within cup."
+        ],
+        "competition_format": "72 holes of stroke play (4 rounds of 18 holes).",
+        "Olympic_events": ["Men's Individual", "Women's Individual"]
+      }
+    },
+    {
+      "name": "Gymnastics Artistic",
+      "category": "Summer",
+      "rules": {
+        "objective": "Perform routines on various apparatus with technical precision and artistic expression.",
+        "equipment": {
+          "men": [
+            "Floor",
+            "Pommel Horse",
+            "Rings",
+            "Vault",
+            "Parallel Bars",
+            "Horizontal Bar"
+          ],
+          "women": ["Vault", "Uneven Bars", "Balance Beam", "Floor"]
+        },
+        "scoring": {
+          "components": [
+            "D-score (Difficulty): Value of elements performed.",
+            "E-score (Execution): Starting from 10, deductions for errors."
+          ],
+          "calculation": "D-score + E-score = Total"
+        },
+        "basic_rules": [
+          "Each routine has specific time limits and requirements.",
+          "Routines must include elements from different skill groups.",
+          "Deductions taken for falls, steps, poor execution, and going out of bounds.",
+          "All-around competition combines scores on all apparatus.",
+          "Team competition combines scores of multiple gymnasts."
+        ],
+        "competition_format": "Qualification round, team final, all-around final, and individual apparatus finals.",
+        "Olympic_events": [
+          "Men's Team",
+          "Women's Team",
+          "Men's All-Around",
+          "Women's All-Around",
+          "Individual apparatus finals for each piece of equipment"
+        ]
+      }
+    },
+    {
+      "name": "Gymnastics Rhythmic",
+      "category": "Summer",
+      "rules": {
+        "objective": "Perform choreographed routines with apparatus emphasizing flexibility, grace and expression.",
+        "equipment": ["Rope", "Hoop", "Ball", "Clubs", "Ribbon"],
+        "playing_area": "13m x 13m carpet.",
+        "scoring": {
+          "components": [
+            "Difficulty score: Value of body movements, apparatus handling, and dance elements.",
+            "Execution score: Starting from 10, with deductions for technical errors.",
+            "Artistry score: Choreography, music interpretation, and expressiveness."
+          ],
+          "calculation": "Difficulty + Execution + Artistry = Total"
+        },
+        "basic_rules": [
+          "Individual routines last 1:15-1:30 minutes.",
+          "Group routines last 2:15-2:30 minutes.",
+          "Must use entire floor area.",
+          "Apparatus must be in constant motion.",
+          "Specific requirements for number and types of body difficulties.",
+          "Deductions for dropping apparatus, stepping outside area, or timing errors."
+        ],
+        "competition_format": "Qualification round followed by finals.",
+        "Olympic_events": ["Individual All-Around", "Group All-Around"]
+      }
+    },
+    {
+      "name": "Handball",
+      "category": "Summer",
+      "rules": {
+        "objective": "Score goals by throwing ball into opponent's goal while preventing them from scoring.",
+        "equipment": ["Handball", "Goals"],
+        "playing_area": "40m x 20m court with 6m goal area.",
+        "scoring": "1 point per goal.",
+        "basic_rules": [
+          "Teams of 7 players each (6 court players + goalkeeper).",
+          "Match consists of two 30-minute halves.",
+          "Players can take up to 3 steps without dribbling.",
+          "Ball can be held for maximum 3 seconds.",
+          "Contact allowed when defending, but no holding, pushing, or hitting.",
+          "Only goalkeeper can enter goal area (6m line).",
+          "7m throw (penalty) awarded for preventing clear scoring chance."
+        ],
+        "competition_format": "Group stage followed by knockout rounds.",
+        "Olympic_events": ["Men's Tournament", "Women's Tournament"]
+      }
+    },
+    {
+      "name": "Hockey",
+      "category": "Summer",
+      "rules": {
+        "objective": "Score goals by hitting ball into opponent's goal while preventing them from scoring.",
+        "equipment": ["Hockey stick", "Ball", "Goals", "Protective gear"],
+        "playing_area": "91.4m x 55m field with artificial turf.",
+        "scoring": "1 point per goal.",
+        "basic_rules": [
+          "Teams of 11 players each (including goalkeeper).",
+          "Match consists of four 15-minute quarters.",
+          "Ball can only be played with flat side of stick.",
+          "No body contact or dangerous play allowed.",
+          "Ball cannot be raised dangerously.",
+          "Only goalkeepers can kick or stop ball with body.",
+          "Penalty corner awarded for fouls inside defending circle or intentional fouls in defending half.",
+          "Penalty stroke awarded for preventing certain goal with foul."
+        ],
+        "competition_format": "Group stage followed by knockout rounds.",
+        "Olympic_events": ["Men's Tournament", "Women's Tournament"]
+      }
+    },
+    {
+      "name": "Judo",
+      "category": "Summer",
+      "rules": {
+        "objective": "Throw opponent onto back, immobilize them on ground, or force submission.",
+        "equipment": ["Judogi (uniform)", "Belt", "Tatami (mat)"],
+        "playing_area": "10m x 10m competition area with 3m safety zone.",
+        "scoring": {
+          "points": [
+            "Ippon: Perfect throw, 20-second hold-down, or submission (instant win).",
+            "Waza-ari: Near-perfect throw or 10-19 second hold-down.",
+            "Two waza-ari equal one ippon."
+          ]
+        },
+        "basic_rules": [
+          "Contest lasts 4 minutes for both men and women.",
+          "Golden Score (overtime) if tied after regulation.",
+          "Penalties (shido) given for passive behavior or minor infractions.",
+          "Three shido result in disqualification (hansoku-make).",
+          "Serious violations result in immediate disqualification.",
+          "Contests start and end with bow to opponent."
+        ],
+        "competition_format": "Single elimination with repechage for bronze medals.",
+        "Olympic_events": "Various weight categories for men and women."
+      }
+    },
+    {
+      "name": "Modern Pentathlon",
+      "category": "Summer",
+      "rules": {
+        "objective": "Compete in five different disciplines in one day.",
+        "disciplines": {
+          "fencing": "Round-robin of one-touch épée bouts against all other competitors.",
+          "swimming": "200m freestyle swimming for time.",
+          "riding": "Show jumping course with unfamiliar horse.",
+          "laser_run": "Combined event of laser pistol shooting and running."
+        },
+        "scoring": {
+          "description": "Points awarded in each discipline, then converted to time handicaps for final laser-run.",
+          "details": [
+            "Each discipline has a baseline score of 1000 points.",
+            "Swimming: Points added/subtracted based on time compared to baseline.",
+            "Fencing: Each victory worth specific number of points.",
+            "Riding: Start with 1000 points, deductions for knocked rails, refusals, falls, etc.",
+            "Laser-run: Starting times based on point differences, first to finish wins."
+          ]
+        },
+        "basic_rules": [
+          "Competitions held over single day.",
+          "Athletes compete in all five disciplines.",
+          "Fencing with épée sword against all competitors.",
+          "200m freestyle swim scored by time.",
+          "Riding requires completing course of 12 jumps with unfamiliar horse.",
+          "Laser-run combines four 800m runs with four sets of laser pistol shooting.",
+          "Final standings determined by order of finish in laser-run."
+        ],
+        "competition_format": "Single day of competition.",
+        "Olympic_events": ["Men's Individual", "Women's Individual"]
+      }
+    },
+    {
+      "name": "Rowing",
+      "category": "Summer",
+      "rules": {
+        "objective": "Row boat over 2000m course in fastest time.",
+        "equipment": ["Racing shells", "Oars"],
+        "playing_area": "2000m straight course with marked lanes.",
+        "boat_classes": {
+          "sculling": [
+            "Single sculls (1x): One person with two oars.",
+            "Double sculls (2x): Two people, each with two oars.",
+            "Quadruple sculls (4x): Four people, each with two oars."
+          ],
+          "sweep": [
+            "Pair (2-): Two people, each with one oar.",
+            "Four (4-): Four people, each with one oar.",
+            "Eight (8+): Eight people plus coxswain, each with one oar."
+          ]
+        },
+        "scoring": "Timed race, fastest boat wins.",
+        "basic_rules": [
+          "Boats must stay in assigned lanes.",
+          "False starts result in warning, second false start is disqualification.",
+          "Interfering with another boat results in disqualification.",
+          "Lightweight categories have weight restrictions."
+        ],
+        "competition_format": "Heats, repechages, semifinals, and finals.",
+        "Olympic_events": [
+          "Men's and Women's Single Sculls",
+          "Men's and Women's Double Sculls",
+          "Men's and Women's Quadruple Sculls",
+          "Men's and Women's Pair",
+          "Men's and Women's Four",
+          "Men's and Women's Eight",
+          "Lightweight events"
+        ]
+      }
+    },
+    {
+      "name": "Rugby Sevens",
+      "category": "Summer",
+      "rules": {
+        "objective": "Score more points than opponent by carrying, passing, or kicking ball over goal line.",
+        "equipment": ["Rugby ball", "Goal posts"],
+        "playing_area": "Standard rugby field (100m x 70m).",
+        "scoring": {
+          "try": "5 points for touching ball down in opponent's in-goal area.",
+          "conversion": "2 points for kick after scoring try.",
+          "penalty_goal": "3 points for successful kick after penalty.",
+          "drop_goal": "3 points for drop kick through posts during play."
+        },
+        "basic_rules": [
+          "Teams of 7 players each.",
+          "Matches consist of two 7-minute halves with 2-minute halftime.",
+          "Ball can only be passed backward or laterally.",
+          "Forward passes result in scrum to opponents.",
+          "Tackling below shoulders permitted to stop player with ball.",
+          "After tackle, ball carrier must release ball.",
+          "Offside players cannot participate in play.",
+          "Various restarts including kick-offs, scrums, and lineouts."
+        ],
+        "competition_format": "Pool play followed by knockout rounds.",
+        "Olympic_events": ["Men's Tournament", "Women's Tournament"]
+      }
+    },
+    {
+      "name": "Sailing",
+      "category": "Summer",
+      "rules": {
+        "objective": "Navigate course around marks in fastest time using wind power.",
+        "equipment": ["Sailboat (various classes)", "Buoys as course markers"],
+        "playing_area": "Designated water area with course marked by buoys.",
+        "classes": [
+          "Dinghy classes",
+          "Skiff classes",
+          "Multihull classes",
+          "Windsurfing classes"
+        ],
+        "scoring": {
+          "description": "Low-point scoring system.",
+          "details": [
+            "First place receives 1 point, second place 2 points, etc.",
+            "Disqualification receives points equal to number of entries plus one.",
+            "Worst score may be discarded after specific number of races.",
+            "Lowest total score wins."
+          ]
+        },
+        "basic_rules": [
+          "Multiple races (10-12) in series determine overall winner.",
+          "Right-of-way rules determine which boat must give way when boats meet.",
+          "Boats must round marks in specified direction and order.",
+          "Various penalties for rule infractions, including turns or disqualification.",
+          "Races typically consist of upwind, downwind, and reaching legs."
+        ],
+        "competition_format": "Series of races with cumulative scoring.",
+        "Olympic_events": "Various boat classes for men, women, and mixed events."
+      }
+    },
+    {
+      "name": "Shooting",
+      "category": "Summer",
+      "rules": {
+        "objective": "Hit targets with highest precision using rifles, pistols, or shotguns.",
+        "equipment": ["Rifles, pistols, or shotguns", "Ammunition", "Targets"],
+        "disciplines": {
+          "rifle": {
+            "events": ["10m Air Rifle", "50m Rifle 3 Positions"],
+            "description": "Stationary shooting at paper targets."
+          },
+          "pistol": {
+            "events": ["10m Air Pistol", "25m Rapid Fire Pistol", "25m Pistol"],
+            "description": "Stationary shooting at paper targets with handguns."
+          },
+          "shotgun": {
+            "events": ["Trap", "Skeet"],
+            "description": "Shooting at clay targets launched into air."
+          }
+        },
+        "scoring": {
+          "rifle_pistol": "Concentric rings on target with values from 1-10 (with decimal scoring).",
+          "shotgun": "1 point for hit, 0 for miss, highest total wins."
+        },
+        "basic_rules": [
+          "Qualification round followed by finals for top competitors.",
+          "Specific time limits for completing shots.",
+          "Specific positions required for certain events (kneeling, prone, standing).",
+          "Strict safety protocols enforced at all times.",
+          "Equipment must meet specifications for weight, trigger pull, etc."
+        ],
+        "competition_format": "Qualification followed by finals.",
+        "Olympic_events": "Various rifle, pistol, and shotgun events for men and women."
+      }
+    },
+    {
+      "name": "Skateboarding",
+      "category": "Summer",
+      "rules": {
+        "objective": "Perform tricks and maneuvers on skateboard to impress judges.",
+        "equipment": ["Skateboard", "Protective gear"],
+        "disciplines": {
+          "street": {
+            "playing_area": "Course featuring stairs, handrails, curbs, benches, walls and slopes.",
+            "format": "Two 45-second runs and five individual tricks."
+          },
+          "park": {
+            "playing_area": "Bowl-like course with curves and complex transitions.",
+            "format": "Three 45-second runs with best run counting."
+          }
+        },
+        "scoring": {
+          "description": "Judges score based on difficulty, execution, composition, and consistency.",
+          "scale": "0-100 point scale."
+        },
+        "basic_rules": [
+          "Street: Timed runs plus individual tricks, best four scores (out of seven) count.",
+          "Park: Three timed runs, best run counts as final score.",
+          "Falls or incomplete tricks receive low or no scores.",
+          "Time limits strictly enforced."
+        ],
+        "competition_format": "Preliminary rounds followed by finals.",
+        "Olympic_events": [
+          "Men's Street",
+          "Women's Street",
+          "Men's Park",
+          "Women's Park"
+        ]
+      }
+    },
+    {
+      "name": "Sport Climbing",
+      "category": "Summer",
+      "rules": {
+        "objective": "Climb routes or problems with speed, difficulty, or efficiency.",
+        "equipment": ["Climbing shoes", "Chalk", "Harness and rope (for lead)"],
+        "disciplines": {
+          "speed": {
+            "description": "Race up standardized 15m wall in fastest time.",
+            "format": "Head-to-head elimination after qualification."
+          },
+          "bouldering": {
+            "description": "Climb short, difficult problems without rope.",
+            "format": "Multiple problems with limited attempts in fixed time."
+          },
+          "lead": {
+            "description": "Climb as high as possible on difficult route with rope.",
+            "format": "One attempt per route, highest hold reached determines ranking."
+          }
+        },
+        "scoring": {
+          "description": "Combined ranking across all three disciplines.",
+          "calculation": "Multiplication of ranks in each discipline, lowest score wins."
+        },
+        "basic_rules": [
+          "Speed: Timing stops when climber hits buzzer at top of wall.",
+          "Bouldering: Points for reaching zone holds and topping problems.",
+          "Lead: Score based on highest hold reached with control.",
+          "Specific rules for falls, time limits, and starting procedures for each discipline."
+        ],
+        "competition_format": "Combined event with qualification and final rounds.",
+        "Olympic_events": ["Men's Combined", "Women's Combined"]
+      }
+    },
+    {
+      "name": "Surfing",
+      "category": "Summer",
+      "rules": {
+        "objective": "Ride waves performing maneuvers to maximize scoring potential.",
+        "equipment": ["Surfboard"],
+        "playing_area": "Ocean with suitable wave conditions.",
+        "scoring": {
+          "description": "Judges score waves on scale of 0.1 to 10.0.",
+          "criteria": [
+            "Commitment and degree of difficulty",
+            "Innovative and progressive maneuvers",
+            "Combination of major maneuvers",
+            "Variety of maneuvers",
+            "Speed, power, and flow"
+          ],
+          "calculation": "Top two wave scores count toward total."
+        },
+        "basic_rules": [
+          "Heats typically last 20-30 minutes.",
+          "Maximum of 25 waves per heat.",
+          "Surfer with priority has right to waves.",
+          "Interference with surfer who has priority results in penalty.",
+          "Competition window allows for best possible wave conditions."
+        ],
+        "competition_format": "Round-robin heats followed by single-elimination rounds.",
+        "Olympic_events": ["Men's Shortboard", "Women's Shortboard"]
+      }
+    },
+    {
+      "name": "Swimming",
+      "category": "Summer",
+      "rules": {
+        "objective": "Complete specified distance in fastest time using designated stroke.",
+        "equipment": ["Swimsuit", "Cap", "Goggles"],
+        "playing_area": "50m pool with marked lanes.",
+        "strokes": {
+          "freestyle": "Any stroke allowed, typically front crawl used.",
+          "backstroke": "Swimmers on back, alternating arm movements and flutter kick.",
+          "breaststroke": "Simultaneous arm and leg movements, head breaking surface each cycle.",
+          "butterfly": "Simultaneous overhead arm movement with dolphin kick."
+        },
+        "basic_rules": [
+          "Races conducted in assigned lanes.",
+          "Specific rules for starts, turns, and finishes for each stroke.",
+          "False starts result in disqualification.",
+          "In backstroke, staying on back except during turn.",
+          "In breaststroke and butterfly, simultaneous movements of arms and legs required.",
+          "No pulling on lane ropes or pushing off bottom."
+        ],
+        "competition_format": "Heats, semifinals (for some events), and finals.",
+        "Olympic_events": [
+          "Freestyle: 50m, 100m, 200m, 400m, 800m, 1500m",
+          "Backstroke: 100m, 200m",
+          "Breaststroke: 100m, 200m",
+          "Butterfly: 100m, 200m",
+          "Individual Medley: 200m, 400m",
+          "Relays: 4x100m Freestyle, 4x200m Freestyle, 4x100m Medley",
+          "Marathon Swimming: 10km open water"
+        ]
+      }
+    },
+    {
+      "name": "Table Tennis",
+      "category": "Summer",
+      "rules": {
+        "objective": "Score points by hitting ball over net so opponent cannot return it.",
+        "equipment": ["Table", "Net", "Paddle/racket", "Ball"],
+        "playing_area": "Table 2.74m x 1.525m with 15.25cm high net.",
+        "scoring": {
+          "description": "Games played to 11 points, must win by 2.",
+          "details": "Point scored on every serve, regardless of who served."
+        },
+        "basic_rules": [
+          "Matches best-of-seven or best-of-five games.",
+          "Service changes every 2 points.",
+          "Ball must bounce once on each side during play.",
+          "Server must throw ball up at least 16cm and strike it behind end line.",
+          "Let serve (net serve that otherwise would be good) is replayed.",
+          "Edge of table is valid, side of table is not."
+        ],
+        "competition_format": "Group stage followed by knockout rounds.",
+        "Olympic_events": [
+          "Men's Singles",
+          "Women's Singles",
+          "Men's Team",
+          "Women's Team",
+          "Mixed Doubles"
+        ]
+      }
+    },
+    {
+      "name": "Taekwondo",
+      "category": "Summer",
+      "rules": {
+        "objective": "Score points by striking opponent's scoring areas with kicks and punches.",
+        "equipment": [
+          "Protective gear (head, trunk, forearm, shin, groin)",
+          "Electronic scoring sensors"
+        ],
+        "playing_area": "8m x 8m square mat (octagonal competition area).",
+        "scoring": {
+          "points": [
+            "1 point for valid punch to trunk protector.",
+            "2 points for valid kick to trunk protector.",
+            "4 points for valid turning kick to trunk protector.",
+            "3 points for valid kick to head.",
+            "5 points for valid turning kick to head."
+          ]
+        },
+        "basic_rules": [
+          "Matches consist of three 2-minute rounds with 1-minute breaks.",
+          "Electronic scoring system records valid strikes to scoring areas.",
+          "Penalties (Gam-jeom) awarded for prohibited acts (1 point to opponent).",
+          "Prohibited acts include crossing boundary line, falling, avoiding combat, etc.",
+          "Victory achieved by knockout, point gap (20 points), superiority, or final score."
+        ],
+        "competition_format": "Single elimination tournament.",
+        "Olympic_events": "Various weight categories for men and women."
+      }
+    },
+    {
+      "name": "Tennis",
+      "category": "Summer",
+      "rules": {
+        "objective": "Win points by hitting ball over net so opponents cannot return it within boundaries.",
+        "equipment": ["Racket", "Tennis balls", "Net"],
+        "playing_area": "23.77m x 8.23m (singles) or 10.97m (doubles) court.",
+        "scoring": {
+          "points": "0 (Love), 15, 30, 40, Game",
+          "games": "6 games to win set, with 2-game lead required or tiebreak at 6-6.",
+          "sets": "Best of 3 sets (women and men's doubles) or 5 sets (men's singles) in Olympics."
+        },
+        "basic_rules": [
+          "Server has two attempts to put ball in play in diagonal service box.",
+          "Ball can only bounce once before being returned.",
+          "Players alternate service games.",
+          "Ball must be hit within boundaries to be valid.",
+          "Cannot touch net, cross to opponent's side, or hit ball before it crosses net.",
+          "Tiebreak played at 6-6 in set (first to 7 points with lead of 2)."
+        ],
+        "competition_format": "Single elimination tournament.",
+        "Olympic_events": [
+          "Men's Singles",
+          "Women's Singles",
+          "Men's Doubles",
+          "Women's Doubles",
+          "Mixed Doubles"
+        ]
+      }
+    },
+    {
+      "name": "Trampoline Gymnastics",
+      "category": "Summer",
+      "rules": {
+        "objective": "Perform sequence of aerial skills with height and control on trampoline.",
+        "equipment": ["Trampoline", "Safety mats"],
+        "playing_area": "Trampoline with 4.28m x 2.14m jumping surface.",
+        "scoring": {
+          "components": [
+            "Difficulty: Value of elements performed.",
+            "Execution: Starting from 10, deductions for technical errors.",
+            "Time of flight: Actual time spent in air, measured electronically.",
+            "Horizontal displacement: Penalties for not staying centered."
+          ],
+          "calculation": "Difficulty + Execution + Time of flight - Displacement deductions"
+        },
+        "basic_rules": [
+          "Routines consist of 10 consecutive skills without intermediate bounces.",
+          "Qualification round requires one compulsory and one voluntary routine.",
+          "Finals consist of one voluntary routine.",
+          "Competitors must submit planned voluntary routines in advance.",
+          "Routines must begin and end on feet, in controlled standing position."
+        ],
+        "competition_format": "Qualification round followed by one-routine final for top 8.",
+        "Olympic_events": ["Men's Individual", "Women's Individual"]
+      }
+    },
+    {
+      "name": "Triathlon",
+      "category": "Summer",
+      "rules": {
+        "objective": "Complete swim, bike, and run segments in sequence in fastest time.",
+        "equipment": ["Swimwear", "Bicycle", "Running shoes", "Helmet"],
+        "segments": {
+          "swim": "1.5km open water swim.",
+          "cycle": "40km cycling segment.",
+          "run": "10km running segment."
+        },
+        "scoring": "Timed event, fastest overall time wins.",
+        "basic_rules": [
+          "Continuous race with timed transitions between segments.",
+          "Drafting allowed in swim and run, but varies for cycling based on format.",
+          "Helmet mandatory during cycling segment.",
+          "No outside assistance allowed except in designated zones.",
+          "Penalties for rule infractions include time penalties served in penalty box."
+        ],
+        "competition_format": "Single race for individual event, relay format for mixed team event.",
+        "Olympic_events": [
+          "Men's Individual",
+          "Women's Individual",
+          "Mixed Team Relay"
+        ]
+      }
+    },
+    {
+      "name": "Volleyball",
+      "category": "Summer",
+      "rules": {
+        "objective": "Score points by grounding ball on opponent's court while preventing them from doing same.",
+        "equipment": ["Volleyball", "Net"],
+        "playing_area": "18m x 9m court divided by net (2.43m high for men, 2.24m for women).",
+        "scoring": {
+          "description": "Rally scoring to 25 points (15 in deciding set), must win by 2.",
+          "details": "Point scored on every rally regardless of who served."
+        },
+        "basic_rules": [
+          "Teams of 6 players on court, up to 6 substitutions per set.",
+          "Maximum 3 touches per side before ball must cross net.",
+          "Same player cannot touch ball twice consecutively (except after block).",
+          "Players rotate clockwise after winning serve.",
+          "Back-row players cannot attack from in front of attack line.",
+          "Ball must be cleanly hit, not caught or thrown.",
+          "Matches best-of-five sets."
+        ],
+        "specialized_positions": [
+          "Outside hitter",
+          "Opposite hitter",
+          "Middle blocker",
+          "Setter",
+          "Libero (defensive specialist)"
+        ],
+        "competition_format": "Pool play followed by knockout rounds.",
+        "Olympic_events": ["Men's Tournament", "Women's Tournament"]
+      }
+    },
+    {
+      "name": "Water Polo",
+      "category": "Summer",
+      "rules": {
+        "objective": "Score goals by throwing ball into opponent's net while preventing them from scoring.",
+        "equipment": ["Water polo ball", "Caps (with ear protectors)", "Goals"],
+        "playing_area": "30m x 20m pool with minimum 2m depth.",
+        "scoring": "1 point per goal.",
+        "basic_rules": [
+          "Teams of 7 players each (including goalkeeper).",
+          "Match consists of four 8-minute quarters.",
+          "Players cannot touch bottom or sides of pool during play.",
+          "Possession limited to 30 seconds before shot required.",
+          "Ball can be controlled with one hand, except goalkeeper who can use two.",
+          "Physical contact allowed but restrictions on holding, pulling, striking.",
+          "Exclusion fouls result in 20-second player advantage for opposition.",
+          "Penalty throws awarded for serious fouls within 5m of goal."
+        ],
+        "competition_format": "Group stage followed by knockout rounds.",
+        "Olympic_events": ["Men's Tournament", "Women's Tournament"]
+      }
+    },
+    {
+      "name": "Weightlifting",
+      "category": "Summer",
+      "rules": {
+        "objective": "Lift maximum weight overhead in two different movements.",
+        "equipment": ["Barbell with weight plates", "Platform"],
+        "lifts": {
+          "snatch": "Single movement lift from floor to overhead position.",
+          "clean_and_jerk": "Two-part lift: first from floor to shoulders, then overhead."
+        },
+        "scoring": {
+          "description": "Combined total of best successful snatch and best successful clean and jerk.",
+          "attempts": "Three attempts allowed for each lift type."
+        },
+        "basic_rules": [
+          "Competitors must declare weight attempts in advance.",
+          "Must receive signal from officials before starting and completing lift.",
+          "Lifter must hold weight in fixed position until referee signals completion.",
+          "Disqualified lifts include dropping barbell before signal, touching body with bar in improper way.",
+          "Lifter cannot leave platform during lift.",
+          "Tiebreaker is lifter with lower bodyweight."
+        ],
+        "competition_format": "Snatch followed by clean and jerk, with totals combined.",
+        "Olympic_events": "Various weight categories for men and women."
+      }
+    },
+    {
+      "name": "Wrestling Freestyle",
+      "category": "Summer",
+      "rules": {
+        "objective": "Score points by taking down and controlling opponent or exposing their back to mat.",
+        "equipment": ["Wrestling mat", "Singlet", "Wrestling shoes"],
+        "playing_area": "Circular mat 9m in diameter with central circle and out-of-bounds area.",
+        "scoring": {
+          "points": [
+            "1 point: Pushing opponent out of bounds, reversal, exposure less than 3 seconds.",
+            "2 points: Takedown, exposure for 3+ seconds, reversal with exposure.",
+            "4 points: Takedown directly to back, grand amplitude throw without exposure.",
+            "5 points: Grand amplitude throw with exposure."
+          ]
+        },
+        "basic_rules": [
+          "Matches consist of two 3-minute periods with 30-second break.",
+          "Victory by fall (pin) - holding opponent's shoulders to mat for fraction of second.",
+          "Technical superiority (10-point lead) ends match.",
+          "Points awarded for takedowns, exposures, reversals, step-outs.",
+          "Passivity penalized by awarding opponent points or activity period.",
+          "Entire body can be used to execute holds (unlike Greco-Roman)."
+        ],
+        "competition_format": "Single elimination with repechage for bronze medals.",
+        "Olympic_events": "Various weight categories for men and women."
+      }
+    },
+    {
+      "name": "Wrestling Greco-Roman",
+      "category": "Summer",
+      "rules": {
+        "objective": "Score points by executing upper-body throws and controls.",
+        "equipment": ["Wrestling mat", "Singlet", "Wrestling shoes"],
+        "playing_area": "Circular mat 9m in diameter with central circle and out-of-bounds area.",
+        "scoring": {
+          "points": [
+            "1 point: Pushing opponent out of bounds, reversal.",
+            "2 points: Takedown, exposure for 3+ seconds, reversal with exposure.",
+            "4 points: Takedown from standing directly to danger position, grand amplitude throw without exposure.",
+            "5 points: Grand amplitude throw with exposure."
+          ]
+        },
+        "basic_rules": [
+          "Matches consist of two 3-minute periods with 30-second break.",
+          "Victory by fall (pin) - holding opponent's shoulders to mat for fraction of second.",
+          "Technical superiority (8-point lead) ends match.",
+          "No holds allowed below waist, no leg attacks or defenses using legs.",
+          "Passivity more strictly penalized than in freestyle.",
+          "Focus on throws, lifts, and upper-body techniques."
+        ],
+        "competition_format": "Single elimination with repechage for bronze medals.",
+        "Olympic_events": "Various weight categories for men only."
+      }
+    },
+    {
+      "name": "Alpine Skiing",
+      "category": "Winter",
+      "rules": {
+        "objective": "Complete a downhill course in the shortest time possible while navigating through gates.",
+        "equipment": [
+          "Skis",
+          "Ski boots",
+          "Ski poles",
+          "Helmet",
+          "Racing suit"
+        ],
+        "playing_area": "Downhill ski course with gates marking the path racers must follow.",
+        "scoring": {
+          "points": [
+            "Timed event - fastest time wins.",
+            "Disqualification if a gate is missed.",
+            "Time penalties may be added for rule infractions."
+          ]
+        },
+        "basic_rules": [
+          "Competitors race individually against the clock.",
+          "Must pass through all gates correctly.",
+          "Different disciplines include Downhill, Super-G, Giant Slalom, Slalom, and Combined.",
+          "Downhill and Super-G are speed events with fewer turns.",
+          "Slalom and Giant Slalom are technical events with more gates and turns.",
+          "Combined events feature both downhill and slalom segments."
+        ],
+        "competition_format": "Usually two runs with times combined, except for Downhill which is typically a single run.",
+        "Olympic_events": "Downhill, Super-G, Giant Slalom, Slalom, Alpine Combined, and Mixed Team events for both men and women."
+      }
+    },
+    {
+      "name": "Biathlon",
+      "category": "Winter",
+      "rules": {
+        "objective": "Combine cross-country skiing with precision rifle shooting in the shortest time possible.",
+        "equipment": [
+          "Cross-country skis",
+          "Ski poles",
+          "Rifle (.22 caliber)",
+          "Ammunition",
+          "Racing suit"
+        ],
+        "playing_area": "Cross-country ski course with shooting ranges (50m targets).",
+        "scoring": {
+          "points": [
+            "Timed event - fastest time wins.",
+            "Shooting penalties: either 1-minute time penalty or 150m penalty loop for each missed target.",
+            "Targets are 4.5cm diameter for standing position, 11.5cm for prone position."
+          ]
+        },
+        "basic_rules": [
+          "Athletes ski through a cross-country course, stopping at shooting ranges.",
+          "Most events require 2-4 shooting rounds, alternating between prone and standing positions.",
+          "Each shooting round typically involves 5 targets.",
+          "Athletes must control their breathing and heart rate to shoot accurately after physical exertion.",
+          "Different race formats include: Individual, Sprint, Pursuit, Mass Start, and Relay."
+        ],
+        "competition_format": "Various formats from individual time trials to mass starts and relays.",
+        "Olympic_events": "Individual, Sprint, Pursuit, Mass Start, Relay, and Mixed Relay events for men and women."
+      }
+    },
+    {
+      "name": "Bobsleigh",
+      "category": "Winter",
+      "rules": {
+        "objective": "Navigate a gravity-powered sled down an ice track in the fastest time possible.",
+        "equipment": [
+          "Bobsled",
+          "Helmet",
+          "Spiked shoes (for start)",
+          "Aerodynamic racing suit"
+        ],
+        "playing_area": "Ice track with banked curves and straightaways, typically 1200-1500m long with 15-20 curves.",
+        "scoring": {
+          "points": [
+            "Timed event - fastest total time over multiple runs wins.",
+            "Times measured to 1/100th of a second."
+          ]
+        },
+        "basic_rules": [
+          "Teams consist of 2 or 4 athletes (pilot and brakeman, plus two pushers in 4-man).",
+          "Start with a running push to gain momentum before loading into the sled.",
+          "Driver steers using pulleys attached to steering mechanism.",
+          "Brakeman applies brakes after crossing finish line.",
+          "Sled specifications (weight, dimensions) strictly regulated.",
+          "Olympic competition consists of four runs over two days."
+        ],
+        "competition_format": "Multiple timed runs (usually four) with combined total determining winner.",
+        "Olympic_events": "Two-man, Four-man, and Women's bobsleigh (two-woman)."
+      }
+    },
+    {
+      "name": "Cross-Country Skiing",
+      "category": "Winter",
+      "rules": {
+        "objective": "Complete a snow course in the shortest time using skis and poles for propulsion.",
+        "equipment": [
+          "Cross-country skis",
+          "Ski poles",
+          "Ski boots",
+          "Racing suit"
+        ],
+        "playing_area": "Prepared ski trails of varying distances and terrain.",
+        "scoring": {
+          "points": [
+            "Timed event - fastest time wins in individual races.",
+            "First to finish wins in head-to-head formats.",
+            "First team to finish wins in relay races."
+          ]
+        },
+        "basic_rules": [
+          "Two techniques permitted: Classic (parallel ski movement in set tracks) and Freestyle (skating motion).",
+          "Events specified as either classic or freestyle technique.",
+          "Racers must stay within marked course boundaries.",
+          "Distances range from sprints (1.5km) to long distance (50km).",
+          "Race formats include individual start (time trial), mass start, pursuit, sprint, and relay."
+        ],
+        "competition_format": "Various formats including individual time trials, mass starts, pursuits, sprints, and relays.",
+        "Olympic_events": "Sprint, Team Sprint, Individual events (various distances), and Relay events for both men and women."
+      }
+    },
+    {
+      "name": "Curling",
+      "category": "Winter",
+      "rules": {
+        "objective": "Score points by sliding stones closer to the center of the target (house) than your opponent's stones.",
+        "equipment": [
+          "Curling stones (rocks)",
+          "Brooms (brushes)",
+          "Special footwear",
+          "Slider (for delivery)"
+        ],
+        "playing_area": "Rectangular sheet of ice 45.72m long and 5m wide with circular targets (houses) at each end.",
+        "scoring": {
+          "points": [
+            "Points scored for each stone closer to the center than any of opponent's stones.",
+            "Only one team can score per end.",
+            "Teams play 8 or 10 ends (rounds).",
+            "Team with most points after all ends wins."
+          ]
+        },
+        "basic_rules": [
+          "Teams of four players (skip, third, second, lead).",
+          "Each player delivers two stones per end, alternating with opponent.",
+          "Skip directs team strategy and usually delivers final stones.",
+          "Sweeping affects stone's path and distance.",
+          "Players can remove opponent's stones (takeout) or guard their own (guard).",
+          "First stone cannot be removed until fifth stone of the end (free guard zone rule)."
+        ],
+        "competition_format": "Round-robin tournament followed by knockout stage.",
+        "Olympic_events": "Men's, Women's, and Mixed Doubles tournaments."
+      }
+    },
+    {
+      "name": "Figure Skating",
+      "category": "Winter",
+      "rules": {
+        "objective": "Perform choreographed routines including jumps, spins, lifts, and footwork with artistic expression.",
+        "equipment": ["Figure skates", "Costume"],
+        "playing_area": "Ice rink (60m x 30m standard Olympic size).",
+        "scoring": {
+          "points": [
+            "Technical Score: Points for executed elements (jumps, spins, etc.) with grade of execution (-5 to +5).",
+            "Program Components Score: Points for skating skills, transitions, performance, composition, and interpretation.",
+            "Deductions for falls (-1 point) and time violations.",
+            "Total segment score is sum of technical and component scores minus deductions."
+          ]
+        },
+        "basic_rules": [
+          "Competition divided into Short Program and Free Skating segments.",
+          "Short Program has required elements, shorter duration (2:40 men/women, 2:50 pairs).",
+          "Free Skating allows more freedom in choreography with longer duration (4:00 men/women, 4:30 pairs).",
+          "Ice Dance includes rhythm dance and free dance segments.",
+          "Team event includes all disciplines with one entry per nation.",
+          "Limits on number of elements (e.g., jumps) that can be performed."
+        ],
+        "competition_format": "Short Program/Rhythm Dance followed by Free Skating/Free Dance with combined scores determining winners.",
+        "Olympic_events": "Men's Singles, Women's Singles, Pairs, Ice Dance, and Team Event."
+      }
+    },
+    {
+      "name": "Freestyle Skiing",
+      "category": "Winter",
+      "rules": {
+        "objective": "Perform aerial maneuvers, navigate terrain features, or ski moguls with speed and technical precision.",
+        "equipment": [
+          "Freestyle skis",
+          "Ski boots",
+          "Ski poles",
+          "Helmet",
+          "Protective gear"
+        ],
+        "playing_area": "Various specialized courses including aerial ramps, mogul fields, halfpipe, slopestyle courses, and ski cross tracks.",
+        "scoring": {
+          "points": [
+            "Moguls: 60% technical turns, 20% air (jumps), 20% speed.",
+            "Aerials: Scored on air, form, and landing (difficulty multiplier applied).",
+            "Halfpipe/Slopestyle: Judges score on execution, difficulty, amplitude, variety, and progression.",
+            "Ski Cross: Timed event with head-to-head racing, first to finish wins."
+          ]
+        },
+        "basic_rules": [
+          "Multiple disciplines with different rules: Moguls, Aerials, Halfpipe, Slopestyle, Big Air, and Ski Cross.",
+          "Moguls: Ski down bumpy course with two jumps, timed with scoring for technique.",
+          "Aerials: Launch off jumps performing flips and twists, scored on execution and difficulty.",
+          "Halfpipe: Perform tricks in a half-cylinder snow feature, judged on execution and difficulty.",
+          "Slopestyle: Perform tricks on various features (rails, jumps) down a course.",
+          "Ski Cross: Four skiers race head-to-head down a course with jumps and banked turns."
+        ],
+        "competition_format": "Varies by discipline: qualification rounds followed by finals, elimination heats for Ski Cross.",
+        "Olympic_events": "Moguls, Aerials, Halfpipe, Slopestyle, Big Air, and Ski Cross for men and women."
+      }
+    },
+    {
+      "name": "Ice Hockey",
+      "category": "Winter",
+      "rules": {
+        "objective": "Score more goals than the opposing team by shooting a puck into the opponent's net.",
+        "equipment": [
+          "Hockey stick",
+          "Skates",
+          "Puck",
+          "Protective gear",
+          "Goalie equipment"
+        ],
+        "playing_area": "Ice rink (60m x 30m Olympic size) with goals at each end.",
+        "scoring": {
+          "points": [
+            "1 point per goal.",
+            "Team with most goals at end of regulation time wins.",
+            "Overtime and shootout used to break ties in elimination games."
+          ]
+        },
+        "basic_rules": [
+          "Teams of 6 players on ice (typically 1 goalie, 2 defensemen, 3 forwards) with up to 20 on roster.",
+          "Three 20-minute periods with intermissions between periods.",
+          "Substitutions allowed during play (line changes).",
+          "Offsides: attacking players cannot precede puck into offensive zone.",
+          "Icing: shooting puck from behind center line past opponent's goal line without it being touched.",
+          "Body checking allowed but with restrictions (no charging, boarding, etc.).",
+          "Penalties result in power plays (team plays with numerical advantage).",
+          "Minor penalties: 2 minutes, Major penalties: 5 minutes, Misconduct: 10 minutes."
+        ],
+        "competition_format": "Round-robin group stage followed by single elimination knockout phase.",
+        "Olympic_events": "Men's and Women's tournaments."
+      }
+    },
+    {
+      "name": "Luge",
+      "category": "Winter",
+      "rules": {
+        "objective": "Navigate a small sled down an ice track in the fastest time while lying supine (face up, feet first).",
+        "equipment": [
+          "Luge sled",
+          "Racing suit",
+          "Helmet",
+          "Spiked gloves",
+          "Booties"
+        ],
+        "playing_area": "Ice track with banked curves and straightaways, typically 1000-1500m long.",
+        "scoring": {
+          "points": [
+            "Timed event - fastest total time over multiple runs wins.",
+            "Times measured to 1/1000th of a second."
+          ]
+        },
+        "basic_rules": [
+          "Athletes start seated on sled, propel themselves forward using handles at start.",
+          "Steer by applying pressure with legs and shoulders or by shifting weight.",
+          "Must remain on sled in supine position throughout run.",
+          "No mechanical braking systems allowed.",
+          "Precise weight regulations for athletes and equipment.",
+          "Olympic competition consists of four runs over two days (two for doubles).",
+          "Disqualification for violations of equipment or weight regulations."
+        ],
+        "competition_format": "Multiple timed runs (usually four for singles, two for doubles) with combined total determining winner.",
+        "Olympic_events": "Men's Singles, Women's Singles, Doubles, and Team Relay."
+      }
+    },
+    {
+      "name": "Nordic Combined",
+      "category": "Winter",
+      "rules": {
+        "objective": "Combine ski jumping and cross-country skiing, with ski jump results determining starting order/times for cross-country portion.",
+        "equipment": [
+          "Ski jumping skis",
+          "Cross-country skis",
+          "Ski jumping suit",
+          "Helmet",
+          "Cross-country racing suit"
+        ],
+        "playing_area": "Ski jumping hill and cross-country course.",
+        "scoring": {
+          "points": [
+            "Ski jumping points based on distance and style (maximum 60 points).",
+            "Jump points converted to time handicaps for cross-country race (typically 4 seconds per point).",
+            "First to finish cross-country race wins overall."
+          ]
+        },
+        "basic_rules": [
+          "Competition occurs in two distinct phases: ski jumping followed by cross-country skiing.",
+          "Ski jumping judged on distance and style with five judges scoring style points.",
+          "Cross-country race uses handicap start (Gundersen method) based on jump results.",
+          "Leader after jumping starts first in cross-country, others follow at intervals based on point differences.",
+          "Cross-country portion typically uses freestyle technique.",
+          "Individual events use one or two jumps and 10km cross-country race.",
+          "Team events use four jumpers per team with 4 x 5km relay."
+        ],
+        "competition_format": "Ski jumping results determine staggered starting times for cross-country race.",
+        "Olympic_events": "Individual Normal Hill (1 jump + 10km), Individual Large Hill (1 jump + 10km), and Team (4 jumpers + 4x5km relay)."
+      }
+    },
+    {
+      "name": "Short Track Speed Skating",
+      "category": "Winter",
+      "rules": {
+        "objective": "Race against opponents on an oval ice track, being first to cross the finish line.",
+        "equipment": [
+          "Short track speed skates",
+          "Helmet",
+          "Cut-resistant suit",
+          "Gloves",
+          "Knee and shin guards"
+        ],
+        "playing_area": "Oval ice track (111.12m in circumference).",
+        "scoring": {
+          "points": [
+            "First to finish wins in head-to-head races.",
+            "Advancement based on placement and/or time in heats.",
+            "Disqualification for impeding opponents or other infractions."
+          ]
+        },
+        "basic_rules": [
+          "4-6 skaters compete simultaneously in each heat.",
+          "Multiple rounds: heats, quarterfinals, semifinals, finals.",
+          "Passing allowed on inside or outside of track.",
+          "Impeding, pushing, or blocking opponents is prohibited.",
+          "Skaters must stay within designated lanes during relay exchanges.",
+          "In relay events, teammates tag each other with a push.",
+          "Competitors must complete specified number of laps based on event distance."
+        ],
+        "competition_format": "Elimination tournament with heats advancing to quarterfinals, semifinals, and finals.",
+        "Olympic_events": "500m, 1000m, 1500m for men and women, plus 5000m men's relay and 3000m women's relay, and mixed team relay."
+      }
+    },
+    {
+      "name": "Skeleton",
+      "category": "Winter",
+      "rules": {
+        "objective": "Navigate a small sled down an ice track in the fastest time while lying prone (face down, head first).",
+        "equipment": [
+          "Skeleton sled",
+          "Helmet",
+          "Racing suit",
+          "Spiked shoes",
+          "Optional: elbow and knee pads"
+        ],
+        "playing_area": "Ice track with banked curves and straightaways, typically 1200-1500m long.",
+        "scoring": {
+          "points": [
+            "Timed event - fastest total time over multiple runs wins.",
+            "Times measured to 1/100th of a second."
+          ]
+        },
+        "basic_rules": [
+          "Athletes sprint alongside sled for approximately 40m before diving onto it head-first.",
+          "Steering accomplished by subtle shifts in body weight and pressure from knees and shoulders.",
+          "No mechanical steering or braking mechanisms allowed.",
+          "Sled specifications (weight, dimensions) strictly regulated.",
+          "Olympic competition consists of four runs over two days.",
+          "Weight restrictions for combined athlete and sled weight.",
+          "Disqualification for equipment violations or false starts."
+        ],
+        "competition_format": "Multiple timed runs (usually four) with combined total determining winner.",
+        "Olympic_events": "Men's and Women's individual events."
+      }
+    },
+    {
+      "name": "Ski Jumping",
+      "category": "Winter",
+      "rules": {
+        "objective": "Jump for maximum distance with good style from a takeoff ramp (inrun).",
+        "equipment": [
+          "Ski jumping skis",
+          "Ski jumping suit",
+          "Helmet",
+          "Goggles",
+          "Boots",
+          "Bindings"
+        ],
+        "playing_area": "Ski jumping hill with specified K-point (construction point) determining hill size.",
+        "scoring": {
+          "points": [
+            "Distance points: Points awarded based on distance jumped relative to K-point (1.8 points per meter for large hill).",
+            "Style points: Five judges award 0-20 points each for flight position, landing, and outrun.",
+            "Highest and lowest style scores are discarded, middle three are added to distance points.",
+            "Wind and gate compensations applied based on conditions."
+          ]
+        },
+        "basic_rules": [
+          "Athletes slide down inrun in aerodynamic position.",
+          "Must maintain controlled flight position during jump.",
+          "Landing must be in telemark position (one foot in front of the other) for maximum style points.",
+          "Equipment strictly regulated (ski length, suit permeability, etc.).",
+          "Officials may adjust starting gate based on wind conditions.",
+          "Wind compensation system adds/subtracts points based on favorable/unfavorable conditions.",
+          "Disqualification for equipment violations."
+        ],
+        "competition_format": "Qualification round followed by two competition rounds, with top 30 from first round advancing to final round.",
+        "Olympic_events": "Men's Normal Hill (K-90), Men's Large Hill (K-120), Men's Team (Large Hill), Women's Normal Hill, Mixed Team."
+      }
+    },
+    {
+      "name": "Snowboard",
+      "category": "Winter",
+      "rules": {
+        "objective": "Varies by discipline: perform tricks, complete a course in fastest time, or outperform opponents in head-to-head racing.",
+        "equipment": [
+          "Snowboard",
+          "Boots",
+          "Bindings",
+          "Helmet",
+          "Protective gear"
+        ],
+        "playing_area": "Various courses including halfpipe, slopestyle course, boardercross track, parallel slalom course.",
+        "scoring": {
+          "points": [
+            "Halfpipe/Slopestyle/Big Air: Judges score on difficulty, amplitude, execution, progression, and variety (0-100 point scale).",
+            "Parallel Events: Head-to-head racing, fastest to bottom wins.",
+            "Snowboard Cross: First to finish in elimination heats advances."
+          ]
+        },
+        "basic_rules": [
+          "Multiple disciplines with different rules: Halfpipe, Slopestyle, Big Air, Parallel Giant Slalom, Parallel Slalom, and Snowboard Cross.",
+          "Halfpipe: Perform tricks in a half-cylinder snow feature, best score from multiple runs counts.",
+          "Slopestyle: Perform tricks on various features (rails, jumps) down a course.",
+          "Big Air: Perform single trick off large jump, best combined score from multiple jumps.",
+          "Parallel Events: Two riders race side-by-side on parallel courses with gates.",
+          "Snowboard Cross: Four to six riders race simultaneously on course with jumps, berms, and obstacles."
+        ],
+        "competition_format": "Varies by discipline: best of multiple runs for judged events, elimination brackets for racing events.",
+        "Olympic_events": "Halfpipe, Slopestyle, Big Air, Parallel Giant Slalom, and Snowboard Cross for men and women."
+      }
+    },
+    {
+      "name": "Speed Skating",
+      "category": "Winter",
+      "rules": {
+        "objective": "Complete specified distance around oval ice track in fastest time possible.",
+        "equipment": [
+          "Long track speed skates",
+          "Racing suit",
+          "Helmet (for mass start)",
+          "Glasses/goggles"
+        ],
+        "playing_area": "400m oval ice track with two lanes.",
+        "scoring": {
+          "points": [
+            "Timed event - fastest time wins in individual races.",
+            "First to finish wins in mass start event.",
+            "Team pursuit determined by time of third skater to finish."
+          ]
+        },
+        "basic_rules": [
+          "Skaters race in pairs (except mass start), changing lanes each lap to equalize distance.",
+          "Inner lane has right of way at crossover.",
+          "Must fully complete distance without impeding opponents.",
+          "False starts result in warning, second false start is disqualification.",
+          "In team pursuit, teams of three skate in formation, time stops when third skater crosses line.",
+          "Mass start: pack racing format with intermediate sprints awarding points.",
+          "Disqualification for lane infringements or impeding opponents."
+        ],
+        "competition_format": "Single distance events with final ranking based on time. Team pursuit uses elimination format.",
+        "Olympic_events": "500m, 1000m, 1500m, 5000m, 10000m (men only), 3000m (women only), Team Pursuit, and Mass Start for men and women."
+      }
+    }
+  ]
+}

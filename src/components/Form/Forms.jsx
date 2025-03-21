@@ -23,76 +23,55 @@ const Forms = ({
   useEffect(() => {
     if (Data) {
       const initialData = {
-        calories_per_day: Data.calories_per_day || '',
-        protein_intake: Data.protein_intake
-          ? Number(Data.protein_intake.replace(/[^\d.-]/g, '')) // Remove non-numeric characters and convert to number
-          : '',
-        carbs_intake: Data.carbs_intake
-          ? Number(Data.carbs_intake.replace(/[^\d.-]/g, ''))
-          : '',
-        fats_intake: Data.fats_intake
-          ? Number(Data.fats_intake.replace(/[^\d.-]/g, ''))
-          : '',
-        breakfast_items:
-          Data.meal_plan
-            ?.find((meal) => meal.meal === 'Breakfast')
-            ?.items.join(', ') || '',
-        lunch_items:
-          Data.meal_plan
-            ?.find((meal) => meal.meal === 'Lunch')
-            ?.items.join(', ') || '',
-        dinner_items:
-          Data.meal_plan
-            ?.find((meal) => meal.meal === 'Dinner')
-            ?.items.join(', ') || '',
-        calories_per_day: Data.calories_per_day || '',
-        protein_intake: Data.protein_intake
+        calories_per_day: Data?.calories_per_day || '',
+        protein_intake: Data?.protein_intake
           ? Number(Data.protein_intake.replace(/[^\d.-]/g, ''))
           : '',
-        carbs_intake: Data.carbs_intake
+        carbs_intake: Data?.carbs_intake
           ? Number(Data.carbs_intake.replace(/[^\d.-]/g, ''))
           : '',
-        fats_intake: Data.fats_intake
+        fats_intake: Data?.fats_intake
           ? Number(Data.fats_intake.replace(/[^\d.-]/g, ''))
           : '',
         breakfast_items:
-          Data.meal_plan
+          Data?.meal_plan
             ?.find((meal) => meal.meal === 'Breakfast')
             ?.items.join(', ') || '',
         lunch_items:
-          Data.meal_plan
+          Data?.meal_plan
             ?.find((meal) => meal.meal === 'Lunch')
             ?.items.join(', ') || '',
         dinner_items:
-          Data.meal_plan
+          Data?.meal_plan
             ?.find((meal) => meal.meal === 'Dinner')
             ?.items.join(', ') || '',
 
         // Healthcare data
-        hydration_level: Data.hydration_level || '',
-        sleep_hours: Data.sleep_hours || '',
-        height: Data.height || '',
-        weight: Data.weight || '',
-        bmi: Data.bmi ? Number(Data.bmi.replace(/[^\d.-]/g, '')) : '',
+        hydration_level: Data?.hydration_level || 0,
+        sleep_hours: Data?.sleep_hours || '',
+        height: Data?.height || '',
+        weight: Data?.weight || '',
+        bmi: Data?.bmi ? Number(Data.bmi.replace(/[^\d.-]/g, '')) : '',
 
-        // Injury history (first entry for simplicity)
-        injury: Data.injury_history?.[0]?.injury || '',
-        recoveryPlan: Data.injury_history?.[0]?.recoveryPlan || '',
-        recoveryDuration: Data.injury_history?.[0]?.recoveryDuration
+        // Injury history
+        injury: Data?.injury_history?.[0]?.injury || '',
+        recoveryPlan: Data?.injury_history?.[0]?.recoveryPlan || '',
+        recoveryDuration: Data?.injury_history?.[0]?.recoveryDuration
           ? Number(
               Data.injury_history[0].recoveryDuration.replace(/[^\d.-]/g, '')
             )
           : '',
-        date: Data.injury_history?.[0]?.date || '',
+        date: Data?.injury_history?.[0]?.date || '',
 
         total_matches: Data?.total_matches || '',
         wins: Data?.wins || '',
         losses: Data?.losses || '',
-        practice_sessions_per_week:
-          Data?.practice_sessions_per_week || '',
+        practice_sessions_per_week: Data?.practice_sessions_per_week || '',
       };
 
       setFormData(initialData);
+    } else {
+      setFormData({});
     }
   }, [Data]);
 

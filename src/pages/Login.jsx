@@ -1,18 +1,18 @@
-import React, { useState } from "react";
-import runningLogo from "../assets/images/man-running.png";
-import logo from "../assets/images/signuplogo.png";
-import { Link, useNavigate } from "react-router-dom";
-import api from "../api/config";
-import { useAuth } from "../components/auth/AuthProvider"; // Import useAuth
+import React, { useState } from 'react';
+import runningLogo from '../assets/images/man-running.png';
+import logo from '../assets/images/signuplogo.png';
+import { Link, useNavigate } from 'react-router-dom';
+import api from '../api/config';
+import { useAuth } from '../components/auth/AuthProvider'; // Import useAuth
 
 const VismohLoginPage = () => {
   const navigate = useNavigate();
   const { login } = useAuth(); // Get login function from AuthProvider
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
   const [formData, setFormData] = useState({
-    email: "",
-    password: "",
+    email: '',
+    password: '',
   });
 
   const handleChange = (e) => {
@@ -25,24 +25,26 @@ const VismohLoginPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setError("");
+    setError('');
 
     try {
       const res = await api.auth.login(formData);
-      console.log("Login Successful:", res.data);
+      console.log('Login Successful:', res.data);
 
       const userData = {
         token: res.data.token,
-        id : res.data.userData.id,
+        id: res.data.userData.id,
         role: res.data.userData.role,
         name: res.data.userData.name,
+        isVerified: res.data.userData.isVerified || false,
+        sport: res.data.userData.sport || null,
       };
-      console.log("User Data:", userData);
+      console.log('User Data:', userData);
 
       login(userData, res.data.token); // Pass navigate to login()
     } catch (err) {
-      console.error("Login Error:", err);
-      setError(err.response?.data?.message || "Invalid email or password.");
+      console.error('Login Error:', err);
+      setError(err.response?.data?.message || 'Invalid email or password.');
     } finally {
       setLoading(false);
     }
@@ -55,7 +57,7 @@ const VismohLoginPage = () => {
         <div className="mb-16">
           <p className="text-sm text-gray-500 mb-1">Login</p>
           <span className="text-4xl font-bold">
-            Welcome to{" "}
+            Welcome to{' '}
             <span className="bg-secondary px-2 py-1 rounded-lg">Vismoh!</span>
           </span>
         </div>
@@ -92,7 +94,7 @@ const VismohLoginPage = () => {
             className="w-full bg-black text-white py-4 rounded-full font-medium"
             disabled={loading}
           >
-            {loading ? "Logging in..." : "Login"}
+            {loading ? 'Logging in...' : 'Login'}
           </button>
 
           <div className="mt-8 text-sm">
