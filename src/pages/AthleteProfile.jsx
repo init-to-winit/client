@@ -75,7 +75,6 @@ export default function AthleteProfile() {
     setVerificationError(null);
   };
 
-
   const handleSubmitVerification = async (e) => {
     e.preventDefault();
 
@@ -131,6 +130,11 @@ export default function AthleteProfile() {
       );
       setSubmitting(false);
     }
+  };
+
+  const handleFormChange = (e) => {
+    const { value } = e.target;
+    setAadhaarNumber(value); // Directly set the value, no need for an object
   };
 
   // Format Aadhaar number with spaces for display
@@ -205,20 +209,6 @@ export default function AthleteProfile() {
       }
     };
 
-    // Remove a specific file
-    const removeFile = (indexToRemove) => {
-      setSelectedFiles((prev) =>
-        prev.filter((_, index) => index !== indexToRemove)
-      );
-
-      // Update parent state - if removing the primary file, set the next one as primary
-      if (indexToRemove === 0 && selectedFiles.length > 1) {
-        setCertificateFile(selectedFiles[1]);
-      } else if (selectedFiles.length <= 1) {
-        setCertificateFile(null);
-      }
-    };
-
     return (
       <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
         <div className="bg-white rounded-xl shadow-lg max-w-md w-full">
@@ -235,79 +225,33 @@ export default function AthleteProfile() {
           </div>
 
           <form onSubmit={handleSubmitVerification} className="p-6">
-            {verificationError && (
-              <div className="mb-6 bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-md">
-                {verificationError}
-              </div>
-            )}
-
-            <div className="mb-6">
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Aadhaar Number
+            <div className="mb-4">
+              <label className="block text-gray-700 text-sm font-bold mb-2">
+                Aadhar Number
               </label>
               <input
                 type="text"
+                name="aadharNumber"
                 value={aadhaarNumber}
-                onChange={(e)=>setAadhaarNumber(e.target.value)}
-                placeholder="XXXX XXXX XXXX"
-                className="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#002E25] focus:border-transparent"
+                onChange={handleFormChange}
+                className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-[#002E25]"
+                placeholder="Enter Aadhar number"
               />
-              <p className="mt-1 text-xs text-gray-500">
-                Enter your 12-digit Aadhaar number for verification
-              </p>
             </div>
 
-            <div className="mb-8">
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Upload Certificates
+            <div className="mb-4">
+              <label className="block text-gray-700 text-sm font-bold mb-2">
+                Certificates
               </label>
-              <div className="border-2 border-dashed border-gray-300 rounded-md p-4">
-                {/* File list */}
-                {selectedFiles.length > 0 && (
-                  <div className="mb-3">
-                    <p className="text-sm font-medium mb-2">
-                      Selected certificates:
-                    </p>
-                    <ul className="max-h-32 overflow-y-auto">
-                      {selectedFiles.map((file, index) => (
-                        <li
-                          key={index}
-                          className="flex items-center justify-between py-1 border-b border-gray-100 last:border-0"
-                        >
-                          <span className="text-sm truncate flex-1">
-                            {file.name}
-                          </span>
-                          <button
-                            type="button"
-                            onClick={() => removeFile(index)}
-                            className="text-red-500 hover:text-red-700 ml-2"
-                          >
-                            <X className="w-4 h-4" />
-                          </button>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-
-                {/* Upload area */}
-                <div className="text-center py-3 relative">
-                  <Upload className="mx-auto h-8 w-8 text-gray-400 mb-2" />
-                  <p className="text-sm text-gray-500 mb-1">
-                    Drag and drop or click to add more certificates
-                  </p>
-                  <p className="text-xs text-gray-400">
-                    PDF, JPG or PNG (max 5MB each)
-                  </p>
-                  <input
-                    type="file"
-                    onChange={handleFileChange}
-                    className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-                    accept=".pdf,.jpg,.jpeg,.png"
-                    multiple
-                  />
-                </div>
-              </div>
+              <input
+                type="file"
+                multiple
+                onChange={handleFileChange}
+                className="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-[#002E25]"
+              />
+              <p className="text-sm text-gray-500 mt-1">
+                You can upload multiple files
+              </p>
             </div>
 
             <div className="flex justify-end space-x-4">
