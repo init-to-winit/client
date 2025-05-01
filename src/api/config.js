@@ -155,6 +155,9 @@ const api = {
         timeout: 500000,
       });
     },
+    verifySponsor: (data, id) => {
+      return axiosInstance.post(`/verify/sponsor/${id}`, data);
+    },
   },
   connect: {
     sendConnection: (data) =>

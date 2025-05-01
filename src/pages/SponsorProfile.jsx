@@ -19,6 +19,7 @@ import ProfilePicture from '@/components/common/ProfilePicture';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
+import SponsorModal from '@/components/SponsorModal'; // Import the modal (to be created)
 
 // Fix for default marker icon issue in Leaflet with React
 delete L.Icon.Default.prototype._getIconUrl;
@@ -33,6 +34,13 @@ export default function SponsorProfile() {
   const [sponsor, setSponsor] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [isVerificationModalOpen, setIsVerificationModalOpen] = useState(false);
+  const [formData, setFormData] = useState({
+    aadharNumber: '',
+    cinNumber: '',
+    companyWebsite: '',
+    sponsoredTeams: '',
+  });
   const { id } = useParams();
   const currentUser = JSON.parse(localStorage.getItem('user')) || {};
   const disableUpload = currentUser.id !== id;
@@ -71,7 +79,55 @@ export default function SponsorProfile() {
     fetchSponsorData();
   }, [id]);
 
-  // Error state component
+  // Handle form input
+  const handleFormChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  // Handle file uploads**
+  const handleFileChange = (files) => {
+    setFormData((prev) => ({
+      ...prev,
+      certificates: Array.from(files),
+    }));
+  };
+
+  // Handle form submission**
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    try {
+      const formDataObj = new FormData();
+      formDataObj.append('aadharNumber', formData.aadharNumber);
+      formDataObj.append('cinNumber', formData.cinNumber);
+      formDataObj.append('companyWebsite', formData.companyWebsite);
+      formDataObj.append('sponsoredTeams', formData.sponsoredTeams);
+
+      const response = await api.verify.verifySponsor(formDataObj, id);
+
+      if (response.status === 200) {
+        setSponsor((prev) => ({
+          ...prev,
+          isVerified: true,
+        }));
+        setIsVerificationModalOpen(false);
+        setFormData('');
+      } else {
+        console.log('Verification failed:', response.data.message);
+      }
+    } catch (error) {
+      console.error('Error submitting verification:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Error, Loading, and Empty state components remain unchanged
   const ErrorState = () => (
     <div className="bg-white rounded-xl shadow-md p-8 max-w-md mx-auto mt-20 text-center">
       <AlertTriangle className="h-12 w-12 text-red-500 mx-auto mb-4" />
@@ -98,7 +154,6 @@ export default function SponsorProfile() {
     </div>
   );
 
-  // Loading state component
   const LoadingState = () => (
     <div className="flex flex-col items-center justify-center h-screen">
       <div className="w-12 h-12 border-4 border-gray-200 border-t-[#002E25] rounded-full animate-spin mb-4"></div>
@@ -106,7 +161,6 @@ export default function SponsorProfile() {
     </div>
   );
 
-  // Empty state component
   const EmptyState = () => (
     <div className="bg-white rounded-xl shadow-md p-8 max-w-md mx-auto mt-20 text-center">
       <UserX className="h-12 w-12 text-gray-500 mx-auto mb-4" />
@@ -130,7 +184,6 @@ export default function SponsorProfile() {
   if (error) return <ErrorState />;
   if (!sponsor) return <EmptyState />;
 
-  // Calculate age from DOB
   const calculateAge = (dob) => {
     const birthDate = new Date(dob);
     const today = new Date();
@@ -143,7 +196,6 @@ export default function SponsorProfile() {
     ) {
       age--;
     }
-
     return age;
   };
 
@@ -155,7 +207,6 @@ export default function SponsorProfile() {
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between">
             <div className="flex items-center">
               <ProfilePicture userId={id} disableUpload={disableUpload} />
-
               <div className="ml-4">
                 <h1 className="text-3xl font-bold text-[#002E25]">
                   {sponsor.firstName} {sponsor.lastName}
@@ -166,11 +217,16 @@ export default function SponsorProfile() {
               </div>
             </div>
             <div className="mt-4 md:mt-0 flex items-center">
-              <div className="px-4 py-2 bg-[#002E25] text-white rounded-md">
-                {sponsor.isVerified
-                  ? 'Verified Sponsor'
-                  : 'Verification Pending'}
-              </div>
+              <button
+                className="flex items-center px-4 py-2 bg-[#002E25] text-white rounded-md hover:bg-[#003c32] transition-colors"
+                onClick={
+                  sponsor.isVerified
+                    ? null
+                    : () => setIsVerificationModalOpen(true)
+                }
+              >
+                {sponsor.isVerified ? 'Verified' : 'Verify'}
+              </button>
             </div>
           </div>
         </div>
@@ -209,7 +265,6 @@ export default function SponsorProfile() {
                   </div>
                 </div>
               </div>
-
               <div className="flex items-start">
                 <Mail className="w-5 h-5 text-[#002E25] mt-0.5 mr-3" />
                 <div>
@@ -217,7 +272,6 @@ export default function SponsorProfile() {
                   <div className="font-medium">{sponsor.email}</div>
                 </div>
               </div>
-
               <div className="flex items-start">
                 <Phone className="w-5 h-5 text-[#002E25] mt-0.5 mr-3" />
                 <div>
@@ -225,7 +279,6 @@ export default function SponsorProfile() {
                   <div className="font-medium">{sponsor.phone}</div>
                 </div>
               </div>
-
               <div className="flex items-start">
                 <Globe className="w-5 h-5 text-[#002E25] mt-0.5 mr-3" />
                 <div>
@@ -233,7 +286,6 @@ export default function SponsorProfile() {
                   <div className="font-medium">{sponsor.country}</div>
                 </div>
               </div>
-
               <div className="flex items-start">
                 <Flag className="w-5 h-5 text-[#002E25] mt-0.5 mr-3" />
                 <div>
@@ -243,7 +295,6 @@ export default function SponsorProfile() {
               </div>
             </div>
           </div>
-
           <div className="bg-white rounded-xl shadow-md p-6">
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-xl font-semibold">Sponsor Information</h2>
@@ -277,8 +328,6 @@ export default function SponsorProfile() {
               <div className="text-gray-500 text-sm mb-1">Address</div>
               <div className="font-medium">{sponsor.address}</div>
             </div>
-
-            {/* Leaflet Map */}
             <div className="bg-gray-100 rounded-lg overflow-hidden h-64 relative">
               {sponsor.latitude && sponsor.longitude ? (
                 <MapContainer
@@ -304,7 +353,6 @@ export default function SponsorProfile() {
                 </div>
               )}
             </div>
-
             <div className="mt-4 grid grid-cols-2 gap-4">
               <div>
                 <div className="text-gray-500 text-sm">Latitude</div>
@@ -316,7 +364,6 @@ export default function SponsorProfile() {
               </div>
             </div>
           </div>
-
           <div className="bg-white rounded-xl shadow-md p-6">
             <h2 className="text-xl font-semibold mb-4">Medical Information</h2>
             <div className="p-4 bg-red-50 rounded-lg">
@@ -335,6 +382,16 @@ export default function SponsorProfile() {
           </div>
         </div>
       </div>
+
+      <SponsorModal
+        isOpen={isVerificationModalOpen}
+        onClose={() => setIsVerificationModalOpen(false)}
+        onSubmit={handleSubmit}
+        loading={loading}
+        formData={formData}
+        onChange={handleFormChange}
+        onFileChange={handleFileChange}
+      />
     </div>
   );
 }
